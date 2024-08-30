@@ -94,11 +94,10 @@ void dijikstra(int s) {
 // }
 
 
-void printPath() {
-    for_each(paths.begin(), paths.end(), [](queue<int> sPath) {
+void printPath(int des) {
+    for_each(paths[des].begin(), paths[des].end(), [](vector<int> sPath) {
         for (int i = 0; i < sPath.size(); i++) {
-            std::cout << sPath.front() << " ";
-            sPath.pop();
+            std::cout << sPath[i] << " ";
         }
         std::cout << std::endl;
     });

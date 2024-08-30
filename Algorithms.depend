@@ -2,6 +2,127 @@
 1725010092 source:d:\back_up\algorithms\highlighttest.cpp
 	<vector>
 
-1725017187 source:d:\back_up\algorithms\datastruct\graph\sssp\spfa.cpp
+1725021113 source:d:\back_up\algorithms\datastruct\graph\sssp\spfa.cpp
 	<bits/stdc++.h>
+
+1725008163 source:d:\back_up\algorithms\datastruct\graph\apsp\floydwarshall.cpp
+	<vector>
+
+1724826420 source:d:\back_up\algorithms\datastruct\graph\apsp\johnson.cpp
+
+1724826819 source:d:\back_up\algorithms\datastruct\graph\dag\aoe.cpp
+
+1724826824 source:d:\back_up\algorithms\datastruct\graph\dag\aov.cpp
+
+1724826801 source:d:\back_up\algorithms\datastruct\graph\dag\criticalpath.cpp
+
+1725004845 source:d:\back_up\algorithms\datastruct\graph\dag\topologialsort.cpp
+	<vector>
+
+1725004798 source:d:\back_up\algorithms\datastruct\graph\mst\kruskal.cpp
+	<bits/stdc++.h>
+	<algorithm>
+
+1725004819 source:d:\back_up\algorithms\datastruct\graph\mst\prim.cpp
+	<vector>
+
+1725005341 source:d:\back_up\algorithms\datastruct\graph\property\connectivitycnt.cpp
+
+1725005283 source:d:\back_up\algorithms\datastruct\graph\property\graphds_edge.cpp
+	<vector>
+	<queue>
+	<iostream>
+	<algorithm>
+
+1725004993 source:d:\back_up\algorithms\datastruct\graph\property\graphds_node.cpp
+	<vector>
+	<queue>
+	<iostream>
+	<algorithm>
+
+1724949844 source:d:\back_up\algorithms\datastruct\graph\property\loopcnt.cpp
+
+1725011498 source:d:\back_up\algorithms\datastruct\graph\sssp\bellmanford.cpp
+	<vector>
+
+1724820054 source:d:\back_up\algorithms\datastruct\graph\sssp\spfa_dfs.cpp
+
+1724825111 source:d:\back_up\algorithms\datastruct\graph\sssp\spfa_priorityqueue.cpp
+
+1724820043 source:d:\back_up\algorithms\datastruct\graph\sssp\spfa_slf_llf.cpp
+
+1724950345 source:d:\back_up\algorithms\datastruct\numberarray\lowbit.cpp
+
+1710919508 source:d:\back_up\algorithms\datastruct\string\kmp\aglimpseofkmp.cpp
+	"bits/stdc++.h"
+
+1710645927 source:d:\back_up\algorithms\datastruct\string\kmp\code.cpp
+	"bits/stdc++.h"
+
+1711289779 source:d:\back_up\algorithms\datastruct\string\kmp\daydaykmp.cpp
+
+1711196440 source:d:\back_up\algorithms\datastruct\string\kmp\kmp.cpp
+	"bits/stdc++.h"
+
+1710931133 source:d:\back_up\algorithms\datastruct\string\kmp\kmppppp.cpp
+	"bits/stdc++.h"
+
+1724950404 source:d:\back_up\algorithms\datastruct\string\lcl.cpp
+
+1724950398 source:d:\back_up\algorithms\datastruct\string\lsl.cpp
+
+1724949997 source:d:\back_up\algorithms\datastruct\tree\avl.cpp
+
+1724950052 source:d:\back_up\algorithms\datastruct\tree\bminustree.cpp
+
+1724950030 source:d:\back_up\algorithms\datastruct\tree\bplustree.cpp
+
+1724950481 source:d:\back_up\algorithms\datastruct\tree\bst_oop.cpp
+	"vector"
+	"stdio.h"
+	"queue"
+
+1724950484 source:d:\back_up\algorithms\datastruct\tree\bst_oop_bad.cpp
+	"vector"
+	"stdio.h"
+	"queue"
+
+1724950469 source:d:\back_up\algorithms\datastruct\tree\bst_pop.cpp
+	"bits/stdc++.h"
+
+1724950476 source:d:\back_up\algorithms\datastruct\tree\bst_pop_bad.cpp
+	"bits/stdc++.h"
+
+1724950019 source:d:\back_up\algorithms\datastruct\tree\btree.cpp
+
+1724950008 source:d:\back_up\algorithms\datastruct\tree\heap.cpp
+
+1724950070 source:d:\back_up\algorithms\datastruct\tree\redblacktree.cpp
+
+1722929749 source:d:\back_up\algorithms\hammingcode\hammingcodesrv-optimized.cpp
+	"vector"
+	"string"
+	"iostream"
+	"algorithm"
+	"chrono"
+
+1722928577 source:d:\back_up\algorithms\hammingcode\hammingcodesrv.cpp
+	"vector"
+	"string"
+	"iostream"
+	"algorithm"
+	"chrono"
+
+1724865692 source:d:\back_up\algorithms\search\bfs.cpp
+
+1724865703 source:d:\back_up\algorithms\search\dfs.cpp
+
+1725022567 source:d:\back_up\algorithms\datastruct\graph\sssp\dijikstra.cpp
+	<vector>
+	<queue>
+	<iostream>
+	<algorithm>
+
+1725022621 source:d:\back_up\algorithms\datastruct\string\kmp\statisticsofkmp.cpp
+	"bits/stdc++.h"
 
