@@ -31,7 +31,7 @@ public:
                 }
             }
         }
-        return multiProb[end_node];
+        return multiProb[end_node]
     }
 
     // private:
