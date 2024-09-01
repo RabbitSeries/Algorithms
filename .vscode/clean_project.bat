@@ -11,10 +11,18 @@ set workingPath = %~1
 
 cd %workingPath%
 
+
+
 echo About to perform deletion at
 echo %cd%
 set /p confirm=Proceed? (Y/N) [default:N]:
 
+@REM For code::blocks projects
+rd /s /q "%workingPath%\obj\Debug"
+rd /s /q "%workingPath%\obj\Release"
+echo.
+echo code::blocks build files cleaned.
+echo.
 if /i "%confirm%"=="" set confirm=N
 
 if /i "%confirm%"=="N" (
@@ -28,7 +36,7 @@ echo. > %tempFile%
 
 for /r %%i in (*.exe) do echo %%i >> %tempFile%
 
-for /r %%i in (*.dll) do echo %%i >> %tempFile%
+for /r %%i in (*.o) do echo %%i >> %tempFile%
 
 set filesFound=N
 
@@ -36,12 +44,12 @@ for /f "delims=" %%i in ('findstr /r ".exe" %tempFile%') do (
     set filesFound=F
 )
 
-for /f "delims=" %%i in ('findstr /r ".dll" %tempFile%') do (
+for /f "delims=" %%i in ('findstr /r ".o" %tempFile%') do (
     set filesFound=F
 )
 
 if "%filesFound%"=="N" (
-    echo Files not found.
+    echo .exe .o Files not found.
     del %tempFile%
     goto end
 )

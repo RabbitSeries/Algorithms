@@ -149,9 +149,6 @@
 		<Unit filename="HammingCode/HammingCodeSrv.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="HammingCode/tempCodeRunnerFile.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="Search/BFS.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

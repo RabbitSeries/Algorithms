@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "43a375cd45eca61a",
+        "id": "bebec6a7761fb890",
         "type": "tabs",
         "children": [
           {
-            "id": "632f08796fb034a8",
+            "id": "45d7efe99cbd6fa6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "HammingCode/HammingCode.md",
-                "mode": "source",
-                "source": false
+                "file": "negativeEdge.png"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "HammingCode/HammingCode.md",
+                "file": "negativeEdge.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "HammingCode/HammingCode.md",
+                "file": "negativeEdge.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "HammingCode/HammingCode.md"
+                "file": "negativeEdge.png"
               }
             }
           }
@@ -133,7 +131,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
@@ -146,9 +144,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "632f08796fb034a8",
+  "active": "45d7efe99cbd6fa6",
   "lastOpenFiles": [
+    "Datastruct/Graph/GraphAlgorithm.md",
+    "Datastruct/Graph/GraphAlgorithms.md",
+    "Datastruct/Graph/GraphAlgorithms.emmx",
+    "Datastruct/Graph/SSSP/OptimizeSPFA.cpp",
+    "Datastruct/Graph/SSSP/Dijikstra_UCG copy.cpp",
+    "Datastruct/Graph/SSSP/Dijikstra_UCG.cpp",
+    "Datastruct/Graph/SSSP/test.cpp",
+    "Pasted image 20240831200114.png",
+    "negativeEdge.png",
+    "Untitled.md",
+    "Datastruct/Graph/negativeEdgeWeightGraph.png",
+    "Math/EuclidDivide_GCD/Euclid.gif",
     "HammingCode/HammingCodeBasis.md",
+    "HammingCode/HammingCode.md",
+    "Math/EuclidDivide_GCD/Euclid.webp",
+    "obsres",
+    "Pasted image 20240831175909.png",
     "EuclidDivide_GCD/Euclid.webp",
     "EuclidDivide_GCD/Euclid.gif"
   ]
