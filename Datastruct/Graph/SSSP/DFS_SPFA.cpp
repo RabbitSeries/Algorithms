@@ -12,21 +12,21 @@ public:
         }
         multiProb = vector<double>(n, 0);
         multiProb[start_node] = 1;
-        dfs(start_node,end_node);
-        // for(int traversal = 0; traversal < n - 1; traversal++) {
-        //     for(int i = 0; i < n; i++) {
-        //         for(int j = 0; j < nextVList[i].size(); j++) {
-        //             if(multiProb[i] * nextVList[i][j].second > multiProb[nextVList[i][j].first]) {
-        //                 multiProb[nextVList[i][j].first] = multiProb[i] * nextVList[i][j].second;
-        //             }
-        //         }
-        //     }
-        // }
+
+        for(int traversal = 0; traversal < n - 1; traversal++) {
+            for(int i = 0; i < n; i++) {
+                for(int j = 0; j < nextVList[i].size(); j++) {
+                    if(multiProb[i] * nextVList[i][j].second > multiProb[nextVList[i][j].first]) {
+                        multiProb[nextVList[i][j].first] = multiProb[i] * nextVList[i][j].second;
+                    }
+                }
+            }
+        }
 
         return multiProb[end_node];
     }
 
-    void dfs(int s, int end) {
+    void dfs(int s, int end) {        // dfs(start_node,end_node);
         if(s == end) return;
         visitedR[s] = true;
         for(int i = 0; i < nextVList[s].size(); i++) {

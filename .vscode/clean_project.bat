@@ -38,6 +38,8 @@ for /r %%i in (*.exe) do echo %%i >> %tempFile%
 
 for /r %%i in (*.o) do echo %%i >> %tempFile%
 
+for /r %%i in (*.obj) do echo %%i >> %tempFile%
+
 set filesFound=N
 
 for /f "delims=" %%i in ('findstr /r ".exe" %tempFile%') do (
