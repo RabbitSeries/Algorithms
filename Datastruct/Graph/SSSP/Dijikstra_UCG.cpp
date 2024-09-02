@@ -1,4 +1,6 @@
 #include <vector>
+#include <queue>
+#include "../DAG/headertest.h"
 using namespace std;
 class Solution {
 public:
@@ -7,27 +9,23 @@ public:
         vector<vector<pair<int, double>>> nextVList(n);
         vector<bool> visitedR(n, false);
         vector<double> multiProb(n, 0);
+        priority_queue<pair<double, int>, vector<pair<double, int>>, greater<>> multiProbPQ;
         for(int i = 0; i < edges.size(); i++) {
             if(edges[i][0] != end_node && edges[i][1] != start_node)
                 nextVList[edges[i][0]].push_back(pair<int, double>(edges[i][1], succProb[i]));
             if(edges[i][1] != end_node && edges[i][0] != start_node)
                 nextVList[edges[i][1]].push_back(pair<int, double>(edges[i][0], succProb[i]));
         }
-        multiProb[start_node] = 1;
-        for(int i = 0; i < n; i++) {
-            double maxProb = 0;
-            int index = -1;
-            for(int j = 0; j < n; j++) {
-                if(!visitedR[j] && multiProb[j] > maxProb) {
-                    maxProb = multiProb[j];
-                    index = j;
-                }
-            }
-            if(index == -1) break;
+        multiProb[0] = 1;
+        multiProbPQ.emplace(1, 0);
+        for(int i = 0; i < n && !multiProbPQ.empty(); i++) {
+            auto [maxProb, index] = multiProbPQ.top();
             visitedR[index] = true;
             for(int j = 0; j < nextVList[index].size(); j++) {
-                if(!visitedR[nextVList[index][j].first] && multiProb[index] * nextVList[index][j].second > multiProb[nextVList[index][j].first]) {
-                    multiProb[nextVList[index][j].first] = multiProb[index] * nextVList[index][j].second;
+                auto [nextV, edgeW] = nextVList[index][j];
+                if(!visitedR[nextV] && multiProb[index] * edgeW > multiProb[nextV]) {
+                    multiProb[nextV] = multiProb[index] * edgeW;
+                    multiProbPQ.emplace(multiProb[edgeW], nextV);
                 }
             }
         }

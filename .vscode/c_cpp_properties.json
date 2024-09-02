@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "name": "mingw64",
+            "includePath": [
+                "${default}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:\\Build_Tool_Lib\\mingw64\\bin\\g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        },
+        {
+            "name": "msvc2022_86",
+            "includePath": [
+                "${default}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x86",
+            "compilerArgs": [],
+            "windowsSdkVersion": "10.0.22621.0"
+        }
+    ],
+    "version": 4
+}

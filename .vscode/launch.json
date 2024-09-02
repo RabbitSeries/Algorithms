@@ -5,6 +5,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe",
+            // "postDebugTask": "Clean *.exe, *.dll files",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

@@ -7,28 +7,35 @@ if "%~1"=="" (
     goto :end
 )
 
-set workingPath = %~1
+@REM No blank characters within.
+set workingPath=%~1
 
+echo %workingPath%
 cd %workingPath%
 
-
-
 echo About to perform deletion at
-echo %cd%
+@REM echo %cd%
 set /p confirm=Proceed? (Y/N) [default:N]:
 
-@REM For code::blocks projects
-rd /s /q "%workingPath%\obj\Debug"
-rd /s /q "%workingPath%\obj\Release"
-echo.
-echo code::blocks build files cleaned.
-echo.
 if /i "%confirm%"=="" set confirm=N
 
 if /i "%confirm%"=="N" (
     echo Operation aborted.
     goto end
 )
+
+REM For code::blocks projects
+
+@REM for /d %%p in ("%workingPath%\.vs\*") do rd /s /q "%%p"
+@REM del /s /q "%workingPath%\.vs\*"
+
+if exist "%workingPath%\.vs" rd /s /q "%workingPath%\.vs"
+if exist "%workingPath%\bin" rd /s /q "%workingPath%\bin"
+if exist "%workingPath%\obj" rd /s /q "%workingPath%\obj"
+
+echo.
+echo code::blocks build files cleaned.
+echo.
 
 set tempFile=.\delete_list.txt
 
