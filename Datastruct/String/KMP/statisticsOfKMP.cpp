@@ -1,4 +1,6 @@
-#include "bits/stdc++.h"
+#include <vector>
+#include <iostream>
+#include <string>
 using namespace std;
 /* Time 8min */
 #define maxn 100
@@ -30,7 +32,7 @@ void fillNextC() {
     }
 }
 
-int statisticsOfmodelText() {
+void statisticsOfmodelText() {
     int nextPos = -1;
     for (int i = 0; i < text.length(); i++) {
         nextPos = findModelPos(text, i, nextPos);

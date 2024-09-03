@@ -9,11 +9,9 @@ if "%~1"=="" (
 
 @REM No blank characters within.
 set workingPath=%~1
-
-echo %workingPath%
 cd %workingPath%
-
 echo About to perform deletion at
+echo %workingPath%
 @REM echo %cd%
 set /p confirm=Proceed? (Y/N) [default:N]:
 
@@ -32,7 +30,7 @@ REM For code::blocks projects
 if exist "%workingPath%\.vs" rd /s /q "%workingPath%\.vs"
 if exist "%workingPath%\bin" rd /s /q "%workingPath%\bin"
 if exist "%workingPath%\obj" rd /s /q "%workingPath%\obj"
-
+if exist "%workingPath%\.vscode\debug" rd /s /q "%workingPath%\.vscode\debug"
 echo.
 echo code::blocks build files cleaned.
 echo.

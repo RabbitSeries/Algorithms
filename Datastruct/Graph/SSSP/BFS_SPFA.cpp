@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <queue>
+
 #define UNREACHABLE 1<<30
 int vcnt = 100;
 

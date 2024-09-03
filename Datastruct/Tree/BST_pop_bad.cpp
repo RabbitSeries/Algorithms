@@ -1,4 +1,6 @@
-#include "bits/stdc++.h"
+#include "vector"
+#include "queue"
+#include "stdio.h"
 
 typedef struct bstTree {
     int data;
@@ -10,7 +12,7 @@ bstTree* root = NULL;
 
 bstTree* insertNode(int val, bstTree* r = root) {
     if (!r) {
-        r = (bstTree*)malloc(sizeof(bstTree));
+        r = new bstTree;
         r->data = val;
         r->left = NULL;
         r->right = NULL;

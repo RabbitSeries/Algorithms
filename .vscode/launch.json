@@ -5,7 +5,6 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe",
-            // "postDebugTask": "Clean *.exe, *.dll files",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -25,7 +24,22 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: g++.exe build active file"
+            "preLaunchTask": "C/C++: g++.exe build active file",
+            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
+        },
+        {
+            "name": "C/C++: cl.exe build and debug active file",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "cl.exe build active file",
+            "postDebugTask": "Clean vc debug files",
+            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         }
     ],
     "version": "2.0.0"

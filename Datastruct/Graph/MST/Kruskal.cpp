@@ -1,5 +1,7 @@
 // Edge greedy, union search set.
-#include <bits/stdc++.h>
+#include <vector>
+#include <queue>
+#include <iostream>
 #include <algorithm>
 #define vmax 100
 int vcnt = vmax;
