@@ -23,7 +23,7 @@ void createGraph(int nodeN, int s[], int d[], int dis[]) {
     }
 }
 
-bool topologicalSort(int vcnt) {
+bool topologySort(int vcnt) {
     for(int i = 0; i < vcnt; i++) {
         if(graph[i].inDegree == 0) {
             searchQue.push(i);
