@@ -2,10 +2,12 @@
 #include <queue>
 #include <iostream>
 #include <algorithm>
+#include <set>
 int emax = 100;
 int edgeN = emax;
 
 typedef struct edgeInfo {
+    std::set<int> bilateralN;
     int startV;
     int nextV;
     int edgeW;

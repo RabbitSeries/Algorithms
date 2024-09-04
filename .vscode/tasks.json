@@ -68,8 +68,8 @@
         },
         {
             "type": "shell",
-            "label": "Clean *.exe, *.dll files",
-            "command": "${workspaceFolder}\\.vscode\\clean_project.bat",
+            "label": "[Clean] Confirm",
+            "command": "${workspaceFolder}\\.vscode\\clean_confirm.bat",
             "args": [
                 "${workspaceFolder}"
             ],
@@ -77,8 +77,8 @@
         },
         {
             "type": "shell",
-            "label": "Clean vc debug files",
-            "command": "${workspaceFolder}\\.vscode\\clean_Project_Build_Debug.bat",
+            "label": "[Clean] No Confirm",
+            "command": "${workspaceFolder}\\.vscode\\clean_noConfirm.bat",
             "args": [
                 "${workspaceFolder}"
             ],
