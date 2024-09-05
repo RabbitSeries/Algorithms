@@ -23,6 +23,10 @@ public:
         vector<int> count(n, 0);
 
         // Priority queue for Dijkstra's algorithm
+        /**
+         * @brief pair.first = time pair.second = index
+         * 
+         */
         priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<>> pq;
 
         // Start from node 0

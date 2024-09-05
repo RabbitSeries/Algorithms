@@ -12,7 +12,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}",
@@ -52,8 +52,8 @@
                 // "/Fo${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}",
                 // "/Fo:",
                 // "${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}",
-                "/Fo${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.obj",
-                "/Fe${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}.exe"
+                "/Fo${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.obj",
+                "/Fe${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
