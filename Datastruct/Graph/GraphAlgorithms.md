@@ -24,11 +24,12 @@ and use this node to relaxation adjacent edges.
 
 Used in non-negative graph. This algorithm can only be used in positive graph to obtain the correct path trace to the desitination. In graphs containing zoro weight edges, these zoro edges won't be used to the relaxation of those nodes already included in the relaxationed set. Under these circumstances, these zero weight edges are possibly connected to vetexes in set $\mathbf{S}$, and they won't be used to create paths with the vetex in visited set $\mathbf{S}$ despites that the zero edges creates the same shortest source-desitination path.
 
-![nagativeEdge](../../obsres/negativeEdge.png)
+![nagativeEdge](../../obsres/Dijkstra_1.png)
 
 #### Priority Queue Optimize
 
 With the optimization of priority-queue(Minimal Top Heap), the time complexity can be $\left(\mathbf{V} + \mathbf{E}\right)\log{V}$.
+![Dijikstra may not relax the graph in the shortest path order.](../../obsres/Dijkstra_2.png)
 
 #### Adaptablity
 
