@@ -36,8 +36,7 @@ int  bellman_ford_minEdge(int v) {// O(VE), O(V + (V-1)E + VE + E) = O(V(1+2E))
                     relaexed = true;                            // During each traversal, if no relax procedure is performed, all shortest paths have been found.
                     pre[nextV].clear();
                     pre[nextV].emplace(i);
-                }
-                else if(dis[i] != _UNREACHEABLE && dis[nextV] == dis[i] + edgeW) {
+                } else if(dis[i] != _UNREACHEABLE && dis[nextV] == dis[i] + edgeW) {
                     pre[nextV].emplace(i);
                 }
             }

@@ -7,7 +7,7 @@ int vmax = VMAXN;
 typedef struct edgeInfo {
     int nextV;
     int edgeW;
-}edgeInfo;
+} edgeInfo;
 
 std::vector<std::vector<edgeInfo>> graph(vmax);
 std::vector<int> dis(vmax, UNREACHABLE);

@@ -4,89 +4,72 @@
 #include "algorithm"
 #include "chrono"
 // #include "bits/stdc++.h"
-namespace HammingCode
-{
-    int getRawCorCnt(int rawDataLength)
-    {
-        int correctionCnt = 0;
-        while ((1 << correctionCnt) < rawDataLength + correctionCnt + 1)
-        {
-            correctionCnt++;
-        }
-        return correctionCnt;
+namespace HammingCode {
+int getRawCorCnt(int rawDataLength) {
+    int correctionCnt = 0;
+    while ((1 << correctionCnt) < rawDataLength + correctionCnt + 1) {
+        correctionCnt++;
     }
-    int getEncodeCorCnt(int encodeDataLength)
-    {
-        int encodeDataDigitCnt = 0;
-        while (encodeDataLength)
-        {
-            encodeDataLength >>= 1;
-            encodeDataDigitCnt++;
-        }
-        return encodeDataDigitCnt;
+    return correctionCnt;
+}
+int getEncodeCorCnt(int encodeDataLength) {
+    int encodeDataDigitCnt = 0;
+    while (encodeDataLength) {
+        encodeDataLength >>= 1;
+        encodeDataDigitCnt++;
     }
-    int xorOperation(const int powerOf2, const std::vector<int> encodedData)
-    {
-        int xorResult = 0, datasize = encodedData.size();
-        for (int i = powerOf2; i <= datasize; i += 2 * powerOf2)
-        {
-            for (int j = 0; (j < powerOf2) && (datasize - 1 - (i - 1) - j >= 0); j++)
-            {
-                xorResult ^= encodedData[datasize - 1 - (i - 1) - j];
-            }
+    return encodeDataDigitCnt;
+}
+int xorOperation(const int powerOf2, const std::vector<int> encodedData) {
+    int xorResult = 0, datasize = encodedData.size();
+    for (int i = powerOf2; i <= datasize; i += 2 * powerOf2) {
+        for (int j = 0; (j < powerOf2) && (datasize - 1 - (i - 1) - j >= 0); j++) {
+            xorResult ^= encodedData[datasize - 1 - (i - 1) - j];
         }
-        return xorResult;
     }
-    std::vector<int> encodeData(const std::vector<int> binarydata)
-    {
-        int rawDataLength = binarydata.size();
-        int correctionCnt = getRawCorCnt(rawDataLength);
-        int encodedLength = rawDataLength + correctionCnt;
-        std::vector<int> encodedData(encodedLength, 0);
-        for (int i = 0, j = 0; i < encodedLength; i++)
-        {
-            if (((i + 1) & i) != 0)
-            {
-                encodedData[encodedLength - 1 - i] = binarydata[rawDataLength - 1 - (j++)];
-            }
+    return xorResult;
+}
+std::vector<int> encodeData(const std::vector<int> binarydata) {
+    int rawDataLength = binarydata.size();
+    int correctionCnt = getRawCorCnt(rawDataLength);
+    int encodedLength = rawDataLength + correctionCnt;
+    std::vector<int> encodedData(encodedLength, 0);
+    for (int i = 0, j = 0; i < encodedLength; i++) {
+        if (((i + 1) & i) != 0) {
+            encodedData[encodedLength - 1 - i] = binarydata[rawDataLength - 1 - (j++)];
         }
-        // Traverse the correctionDigits
-        for (int i = 0; i < correctionCnt; i++)
-        {
-            int correctionPos = 1 << i;
-            int correctionDigitVal = 0;
-            correctionDigitVal = xorOperation(correctionPos, encodedData);
-            encodedData[encodedLength - 1 - (correctionPos - 1)] = correctionDigitVal;
-        }
-        return encodedData;
     }
-
-    std::vector<int> decodeDataAndCorrect(std::vector<int> encodedData)
-    {
-        int encodedLength = encodedData.size();
-        int correctionCnt = getEncodeCorCnt(encodedLength);
-        int datalength = encodedLength - correctionCnt;
-        int errorCode = 0;
-        for (int i = 0; i < correctionCnt; i++)
-        {
-            int correctionPos = 1 << i;
-            int xorResult = 0;
-            xorResult = xorOperation(correctionPos, encodedData);
-            errorCode |= xorResult << i;
-        }
-        if (errorCode != 0)
-        {
-            encodedData[encodedLength - 1 - (errorCode - 1)] ^= 1;
-        }
-        return encodedData;
+    // Traverse the correctionDigits
+    for (int i = 0; i < correctionCnt; i++) {
+        int correctionPos = 1 << i;
+        int correctionDigitVal = 0;
+        correctionDigitVal = xorOperation(correctionPos, encodedData);
+        encodedData[encodedLength - 1 - (correctionPos - 1)] = correctionDigitVal;
     }
+    return encodedData;
 }
 
-int main()
-{
+std::vector<int> decodeDataAndCorrect(std::vector<int> encodedData) {
+    int encodedLength = encodedData.size();
+    int correctionCnt = getEncodeCorCnt(encodedLength);
+    int datalength = encodedLength - correctionCnt;
+    int errorCode = 0;
+    for (int i = 0; i < correctionCnt; i++) {
+        int correctionPos = 1 << i;
+        int xorResult = 0;
+        xorResult = xorOperation(correctionPos, encodedData);
+        errorCode |= xorResult << i;
+    }
+    if (errorCode != 0) {
+        encodedData[encodedLength - 1 - (errorCode - 1)] ^= 1;
+    }
+    return encodedData;
+}
+}
+
+int main() {
     std::vector<int> rawdata;
-    for (int i = 0; i < 1 << 26 - 1; i++)
-    {
+    for (int i = 0; i < 1 << 26 - 1; i++) {
         if (i % 62 == 0)
             rawdata.push_back(0);
         else

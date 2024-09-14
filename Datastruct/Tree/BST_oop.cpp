@@ -12,17 +12,13 @@ public:
             if (!this->left) {
                 this->left = new bstTree;
                 this->left->data = val;
-            }
-            else
+            } else
                 this->left = this->left->insertNode(val);
-        }
-        else // val >= root->data
-        {
+        } else { // val >= root->data
             if (!this->right) {
                 this->right = new bstTree;
                 this->right->data = val;
-            }
-            else
+            } else
                 this->right = this->right->insertNode(val);
         }
         return this;
@@ -32,17 +28,14 @@ public:
         if (this->data == val) {
             if (!this->left && !this->right) {
                 delete this;
-            }
-            else if (this->left) {
+            } else if (this->left) {
                 bstTree* biggestCld = this->left;
                 while (biggestCld->right) {
                     biggestCld = biggestCld->right;
                 }
                 this->data = biggestCld->data;
                 this->left = this->left->deleteNode(biggestCld->data);
-            }
-            else //(this->root->right)
-            {
+            } else { //(this->root->right)
                 bstTree* lowestCld = this->right;
                 while (lowestCld->left) {
                     lowestCld = lowestCld->left;
@@ -50,12 +43,9 @@ public:
                 this->data = lowestCld->data;
                 this->right = this->right->deleteNode(lowestCld->data);
             }
-        }
-        else if (this->data > val) {
+        } else if (this->data > val) {
             this->left = this->left->deleteNode(val);
-        }
-        else // this.root.data <= val
-        {
+        } else { // this.root.data <= val
             this->right = this->right->deleteNode(val);
         }
         return this;

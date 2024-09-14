@@ -26,72 +26,55 @@ string model;
 }
  */
 
-inline int find(int pos, int next)
-{
+inline int find(int pos, int next) {
     return model[pos] == model[next + 1] ? next + 1 : next == -1 ? -1
-                                                                 : find(pos, n[next]);
+           : find(pos, n[next]);
 }
 
-void kmp()
-{
+void kmp() {
     int next = n[0];
-    for (int i = 1; i < model.length();)
-    {
-        if (model[i] == model[next + 1])
-        {
+    for (int i = 1; i < model.length();) {
+        if (model[i] == model[next + 1]) {
             n[i] = next + 1;
             i++;
             next++;
-        }
-        else
-        {
-            if (next == -1)
-            {
+        } else {
+            if (next == -1) {
                 n[i] = -1;
                 i++;
-            }
-            else
-            {
+            } else {
                 next = n[next];
             }
         }
     }
 } // abstract
 
-void KMPwithWhile()
-{
+void KMPwithWhile() {
     int j = -1;
     n[0] = -1;
-    for (int i = 1; i < model.length(); i++)
-    {
-        while (j != -1 && model[i] != model[j + 1])
-        {
+    for (int i = 1; i < model.length(); i++) {
+        while (j != -1 && model[i] != model[j + 1]) {
             j = n[j];
         }
-        if (model[i] == model[j + 1])
-        {
+        if (model[i] == model[j + 1]) {
             n[i] = j + 1;
             j++;
-        }
-        else
-        {
+        } else {
             n[i] = j;
         }
     }
     return;
 }
-void printNextColumn()
-{
-    for_each(n, n + model.length(), [](int num)
-             { cout << " " << num; });
+void printNextColumn() {
+    for_each(n, n + model.length(), [](int num) {
+        cout << " " << num;
+    });
 }
 
-int main()
-{
+int main() {
     n[0] = -1;
     cin >> model;
-    for (int i = 1; i < model.length(); i++)
-    {
+    for (int i = 1; i < model.length(); i++) {
         n[i] = find(i, n[i - 1]);
     }
     cout << "Method1:";

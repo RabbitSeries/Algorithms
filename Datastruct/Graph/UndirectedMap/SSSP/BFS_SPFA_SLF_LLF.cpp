@@ -25,8 +25,12 @@ std::vector<int> dis(vcnt, UNREACHABLE);
 
 bool SPFA(int s) {
     dis[s] = 0;
-    std::for_each(graph.begin(), graph.end(), [](nodeInfo node) {node.inQueueTimes = 0; });
-    std::for_each(graph.begin(), graph.end(), [](nodeInfo node) {node.inQueue = false; });
+    std::for_each(graph.begin(), graph.end(), [](nodeInfo node) {
+        node.inQueueTimes = 0;
+    });
+    std::for_each(graph.begin(), graph.end(), [](nodeInfo node) {
+        node.inQueue = false;
+    });
 
     std::deque<int> relaxVQ;
     int queueSize = 0;

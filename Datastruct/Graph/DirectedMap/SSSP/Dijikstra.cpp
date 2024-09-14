@@ -68,8 +68,7 @@ void dijikstra(int s) {
                             path.push_back(minId);
                         });
                     }
-                }
-                else if(dis[minId] + edgeW == dis[relaxId]) { // May loose the trace info.
+                } else if(dis[minId] + edgeW == dis[relaxId]) { // May loose the trace info.
                     if(relaxPaths.empty()) relaxPaths.push_back(vector<int>(1, minId)); // This line is actually not executed.
                     else {
                         for_each(minIdPath.begin(), minIdPath.end(), [ &, minIdPath ](vector<int> path) {

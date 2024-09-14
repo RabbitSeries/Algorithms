@@ -11,10 +11,8 @@
             "id": "45d7efe99cbd6fa6",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "negativeEdge.png"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -83,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "negativeEdge.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "negativeEdge.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "negativeEdge.png"
-              }
+              "state": {}
             }
           }
         ]

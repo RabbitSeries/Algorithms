@@ -19,11 +19,11 @@
 
 
 std::vector<std::vector<std::pair<int, int>>> graph = { std::vector<std::pair<int,int>>{std::pair<int,int>(1,1)},
-std::vector<std::pair<int,int>>{std::pair<int,int>(2,1),std::pair<int,int>(4,1)},
-std::vector<std::pair<int,int>>{std::pair<int,int>(3,1)},
-std::vector<std::pair<int,int>>{std::pair<int,int>(1,-3)},
-std::vector<std::pair<int,int>>()
-};
+                                                        std::vector<std::pair<int,int>>{std::pair<int,int>(2,1),std::pair<int,int>(4,1)},
+                                                        std::vector<std::pair<int,int>>{std::pair<int,int>(3,1)},
+                                                        std::vector<std::pair<int,int>>{std::pair<int,int>(1,-3)},
+                                                        std::vector<std::pair<int,int>>()
+                                                      };
 std::vector<int> dis(vcnt, _UNREACHEABLE);
 std::vector<int> cyclePath;
 bool  bellman_ford_findRingPath() {// O(VE), O(V + (V-1)E + VE + E) = O(V(1+2E))

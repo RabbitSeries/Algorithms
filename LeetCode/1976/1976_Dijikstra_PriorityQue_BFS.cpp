@@ -25,7 +25,7 @@ public:
         // Priority queue for Dijkstra's algorithm
         /**
          * @brief pair.first = time pair.second = index
-         * 
+         *
          */
         priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<>> pq;
 
@@ -47,8 +47,7 @@ public:
                     minTime[v] = new_time;
                     count[v] = count[u];
                     pq.emplace(new_time, v);
-                }
-                else if(new_time == minTime[v]) {
+                } else if(new_time == minTime[v]) {
                     count[v] = (count[v] + count[u]) % MOD;
                 }
             }

@@ -16,13 +16,10 @@ void insertNode(int val, bstTree*& r = root) {
         r = (bstTree*)malloc(sizeof(bstTree));
         r->data = val;
         r->left = r->right = NULL;
-    }
-    else {
+    } else {
         if (val < r->data) {
             insertNode(val, r->left);
-        }
-        else // val >= r->data
-        {
+        } else { // val >= r->data
             insertNode(val, r->right);
         }
     }
@@ -36,16 +33,14 @@ void deleteNode(int val, bstTree*& r = root) {
         if (!r->left && !r->right) {
             delete r;
             r = NULL;
-        }
-        else if (r->left) {
+        } else if (r->left) {
             bstTree* biggest = r->left;
             while (biggest->right) {
                 biggest = biggest->right;
             }
             r->data = biggest->data;
             deleteNode(biggest->data, r->left);
-        }
-        else if (r->right) {
+        } else if (r->right) {
             bstTree* lowest = r->right;
             while (lowest->left) {
                 lowest = lowest->left;
@@ -53,12 +48,9 @@ void deleteNode(int val, bstTree*& r = root) {
             r->data = lowest->data;
             deleteNode(lowest->data, r->right);
         }
-    }
-    else if (r->data > val) {
+    } else if (r->data > val) {
         deleteNode(val, r->left);
-    }
-    else // r.data <= val
-    {
+    } else { // r.data <= val
         deleteNode(val, r->right);
     }
 }

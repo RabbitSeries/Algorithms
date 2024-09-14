@@ -16,13 +16,10 @@ bstTree* insertNode(int val, bstTree* r = root) {
         r->data = val;
         r->left = NULL;
         r->right = NULL;
-    }
-    else {
+    } else {
         if (val < r->data) {
             r->left = insertNode(val, r->left);
-        }
-        else // val >= r->data
-        {
+        } else { // val >= r->data
             r->right = insertNode(val, r->right);
         }
     }
@@ -34,16 +31,14 @@ bstTree* deleteNode(int val, bstTree* r = root) {
         if (!r->left && !r->right) {
             delete r;
             r = NULL;
-        }
-        else if (r->left) {
+        } else if (r->left) {
             bstTree* biggest = r->left;
             while (biggest->right) {
                 biggest = biggest->right;
             }
             r->data = biggest->data;
             r->left = deleteNode(biggest->data, r->left);
-        }
-        else if (r->right) {
+        } else if (r->right) {
             bstTree* lowest = r->right;
             while (lowest->left) {
                 lowest = lowest->left;
@@ -51,12 +46,9 @@ bstTree* deleteNode(int val, bstTree* r = root) {
             r->data = lowest->data;
             r->right = deleteNode(lowest->data, r->right);
         }
-    }
-    else if (r->data > val) {
+    } else if (r->data > val) {
         r->left = deleteNode(val, r->left);
-    }
-    else // r.data <= val
-    {
+    } else { // r.data <= val
         r->right = deleteNode(val, r->right);
     }
     return r;

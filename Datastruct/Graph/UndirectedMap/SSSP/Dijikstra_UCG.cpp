@@ -4,7 +4,6 @@
 using namespace std;
 class Solution {
 public:
-
     double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start_node, int end_node) {
         vector<vector<pair<int, double>>> nextVList(n);
         vector<bool> visitedR(n, false);
@@ -33,15 +32,15 @@ public:
     }
 
     // private:
-        // vector<vector<pair<int, double>>> nextVList;
-        // vector<int> inDegree;
-        // vector<double> multiProb;
-        // vector<bool> visitedR;
+    // vector<vector<pair<int, double>>> nextVList;
+    // vector<int> inDegree;
+    // vector<double> multiProb;
+    // vector<bool> visitedR;
 };
 
 int main() {
     Solution s;
-    vector<vector<int>> edges = vector<vector<int>>{ vector<int>{2,3},vector<int>{1,2},vector<int>{0,1} };
-    vector<double> succProb = vector<double>{ 0.5,0.5,0.5 };
+    vector<vector<int>> edges = vector<vector<int>> { vector<int>{2,3},vector<int>{1,2},vector<int>{0,1} };
+    vector<double> succProb = vector<double> { 0.5,0.5,0.5 };
     s.maxProbability(4, edges, succProb, 0, 3);
 }

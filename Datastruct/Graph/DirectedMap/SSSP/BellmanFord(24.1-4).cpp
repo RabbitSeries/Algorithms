@@ -37,8 +37,7 @@ bool  bellman_ford_setUnreachableNode() {// O(VE), O(V + (V-1)E + VE + E) = O(V(
                     relaexed = true;                            // During each traversal, if no relax procedure is performed, all shortest paths have been found.
                     pre[nextV].clear();
                     pre[nextV].emplace(i);
-                }
-                else if(dis[i] != _UNREACHEABLE && dis[nextV] == dis[i] + edgeW) {
+                } else if(dis[i] != _UNREACHEABLE && dis[nextV] == dis[i] + edgeW) {
                     pre[nextV].emplace(i);
                 }
             }
@@ -61,7 +60,7 @@ bool  bellman_ford_setUnreachableNode() {// O(VE), O(V + (V-1)E + VE + E) = O(V(
             auto nextVList = graph[i];
             for(auto [nextV, edgeW] : nextVList) {
                 if(dis[i] != _UNREACHEABLE && dis[nextV] > dis[i] + edgeW) {
-                    dis[nextV] = dis[i] + edgeW;                // This time, if 
+                    dis[nextV] = dis[i] + edgeW;                // This time, if
                     setList.push_back(i);
                     hasNegativeCycle = true;
                 }

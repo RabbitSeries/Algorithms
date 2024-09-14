@@ -11,7 +11,7 @@ typedef struct edgeInfo {
     int startV;
     int nextV;
     int edgeW;
-}edgeInfo;
+} edgeInfo;
 
 std::vector<edgeInfo> graph(emax);
 

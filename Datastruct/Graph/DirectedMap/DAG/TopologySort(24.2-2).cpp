@@ -6,7 +6,7 @@ typedef struct nodeInfo {
     std::vector<int> nextVList;
     std::vector<int> edgeWList;
     int inDegree = 0;
-}nodeInfo;
+} nodeInfo;
 
 #define vmaxn 100
 #define _UNREACHABLE 1<<30
@@ -43,7 +43,8 @@ bool topologySort(int vcnt) {
             }
         }
     }
-    if(sortIndex.size() == vcnt)return true; else return false;
+    if(sortIndex.size() == vcnt)return true;
+    else return false;
 }
 
 void bellman_ford_after_topology(int source) {
@@ -62,8 +63,7 @@ void bellman_ford_after_topology(int source) {
                 dis[nextV] = dis[topIndex] + edgeWList[topIndex];
                 pre[nextV].clear();
                 pre[nextV].push_back(topIndex);
-            }
-            else if(dis[nextV] != _UNREACHABLE && dis[nextV] == dis[topIndex] + edgeWList[topIndex]) {
+            } else if(dis[nextV] != _UNREACHABLE && dis[nextV] == dis[topIndex] + edgeWList[topIndex]) {
                 pre[nextV].push_back(topIndex);
             }
         }

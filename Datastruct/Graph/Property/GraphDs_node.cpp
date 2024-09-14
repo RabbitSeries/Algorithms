@@ -26,7 +26,7 @@ typedef struct nodeInfo_Complex {
     std::vector<int> edgeW;
     int inDegree = 0;
     int nodeW;
-}nodeInfo_Complex;
+} nodeInfo_Complex;
 
 #define AL
 #ifdef AL

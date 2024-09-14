@@ -35,8 +35,7 @@ public:
                         pre[v].clear();
                         pre[v].emplace( u );
                         relaxed = true;
-                    }
-                    else if( dis[v] == dis[u] + w ) {
+                    } else if( dis[v] == dis[u] + w ) {
                         pre[v].emplace( u );
                         relaxed = true;
                     }
@@ -54,8 +53,7 @@ public:
                         pre[v].clear();
                         pre[v].emplace( u );
                         relaxed = true;
-                    }
-                    else if( dis[v] == dis[u] + w ) {
+                    } else if( dis[v] == dis[u] + w ) {
                         pre[v].emplace( u );
                         relaxed = true;
                     }

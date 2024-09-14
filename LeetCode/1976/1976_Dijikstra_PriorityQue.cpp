@@ -52,8 +52,7 @@ public:
                     ways[v] = ways[u];
                     pq.push({ nextDistance, v });
                     // If an equal distance path is found, add ways.
-                }
-                else if(distances[v] == nextDistance) {
+                } else if(distances[v] == nextDistance) {
                     ways[v] = (ways[v] + ways[u]) % MOD;
                 }
             }

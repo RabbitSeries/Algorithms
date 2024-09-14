@@ -11,11 +11,11 @@ typedef struct edgeInfo {
     int nextV;
     int edgeW;
     bool visited = false;
-}edgeInfo;
+} edgeInfo;
 
 typedef struct nodeInfo {
     std::vector<edgeInfo> outEdgeList;
-}nodeInfo;
+} nodeInfo;
 
 std::vector<nodeInfo> graph(vcnt);
 
@@ -24,7 +24,7 @@ std::vector<int> father(vcnt);
 typedef struct mstNode {
     std::vector<int> outEdgeList;
     int inDegree = 0;
-}mstNode;
+} mstNode;
 
 std::vector<mstNode> mstTree(vcnt);
 std::vector<int> mstPre(vcnt);

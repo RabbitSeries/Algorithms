@@ -4,12 +4,12 @@
 typedef struct edgeInfo {
     int nextV;
     int edgeW;
-}edgeInfo;
+} edgeInfo;
 
 typedef struct nodeInfo {
     std::vector<edgeInfo> outEdgeList;
     int nodeW;
-}nodeInfo;
+} nodeInfo;
 
 #define vmax 100
 
@@ -21,7 +21,7 @@ std::vector<int> dis(vmax, 1 << 30 >> 0);
 
 typedef struct mstNode {
     std::vector<int> outEdgeList;
-}mstNode;
+} mstNode;
 
 std::vector<mstNode> mstTree(vcnt);
 std::vector<int> preNode(vcnt);
