@@ -2,19 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="solution.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="53" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="LeetCode\797\797.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2374" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="solution.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="385" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="LeetCode\1977.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1333" topLine="3" />
+		</Cursor>
+	</File>
 	<File name="LeetCode\1976\1976_Dijikstra_PriorityQue_BFS.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="693" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="LeetCode\2045.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="98" topLine="0" />
+			<Cursor1 position="2702" topLine="41" />
 		</Cursor>
 	</File>
 	<File name="CppVersion.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="138" topLine="0" />
+			<Cursor1 position="713" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

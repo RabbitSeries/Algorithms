@@ -12,12 +12,16 @@
             ],
             "cStandard": "c17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "windows-gcc-x64"
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\g++.exe"
         },
         {
-            "name": "msvc2022_86",
+            "name": "msvc2022_64",
             "includePath": [
-                "${default}"
+                "d:/back_up/Algorithms",
+                "D://Qt//6.7.1//msvc2019_64//include",
+                "D:/Build_Tool_Lib/opencv/opencv4.10.0/build/include",
+                "d:/back_up/Algorithms/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -28,7 +32,14 @@
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-msvc-x86",
             "compilerArgs": [],
-            "windowsSdkVersion": "10.0.22621.0"
+            "windowsSdkVersion": "10.0.22621.0",
+            "mergeConfigurations": false,
+            "compilerPath": "D:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe",
+            "browse": {
+                "path": [],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "compilerPathInCppPropertiesJson": "D:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.40.33807/bin/Hostx86/x86/cl.exe"
         }
     ],
     "version": 4

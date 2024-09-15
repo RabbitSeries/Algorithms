@@ -13,9 +13,13 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="2" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="D:/Build_Tool_Lib/opencv/opencv4.1.1/build/x64/vc15/lib/opencv_world411d.lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Algorithms" prefix_auto="1" extension_auto="1" />
@@ -28,6 +32,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="D:/Build_Tool_Lib/opencv/opencv4.1.1/build/x64/vc15/lib/opencv_world411.lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -40,179 +45,181 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/DAG/AOE.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/DAG/AOV.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/DAG/CriticalPath.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/DAG/TopologySort(24.2-2).cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/DAG/headertest.h">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/SSSP/BellmanFord(24.1-4).cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/SSSP/BellmanFord(24.1-5).cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/SSSP/BellmanFord(24.1-6).cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/DirectedMap/SSSP/Dijikstra.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/Property/ConnectivityCnt.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/Property/GraphDs_edge.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/Property/GraphDs_node.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/Property/LoopCnt.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/APSP/FloydWarshall.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/APSP/Johnson.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/CycleDetection/Floyd.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/CycleDetection/Trajan.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/MST/Kruskal.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/MST/Prim.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/BFS_SPFA.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/BFS_SPFA_PriorityQueue.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/BFS_SPFA_SLF_LLF.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/BellmanFord.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/DFS_SPFA.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/Dijikstra_UCG.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/OptimizeBF.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Graph/UndirectedMap/SSSP/OptimizeSPFA.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/NumberArray/lowbit.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/KMPPPPP.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/aGlimpseOfKMP.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/code.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/daydayKMP.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/kmp.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/KMP/statisticsOfKMP.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/LCL.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/String/LSL.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/AVL.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BST_oop.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BST_oop_bad.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BST_pop.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BST_pop_bad.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BTree.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BminusTree.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/BplusTree.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/Heap.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Datastruct/Tree/RedBlackTree.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="HammingCode/HammingCodeSrv-Optimized.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="HammingCode/HammingCodeSrv.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/1976/1976_BF.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/1976/1976_Dijikstra_PriorityQue.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/1976/1976_Dijikstra_PriorityQue_BFS.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/1977.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/2045.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="LeetCode/797/797.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Search/BFS.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Search/DFS.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="Sort/Heap_PriorityQueue.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="main.cpp">
-			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
+		<Unit filename="solution.cpp" />
+		<Unit filename="solution.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
