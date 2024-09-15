@@ -41,17 +41,17 @@
             "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
         {
-            "name": "[OpenCV] C/C++: cl.exe build and debug active file",
+            "name": "[OpenCV] C/C++: cl.exe build and debug active file workspace",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             // "console": "externalTerminal",
             "console": "integratedTerminal",
-            "preLaunchTask": "[OpenCV] [Debug] C/C++: cl.exe build active file",
+            "preLaunchTask": "[OpenCV] [Debug] C/C++: cl.exe build active file workspace",
             "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml",
             "sourceFileMap": {
                 "C:\\GHA-OCV-1\\_work\\ci-gha-workflow\\ci-gha-workflow\\opencv": "D:\\Build_Tool_Lib\\opencv\\opencv4.10.0\\sources"
