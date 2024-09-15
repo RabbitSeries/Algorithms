@@ -106,7 +106,7 @@
                 "/DEBUG",
                 "/LIBPATH:D:\\Build_Tool_Lib\\opencv\\opencv4.10.0\\build\\x64\\vc16\\lib",
                 "opencv_world4100d.lib",
-                // "opencv_world4100.lib",
+                // "opencv_world4100.lib", //For Release mode.
                 // "/machine:x64",
                 // Specify the directory. No empty characters after /Fo. Use ":" to add sperators.
                 // "/Fo${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}",
@@ -122,7 +122,7 @@
             "group": {
                 "kind": "build",
             },
-            "detail": "OpenCV x64_x64 cl"
+            "detail": "OpenCV x64_x64 cl.exe Debug mode"
         },
         {
             "type": "shell",
