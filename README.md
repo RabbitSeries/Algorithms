@@ -1,6 +1,6 @@
 # Algorithms
 
- Learnning datastructs and algorithms.
+ Learning datastructs and algorithms.
 
 ## Configurations
 
