@@ -15,7 +15,7 @@ int main() {
 #endif
 
 #if defined(_WIN32)
-    std::cout << "Platform: Windows\n";
+    std::cout << "Platform API: Windows 32 bit";
 #elif defined(__linux__)
     std::cout << "Platform: Linux\n";
 #elif defined(__APPLE__)
