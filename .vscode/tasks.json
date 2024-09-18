@@ -148,7 +148,7 @@
                 "-o",
                 "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
                 "-LD:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib",
-                "D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib/libopencv_world4100.dll.a",
+                "D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib/libopencv_world4100d.dll.a",
             ],
             "options": {
                 "cwd": "${fileDirname}",
@@ -160,6 +160,35 @@
                 "kind": "build",
             },
             "detail": "g++, c++17, opencv, debug."
+        },
+        //! [OpenCV] [Release] C/C++: g++.exe build active file workspace
+        {
+            "type": "shell",
+            "label": "[OpenCV] [Release] C/C++: g++.exe build active file workspace",
+            "windows": "cmd.exe",
+            "command": "g++.exe",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                // "-g",
+                "${fileDirname}/*.cpp",
+                "-I${fileDirname}",
+                "-ID:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include",
+                "-o",
+                "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
+                "-LD:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib",
+                "D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib/libopencv_world4100.dll.a",
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "detail": "g++, c++17, opencv, release."
         },
         // ![Clean] Confirm
         {

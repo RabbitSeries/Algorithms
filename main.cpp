@@ -1,5 +1,4 @@
 #include <solution.h>
-
 int main() {
     // Read image
     std::string image_path = "test_Multi.bmp";
