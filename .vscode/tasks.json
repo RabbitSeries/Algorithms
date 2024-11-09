@@ -248,6 +248,20 @@
                 "cwd": "${workspaceFolder}"
             },
             "problemMatcher": []
-        }
+        },
+        //![G++ assembly] G++ -O1 -S code.cpp
+        {
+            "type": "shell",
+            "label" : "C/C++: g++ assemble active file",
+            "command": "${workspaceFolder}\\.vscode\\assembleView.bat",
+            "args": [
+                "${fileBasenameNoExtension}",
+                "${workspaceFolder}\\AssemblyTest\\${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher":[]
+        },
     ]
 }

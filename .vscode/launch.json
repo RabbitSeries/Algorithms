@@ -139,6 +139,15 @@
             "preLaunchTask": "[OpenCV] [Release] C/C++: g++.exe build active file workspace",
             "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
+        //! [C/C++] [Assembly] g++ assembly.
+        {
+            "name": "[C/C++] [Assembly] g++ assemble active file",
+            "type": "PowerShell",
+            "preLaunchTask": "C/C++: g++ assemble active file",
+            "request": "launch",
+            "cwd": "${fileDirname}",
+            "script": "objdump -d ${workspaceFolder}/AssemblyTest/${fileBasenameNoExtension}.o",
+        }
     ],
     "version": "2.0.0"
 }
