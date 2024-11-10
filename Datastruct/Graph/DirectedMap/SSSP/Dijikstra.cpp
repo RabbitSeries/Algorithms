@@ -39,7 +39,7 @@ vector<vector<int>> pre(vmax);
 // it defaults to priority_queue<pair<int, int>, vector<pair<int, int>>, less<pair<int, int>>>,
 // which creates a max heap based on the pair's first element, and second element if needed.
 priority_queue<pair<int, int>> traversal;
-priority_queue<pair<int, int> , vector<pair<int,int>>, greater<>> traversal;
+priority_queue<pair<int, int> , vector<pair<int, int>>, greater<>> traversal;
 // queue<int> path;
 // vector<queue<int>> paths;
 vector<vector<vector<int>>> paths(vmax);

@@ -1565,3 +1565,10 @@
 
 1726568054 d:\build_tool_lib\opencv\opencvmingw-posix\install\opencv\include\opencv2\core\hal\simd_utils.impl.hpp
 
+1731247379 source:d:\back_up\algorithms\datastruct\graph\undirectedmap\mst\kruskal.cpp
+	<vector>
+	<queue>
+	<iostream>
+	<algorithm>
+	<cassert>
+
