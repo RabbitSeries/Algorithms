@@ -146,7 +146,11 @@
             "preLaunchTask": "C/C++: g++ assemble active file",
             "request": "launch",
             "cwd": "${fileDirname}",
-            "script": "objdump -d ${workspaceFolder}/AssemblyTest/${fileBasenameNoExtension}.o",
+            // "script": "batch.bat",
+            // "script": "code ${workspaceFolder}/AssemblyTest/${fileBasenameNoExtension}.txt",
+            //  Ctrl + C to end assembly view and perform interminate files cleaning.
+            "script": "nop",
+            "postDebugTask": "[Clean] No Confirm"
         }
     ],
     "version": "2.0.0"

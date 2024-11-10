@@ -14,9 +14,12 @@ if "%~2"=="" (
 )
 @REM Comiple.
 set filename=%~1
-set output_filename=%~1
+set output_filename=%~2
 g++ -O1 -S "%filename%.cpp" -o "%output_filename%.s"
-code  "%output_filename%.s"
 g++ -c "%filename%.cpp" -o "%output_filename%.o"
+objdump -d "%output_filename%.o" > "%output_filename%.txt"
+shift
+shift
+code  "%output_filename%.s" && code "%output_filename%.txt"
 :end
 endlocal

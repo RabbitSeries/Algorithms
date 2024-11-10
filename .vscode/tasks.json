@@ -255,11 +255,11 @@
             "label" : "C/C++: g++ assemble active file",
             "command": "${workspaceFolder}\\.vscode\\assembleView.bat",
             "args": [
-                "${fileBasenameNoExtension}",
-                "${workspaceFolder}\\AssemblyTest\\${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "${workspaceFolder}/AssemblyTest/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher":[]
         },

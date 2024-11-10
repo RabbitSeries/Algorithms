@@ -19,7 +19,7 @@ public:
         }
 
         // Min-time and count arrays
-        vector<long long> minTime(n, LLONG_MAX);
+        vector<long long> minTime(n, __LONG_LONG_MAX__);
         vector<int> count(n, 0);
 
         // Priority queue for Dijkstra's algorithm
