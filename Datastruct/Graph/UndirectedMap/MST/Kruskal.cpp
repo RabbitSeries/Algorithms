@@ -116,7 +116,7 @@ void testKruskal() {
     vcnt = 4;  // Setting vertex count for this specific test
     graph.assign( vcnt, nodeInfo() );
     mstTree.assign( vcnt, mstNode() );
-    minVisit = std::priority_queue<std::tuple<int, int, int>, std::vector<std::tuple<int, int, int>>, cmp>();
+    // minVisit = std::priority_queue<std::tuple<int, int, int>, std::vector<std::tuple<int, int, int>>, cmp>();
 
     // Create a simple connected graph:
     //      0
