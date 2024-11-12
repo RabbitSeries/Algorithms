@@ -1,6 +1,5 @@
 # Prerequisites
 *.d
-
 # Compiled Object files
 *.slo
 *.lo
@@ -395,4 +394,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Useless assemblies
-AssemblyTest/
+AssemblyOutput/

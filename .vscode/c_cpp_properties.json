@@ -45,13 +45,22 @@
         {
             "name": "ubuntu",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${default}"
             ],
             "defines": [],
             "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/g++"
+            "compilerPath": "/usr/bin/g++",
+            "compilerPathInCppPropertiesJson": "/usr/bin/g++",
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "d:/back_up/Algorithms/**",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

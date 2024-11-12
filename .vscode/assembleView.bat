@@ -17,9 +17,10 @@ set filename=%~1
 set output_filename=%~2
 g++ -O1 -S "%filename%.cpp" -o "%output_filename%.s"
 g++ -c "%filename%.cpp" -o "%output_filename%.o"
-objdump -d "%output_filename%.o" > "%output_filename%.txt"
+objdump -d "%output_filename%.o" > "%output_filename%_AT&T.txt"
+objdump -d --disassembler-options=intel "%output_filename%.o" > "%output_filename%_intel.txt"
 shift
 shift
-code  "%output_filename%.s" && code "%output_filename%.txt"
+code  "%output_filename%.s" && code "%output_filename%_AT&T.txt" && code "%output_filename%_intel.txt"
 :end
 endlocal

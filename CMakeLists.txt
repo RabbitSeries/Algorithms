@@ -5,9 +5,15 @@ project(Algorithms VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# 添加生成可执行文件的目标
-add_executable(Algorithms main.cpp)
+# 添加包含目录
+include_directories(${CMAKE_SOURCE_DIR}/OpenCVEnv)
+# include_directories("D:/Qt/6.8.0/mingw_64/include")
+include_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include")
+link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib")
 
+# 添加生成可执行文件的目标
+add_executable(Algorithms "OpenCVEnv/main.cpp")
+set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
 file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 
@@ -19,13 +25,5 @@ file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 #     SOURCES cppversion.cpp
 #     COMMENT "Checking syntax for a.cpp and b.cpp"
 # )
+target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
 
-# 创建一个自定义目标进行语法检查
-add_custom_target(
-    check_syntax
-    COMMAND ${CMAKE_CXX_COMPILER} -std=c++17 -fsyntax-only ${ALL_SOURCE_FILES}
-    COMMENT "Checking syntax for all .cpp and .h files"
-)
-
-# 使 check_syntax 目标依赖于可执行文件的构建
-add_dependencies(check_syntax Algorithms)
