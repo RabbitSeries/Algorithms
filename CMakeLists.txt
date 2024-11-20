@@ -27,3 +27,15 @@ file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 # )
 target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
 
+
+# 假设 workingPath 是 CMake 变量
+set(workingPath "${CMAKE_SOURCE_DIR}")
+# 定义清理命令
+add_custom_target(clean_workspace
+    # COMMAND ${CMAKE_COMMAND} -E remove_directory ${workingPath}/bin
+    # COMMAND ${CMAKE_COMMAND} -E remove_directory ${workingPath}/build
+    COMMAND ${CMAKE_COMMAND} -E remove ${workingPath}/**/*.exe
+    COMMAND ${CMAKE_COMMAND} -E remove ${workingPath}/**/*.dll
+    COMMAND ${CMAKE_COMMAND} -E remove ${workingPath}/**/*.o
+    COMMENT "Cleaning project..."
+)

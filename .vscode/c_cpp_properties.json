@@ -52,7 +52,6 @@
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/g++",
-            "compilerPathInCppPropertiesJson": "/usr/bin/g++",
             "mergeConfigurations": false,
             "browse": {
                 "path": [

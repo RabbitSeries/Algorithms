@@ -28,6 +28,6 @@ if exist "%workingPath%\build" rd /s /q "%workingPath%\build" && echo Remoed dir
 if exist "%workingPath%\obj" rd /s /q "%workingPath%\obj" && echo Remoed directory %workingPath%\.obj.
 if exist "%workingPath%\bin" rd /s /q "%workingPath%\bin" && echo Remoed directory %workingPath%\.bin.
 @REM 
-for /r "%workingPath%\AssemblyTest" %%p in (*.*) do del /q "%%p"
+for /r "%workingPath%\AssemblyOutput" %%p in (*.*) do del /q "%%p"
 :end
 endlocal
