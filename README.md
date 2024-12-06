@@ -10,11 +10,12 @@ git config --local https.proxy "socks5://127.0.0.1:10808"
 
 git config --global user.name "RabbitArch"
 
-git config --global user.email "xiali23.ch@gmail.com"
+git config --global user.email "<xiali23.ch@gmail.com>"
 
 git config list
 
 git config --local main
+
 ```shell
 [core]
  repositoryformatversion = 0
