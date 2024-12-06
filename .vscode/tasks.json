@@ -4,7 +4,7 @@
         //! C/C++: g++.exe build active file
         {
             "type": "shell",
-            "label": "C/C++: g++.exe build active file",
+            "label": "[Windows] C/C++: g++.exe build active file",
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
@@ -14,6 +14,31 @@
                 "${file}",
                 "-o",
                 "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "g++, c++17, defalut."
+        },
+        {
+            "type": "shell",
+            "label": "[Linux] C/C++: g++.exe build active file",
+            // "linux": "bash", // DEFAULT
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/.vscode/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}",

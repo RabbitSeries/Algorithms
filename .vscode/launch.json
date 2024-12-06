@@ -1,8 +1,8 @@
 {
     "configurations": [
-        //! g++ launch.
+        //! [Windows] g++ launch.
         {
-            "name": "C/C++: g++.exe build and debug active file",
+            "name": "[Windows] C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
@@ -12,7 +12,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb.exe",
+            "miDebuggerPath": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -25,9 +25,36 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: g++.exe build active file",
+            "preLaunchTask": "[Windows] C/C++: g++.exe build active file",
             "postDebugTask": "[Clean] No Confirm",
-            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
+        },
+        //! [Linux] g++ launch.
+        {
+            "name": "[Linux] C/C++: g++.exe build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/.vscode/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "[Linux] C/C++: g++.exe build active file",
+            // "postDebugTask": "[Clean] No Confirm",
         },
         //! msvc launch.
         {
@@ -41,7 +68,6 @@
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "cl.exe build active file",
-            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
         //! [OpenCV] [Debug] [MSVC] msvc launch.
         {
