@@ -1,5 +1,6 @@
 [
     {
+        "vendor": "x86_64",
         "name": "Qt + MinGW Kit",
         "compilers": {
             "C": "D:/Qt/Tools/mingw1310_64/bin/gcc.exe",

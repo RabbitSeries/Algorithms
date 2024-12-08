@@ -1,7 +1,7 @@
 {
     "version": "2.0.0",
     "tasks": [
-        //! C/C++: g++.exe build active file
+        //! [Windows] C/C++: g++.exe build active file
         {
             "type": "shell",
             "label": "[Windows] C/C++: g++.exe build active file",
@@ -27,6 +27,7 @@
             },
             "detail": "g++, c++17, defalut."
         },
+        //! [Linux] C/C++: g++.exe build active file
         {
             "type": "shell",
             "label": "[Linux] C/C++: g++.exe build active file",
@@ -38,7 +39,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${workspaceFolder}/.vscode/${fileBasenameNoExtension}"
+                "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}",
@@ -219,17 +220,17 @@
         {
             "type": "shell",
             "label": "[Clean] Confirm",
-            "command": "${workspaceFolder}\\.vscode\\clean_confirm.bat",
+            "command": "${workspaceFolder}/.vscode/clean_confirm.bat",
             "args": [
                 "${workspaceFolder}"
             ],
             "problemMatcher": []
         },
-        // ![Clean] No Confirm
+        // ![Linux] [Clean] No Confirm
         {
             "type": "shell",
-            "label": "[Clean] No Confirm",
-            "command": "${workspaceFolder}\\.vscode\\clean_noConfirm.bat",
+            "label": "[Linux] [Clean] No Confirm",
+            "command": "${workspaceFolder}/.vscode/clean_noConfirm.sh",
             "args": [
                 "${workspaceFolder}"
             ],

@@ -33,7 +33,7 @@
             "name": "[Linux] C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/.vscode/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -54,7 +54,7 @@
                 }
             ],
             "preLaunchTask": "[Linux] C/C++: g++.exe build active file",
-            // "postDebugTask": "[Clean] No Confirm",
+            "postDebugTask": "[Linux] [Clean] No Confirm",
         },
         //! msvc launch.
         {
