@@ -56,44 +56,44 @@
             "preLaunchTask": "[Linux] C/C++: g++.exe build active file",
             "postDebugTask": "[Linux] [Clean] No Confirm",
         },
-        //! [Windows] msvc launch.
-        {
-            "name": "C/C++: cl.exe build and debug active file",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "preLaunchTask": "cl.exe build active file",
-        },
-        //! [OpenCV] [Debug] [MSVC] msvc launch.
-        {
-            "name": "[OpenCV] [Debug] [MSVC] C/C++: cl.exe build and debug active file workspace",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [
-                {
-                    "name": "PATH",
-                    // MSVC will configure a env with cppvstools.exe supplied by cpptools plugin, so after set this environment for vscode, cppvstools will set another environment based on this setting. If set PATH to any other values, as long as which contains D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin, no matter it has %PATH% or not, the new environment contains all tools and libs msvc requires.
-                    // "value": "%PATH%;D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
-                    "value": "${env:PATH};D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
-                },
-            ],
-            // "console": "externalTerminal",
-            "console": "integratedTerminal",
-            "preLaunchTask": "[OpenCV] [Debug] C/C++: cl.exe build active file workspace",
-            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml",
-            "sourceFileMap": {
-                "C:\\GHA-OCV-1\\_work\\ci-gha-workflow\\ci-gha-workflow\\opencv": "D:\\Build_Tool_Lib\\opencv\\opencv4.10.0\\sources"
-            }
-        },
+        // //! [Windows] msvc launch.
+        // {
+        //     "name": "C/C++: cl.exe build and debug active file",
+        //     "type": "cppvsdbg",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
+        //     "args": [],
+        //     "stopAtEntry": false,
+        //     "cwd": "${fileDirname}",
+        //     "environment": [],
+        //     "externalConsole": false,
+        //     "preLaunchTask": "cl.exe build active file",
+        // },
+        // //! [OpenCV] [Debug] [MSVC] msvc launch.
+        // {
+        //     "name": "[OpenCV] [Debug] [MSVC] C/C++: cl.exe build and debug active file workspace",
+        //     "type": "cppvsdbg",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
+        //     "args": [],
+        //     "stopAtEntry": false,
+        //     "cwd": "${fileDirname}",
+        //     "environment": [
+        //         {
+        //             "name": "PATH",
+        //             // MSVC will configure a env with cppvstools.exe supplied by cpptools plugin, so after set this environment for vscode, cppvstools will set another environment based on this setting. If set PATH to any other values, as long as which contains D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin, no matter it has %PATH% or not, the new environment contains all tools and libs msvc requires.
+        //             // "value": "%PATH%;D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
+        //             "value": "${env:PATH};D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
+        //         },
+        //     ],
+        //     // "console": "externalTerminal",
+        //     "console": "integratedTerminal",
+        //     "preLaunchTask": "[OpenCV] [Debug] C/C++: cl.exe build active file workspace",
+        //     "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml",
+        //     "sourceFileMap": {
+        //         "C:\\GHA-OCV-1\\_work\\ci-gha-workflow\\ci-gha-workflow\\opencv": "D:\\Build_Tool_Lib\\opencv\\opencv4.10.0\\sources"
+        //     }
+        // },
         //! [OpenCV] [Debug] [MinGW] g++ launch.
         {
             "name": "[OpenCV] [Debug] [MinGW] C/C++: g++.exe build and debug active file workspace",
