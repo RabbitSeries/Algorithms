@@ -8,6 +8,9 @@ git config --local http.proxy "socks5://127.0.0.1:10808"
 
 git config --local https.proxy "socks5://127.0.0.1:10808"
 
+git config --global user.email "<xiali123.ch@gmail.com>"
+git config --global user.name "RabbitXWindows"
+
 ```shell
 [core]
  repositoryformatversion = 0
