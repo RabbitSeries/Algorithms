@@ -1,10 +1,10 @@
 {
     "version": "2.0.0",
     "tasks": [
-        //! C/C++: g++.exe build active file
+        //! [Windows] C/C++: g++.exe build active file
         {
             "type": "shell",
-            "label": "C/C++: g++.exe build active file",
+            "label": "[Windows] C/C++: g++.exe build active file",
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
@@ -14,6 +14,32 @@
                 "${file}",
                 "-o",
                 "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "g++, c++17, defalut."
+        },
+        //! [Linux] C/C++: g++.exe build active file
+        {
+            "type": "shell",
+            "label": "[Linux] C/C++: g++.exe build active file",
+            // "linux": "bash", // DEFAULT
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}",
@@ -194,17 +220,17 @@
         {
             "type": "shell",
             "label": "[Clean] Confirm",
-            "command": "${workspaceFolder}\\.vscode\\clean_confirm.bat",
+            "command": "${workspaceFolder}/.vscode/clean_confirm.bat",
             "args": [
                 "${workspaceFolder}"
             ],
             "problemMatcher": []
         },
-        // ![Clean] No Confirm
+        // ![Linux] [Clean] No Confirm
         {
             "type": "shell",
-            "label": "[Clean] No Confirm",
-            "command": "${workspaceFolder}\\.vscode\\clean_noConfirm.bat",
+            "label": "[Linux] [Clean] No Confirm",
+            "command": "${workspaceFolder}/.vscode/clean_noConfirm.sh",
             "args": [
                 "${workspaceFolder}"
             ],
