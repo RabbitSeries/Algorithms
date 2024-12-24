@@ -43,3 +43,9 @@ git config --local main
 [https]
  proxy = socks5://127.0.0.1:10810
 ```
+
+```bash
+# Update vscode on linux platform
+# Prequirements: yay, sudo
+yay -S visual-studio-code-bin
+```
