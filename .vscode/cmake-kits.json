@@ -15,10 +15,6 @@
         "compilers": {
             "C": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/gcc.exe",
             "CXX": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/g++.exe"
-        },
-        "environmentVariables": {
-            "CMAKE_PREFIX_PATH": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64",
-            "NINJIA":"D:\\Build_Tool_Lib\\ninjia\\ninjia.exe"
         }
     }
 ]

@@ -4,7 +4,7 @@ project(Algorithms VERSION 0.1.0 LANGUAGES C CXX)
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+# set(CMAKE_MAKE_PROGRAM "D:/Build_Tool_Lib/Qt/Tools/Ninja/ninja.exe")
 # 添加包含目录
 include_directories(${CMAKE_SOURCE_DIR}/OpenCVEnv)
 # include_directories("D:/Qt/6.8.0/mingw_64/include")
@@ -13,7 +13,7 @@ link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/
 
 # 添加生成可执行文件的目标
 add_executable(Algorithms "OpenCVEnv/main.cpp")
-set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
+
 # 查找所有 .cpp 和 .h 文件
 file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 
