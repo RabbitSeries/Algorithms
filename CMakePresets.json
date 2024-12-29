@@ -19,7 +19,7 @@
         },
         {
             "name": "CMakeLinux",
-            "displayName": "Configure preset using toolchain file",
+            "displayName": "CMakeLinux MinGW compiler, ninja as make program",
             "description": "Sets Ninja generator, build and install directory",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
