@@ -8,14 +8,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # 添加包含目录
 include_directories(${CMAKE_SOURCE_DIR}/OpenCVEnv)
 # include_directories("D:/Qt/6.8.0/mingw_64/include")
-include_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include")
-link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib")
+# include_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include")
+# link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib")
+
+include_directories("./OpenCVEnv")
+include_directories("/usr/local/include/opencv4")
+link_directories("/usr/local/lib")
 
 # 添加生成可执行文件的目标
 add_executable(Algorithms "OpenCVEnv/main.cpp")
+# target_include_directories(Algorithms PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/OpenCVEnv")
+
 # set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
-file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
+# file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 
 
 # 自定义目标来检查语法
@@ -26,6 +32,7 @@ file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 #     COMMENT "Checking syntax for a.cpp and b.cpp"
 # )
 target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
+target_link_libraries(Algorithms )
 
 
 # 假设 workingPath 是 CMake 变量
