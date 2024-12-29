@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.10.0)
 project(Algorithms VERSION 0.1.0 LANGUAGES C CXX)
 
 # 设置 C++ 标准
@@ -13,7 +13,7 @@ link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/
 
 # 添加生成可执行文件的目标
 add_executable(Algorithms "OpenCVEnv/main.cpp")
-
+# set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
 file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 
