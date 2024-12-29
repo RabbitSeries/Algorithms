@@ -226,6 +226,16 @@
             ],
             "problemMatcher": []
         },
+        // ![Windows] [Clean] No Confirm
+        {
+            "type": "shell",
+            "label": "[Clean] No Confirm",
+            "command": "${workspaceFolder}/.vscode/clean_noConfirm.bat",
+            "args": [
+                "${workspaceFolder}"
+            ],
+            "problemMatcher": []
+        },
         // ![Linux] [Clean] No Confirm
         {
             "type": "shell",
