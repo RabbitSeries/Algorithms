@@ -32,7 +32,7 @@ add_executable(Algorithms "OpenCVEnv/main.cpp" "OpenCVEnv/solution.cpp")
 target_link_libraries( Algorithms ${OpenCV_LIBS} )
 # set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
-file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
+# file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 
 
 # 自定义目标来检查语法
@@ -42,8 +42,10 @@ file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
 #     SOURCES cppversion.cpp
 #     COMMENT "Checking syntax for a.cpp and b.cpp"
 # )
+
 # target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
 target_link_libraries(Algorithms)
+
 
 
 # 假设 workingPath 是 CMake 变量

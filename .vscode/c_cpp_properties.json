@@ -3,7 +3,7 @@
         {
             "name": "mingw64",
             "includePath": [
-                "${default}"
+                "${workspaceFolder}/*"
             ],
             "defines": [
                 "_DEBUG",
@@ -55,8 +55,7 @@
             "mergeConfigurations": false,
             "browse": {
                 "path": [
-                    "d:/back_up/Algorithms/**",
-                    "${workspaceFolder}"
+                    "${workspaceFolder}/*"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }
@@ -64,13 +63,14 @@
         {
             "name": "ArchLinux",
             "includePath": [
-                "${default}"
+                "${workspaceFolder}/**",
+                "/usr/local/include/**"
             ],
             "defines": [],
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/g++"
+            "compilerPath": null
         }
     ],
     "version": 4
