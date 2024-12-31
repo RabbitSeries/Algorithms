@@ -1,4 +1,5 @@
 {
+    // For Windwos platform:
     "cmake.cmakePath": "D:/Build_Tool_Lib/Qt/Tools/CMake_64/bin/cmake.exe",
     "files.associations": {
         "*.cpp": "cpp",
