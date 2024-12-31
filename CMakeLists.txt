@@ -12,7 +12,7 @@ include_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include
 link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib")
 
 # 添加生成可执行文件的目标
-add_executable(Algorithms "OpenCVEnv/main.cpp")
+add_executable(Algorithms "OpenCVEnv/main.cpp" "OpenCVEnv/solution.cpp")
 # set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
 file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
