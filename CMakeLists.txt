@@ -10,15 +10,26 @@ include_directories(${CMAKE_SOURCE_DIR}/OpenCVEnv)
 # include_directories("D:/Qt/6.8.0/mingw_64/include")
 # include_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/include")
 # link_directories("D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/lib")
-
-include_directories("./OpenCVEnv")
 include_directories("/usr/local/include/opencv4")
 link_directories("/usr/local/lib")
 
-# 添加生成可执行文件的目标
-add_executable(Algorithms "OpenCVEnv/main.cpp")
-# target_include_directories(Algorithms PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/OpenCVEnv")
+# -- Set non-toolchain portion of runtime path of "/usr/local/bin/opencv_annotation" to "/usr/local/lib"
+# -- Installing: /usr/local/bin/opencv_visualisation
+# -- Set non-toolchain portion of runtime path of "/usr/local/bin/opencv_visualisation" to "/usr/local/lib"
+# -- Installing: /usr/local/bin/opencv_interactive-calibration
+# -- Set non-toolchain portion of runtime path of "/usr/local/bin/opencv_interactive-calibration" to "/usr/local/lib"
+# -- Installing: /usr/local/bin/opencv_version
+# -- Set non-toolchain portion of runtime path of "/usr/local/bin/opencv_version" to "/usr/local/lib"
+# -- Installing: /usr/local/bin/opencv_model_diagnostics
+# -- Set non-toolchain portion of runtime path of "/usr/local/bin/opencv_model_diagnostics" to "/usr/local/lib"
 
+
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+
+# 添加生成可执行文件的目标
+add_executable(Algorithms "OpenCVEnv/main.cpp" "OpenCVEnv/solution.cpp")
+target_link_libraries( Algorithms ${OpenCV_LIBS} )
 # set(CMAKE_MAKE_PROGRAM "D:\\Qt\\Tools\\Ninja\\ninja.exe")
 # 查找所有 .cpp 和 .h 文件
 # file(GLOB_RECURSE ALL_SOURCE_FILES "*.cpp" "*.h")
@@ -31,8 +42,10 @@ add_executable(Algorithms "OpenCVEnv/main.cpp")
 #     SOURCES cppversion.cpp
 #     COMMENT "Checking syntax for a.cpp and b.cpp"
 # )
-target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
-target_link_libraries(Algorithms )
+
+# target_link_libraries(Algorithms libopencv_world4100d libopencv_world4100)
+target_link_libraries(Algorithms)
+
 
 
 # 假设 workingPath 是 CMake 变量
