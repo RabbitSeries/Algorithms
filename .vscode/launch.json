@@ -99,7 +99,8 @@
             "name": "[OpenCV] [Debug] [MinGW] C/C++: g++.exe build and debug active file workspace",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
+            // "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -127,8 +128,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "[OpenCV] [Debug] C/C++: g++.exe build active file workspace",
-            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
+            // "preLaunchTask": "[OpenCV] [Debug] C/C++: g++.exe build active file workspace",
         },
         //! [OpenCV] [Release] [MinGW] g++ launch.
         {

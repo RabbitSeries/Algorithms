@@ -2,9 +2,9 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "MinGW",
-            "displayName": "MinGW compiler, ninja as make program",
-            "description": "Sets MinGW compiler path, Ninja generator, build and install directory",
+            "name": "GCC_Ninja",
+            "displayName": "GCC compiler, ninja as make program",
+            "description": "Sets gcc compiler path, Ninja generator, build and install directory",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
@@ -14,7 +14,25 @@
                 "CMAKE_C_COMPILER": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/gcc.exe",
                 "CMAKE_CXX_COMPILER": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/g++.exe",
                 "//": "CMKAE_MAKE_PROGRAM must be set after setting COMPILER paths.",
-                "CMAKE_MAKE_PROGRAM": "D:/Build_Tool_Lib/Qt/Tools/Ninja/ninja.exe"
+                "CMAKE_MAKE_PROGRAM": "D:/Build_Tool_Lib/Qt/Tools/Ninja/ninja.exe",
+                "CMAKE_PREFIX_PATH" :"D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv"
+            }
+        },
+        {
+            "name": "GCC_MinGW",
+            "displayName": "GCC compiler, MinGW as make program",
+            "description": "Sets gcc compiler path, MinGW MakeFiles generator, build and install directory",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/g++.exe",
+                "//": "CMKAE_MAKE_PROGRAM must be set after setting COMPILER paths.",
+                "//CMAKE_MAKE_PROGRAM": "D:/Build_Tool_Lib/Qt/Tools/Ninja/ninja.exe",
+                "CMAKE_PREFIX_PATH" :"D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv"
             }
         },
         {

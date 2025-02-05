@@ -1,4 +1,4 @@
-#include <solution.h>
+#include "solution.h"
 AntiAliasing::CBMPMakerSingle::CBMPMakerSingle( std::string _image_path ) :image_path( _image_path ) {}
 
 /**

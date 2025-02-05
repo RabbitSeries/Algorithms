@@ -3,7 +3,7 @@
         {
             "name": "mingw64",
             "includePath": [
-                "${workspaceFolder}/*"
+                "${default}"
             ],
             "defines": [
                 "_DEBUG",
