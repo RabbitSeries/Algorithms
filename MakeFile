@@ -1,4 +1,0 @@
-clean:
-	for /r "%workingPath%" %%p in (*.exe) do del /q "%%p"
-	for /r "%workingPath%" %%p in (*.dll) do del /q "%%p"
-	for /r "%workingPath%" %%p in (*.o)   do del /q "%%p"
