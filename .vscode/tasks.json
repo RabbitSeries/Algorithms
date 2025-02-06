@@ -15,6 +15,9 @@
                 "-o",
                 "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
             ],
+            "presentation": {
+                "reveal": "silent",
+            },
             "options": {
                 "cwd": "${fileDirname}",
             },
@@ -41,6 +44,9 @@
                 "-o",
                 "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}"
             ],
+            "presentation": {
+                "reveal": "silent",
+            },
             "options": {
                 "cwd": "${fileDirname}",
             },
@@ -48,10 +54,9 @@
                 "$gcc"
             ],
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
-            "detail": "g++, c++17, defalut."
+            "detail": "g++, c++17"
         },
         //! cl.exe build active file
         {
@@ -288,7 +293,7 @@
         //![G++ assembly] G++ -O1 -S code.cpp
         {
             "type": "shell",
-            "label" : "C/C++: g++ assemble active file",
+            "label": "C/C++: g++ assemble active file",
             "command": "${workspaceFolder}\\.vscode\\assembleView.bat",
             "args": [
                 "${fileDirname}/${fileBasenameNoExtension}",
@@ -297,7 +302,7 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "problemMatcher":[]
+            "problemMatcher": []
         },
     ]
 }
