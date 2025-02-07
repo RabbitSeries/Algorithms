@@ -1,25 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    string input = "HELLO~WORLD!";
-    stringstream ss( input );
-    string output = string( input.length(), ' ' );
-    std::transform( input.begin(), input.end(), output.begin(), []( char c ) {
-        return tolower( c );
-    } );
-    cout << output.find_first_not_of( "abcdedghijklmnopqrstuvwxyz" );
-    int splitPos;
-    string reverse = string( input.length(), ' ' );
-    reverse_copy( input.begin(), input.end(), reverse.begin() );
-    int i = reverse.length() - 1;
-    for_each( reverse.begin(), reverse.end(), [ &i, &splitPos ]( char c ) {
-        if( !isalpha( c ) ) {
-            splitPos = i;
+    int n = 0;
+    cin >> n;
+    vector<int> dp( 1, 0 ), s( 1, 1 ), numList( 1, 0 );
+    int maxSum = -1, startNum = 0, endNum = 0;
+    bool allNegative = false;
+    for( int i = 1; i <= n; i++ ) {
+        int curNum;
+        cin >> curNum;
+        numList.push_back( curNum );
+        if( dp[i - 1] > 0 ) {
+            dp.push_back( curNum + dp[i - 1] );
+            s.push_back( s[i - 1] );
         }
-        i--;
-    } );
-    cout << splitPos;
-    cout << boolalpha << false << endl;
-    cout << false << endl;
+        else if( dp[i - 1] == 0 ) {
+            // Hack data
+            // input: 
+            // 3
+            // 0 0 1
+            // output:
+            // 1 0 1 (output the one with the smallest indices i and j)
+            dp.push_back( curNum );
+            s.push_back( s[i - 1] );
+        }
+        else {
+            dp.push_back( curNum );
+            s.push_back( i );
+        }
+        if( dp[i] > maxSum ) {
+            maxSum = dp[i];
+            startNum = numList[s[i]];
+            endNum = numList[i];
+        }
+    }
+    if( maxSum <= -1 ) {
+        cout << 0 << " " << numList[1] << " " << numList[n];
+    }
+    else {
+        cout << maxSum << " " << startNum << " " << endNum;
+    }
     return 0;
 }
