@@ -39,8 +39,7 @@ pair<int, int> Dijkstra( vector<pair<int, map<int, vector<int>>>>const& nextVLis
 
         if( curPos.pathTeamList.empty() ) {
             curPos.pathTeamList.push_back( { nextVList[curPos.pos].first, } );
-        }
-        else {
+        } else {
             for( auto& path : curPos.pathTeamList ) {
                 path.push_back( nextVList[curPos.pos].first );
             }
