@@ -5,4 +5,8 @@
     "cmake.configureOnOpen": true,
     "makefile.configureOnOpen": false,
     "makefile.makefilePath": "",
+    "java.project.sourcePaths": [
+        "ProblemSets"
+    ],
+    "java.project.outputPath": "JavaCompileOutput"
 }

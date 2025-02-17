@@ -1,6 +1,16 @@
 {
     "configurations": [
-        //! [Windows] g++ launch.
+        {
+            "type": "java",
+            "name": "[Java] [Launch]",
+            "request": "launch",
+            "cwd": "${fileDirname}",
+            "vmArgs": [
+                "-ea",
+            ],
+            "mainClass": "${file}",
+            "projectName": "Algorithm"
+        },
         {
             "name": "[Windows] C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
@@ -25,10 +35,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "[Windows] C/C++: g++.exe build active file",
-            // "postDebugTask": "[Clean] No Confirm",
+            "preLaunchTask": "[Windows] C/C++: g++.exe build active file"
         },
-        //! [Linux] g++ launch.
         {
             "name": "[Linux] C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
@@ -54,52 +62,12 @@
                 }
             ],
             "preLaunchTask": "[Linux] C/C++: g++.exe build active file",
-            "postDebugTask": "[Linux] [Clean] No Confirm",
+            "postDebugTask": "[Linux] [Clean] No Confirm"
         },
-        // //! [Windows] msvc launch.
-        // {
-        //     "name": "C/C++: cl.exe build and debug active file",
-        //     "type": "cppvsdbg",
-        //     "request": "launch",
-        //     "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
-        //     "args": [],
-        //     "stopAtEntry": false,
-        //     "cwd": "${fileDirname}",
-        //     "environment": [],
-        //     "externalConsole": false,
-        //     "preLaunchTask": "cl.exe build active file",
-        // },
-        // //! [OpenCV] [Debug] [MSVC] msvc launch.
-        // {
-        //     "name": "[OpenCV] [Debug] [MSVC] C/C++: cl.exe build and debug active file workspace",
-        //     "type": "cppvsdbg",
-        //     "request": "launch",
-        //     "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
-        //     "args": [],
-        //     "stopAtEntry": false,
-        //     "cwd": "${fileDirname}",
-        //     "environment": [
-        //         {
-        //             "name": "PATH",
-        //             // MSVC will configure a env with cppvstools.exe supplied by cpptools plugin, so after set this environment for vscode, cppvstools will set another environment based on this setting. If set PATH to any other values, as long as which contains D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin, no matter it has %PATH% or not, the new environment contains all tools and libs msvc requires.
-        //             // "value": "%PATH%;D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
-        //             "value": "${env:PATH};D:/Build_Tool_Lib/opencv/opencv4.10.0/build/x64/vc16/bin"
-        //         },
-        //     ],
-        //     // "console": "externalTerminal",
-        //     "console": "integratedTerminal",
-        //     "preLaunchTask": "[OpenCV] [Debug] C/C++: cl.exe build active file workspace",
-        //     "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml",
-        //     "sourceFileMap": {
-        //         "C:\\GHA-OCV-1\\_work\\ci-gha-workflow\\ci-gha-workflow\\opencv": "D:\\Build_Tool_Lib\\opencv\\opencv4.10.0\\sources"
-        //     }
-        // },
-        //! [OpenCV] [Debug] [MinGW] g++ launch.
         {
             "name": "[OpenCV] [Debug] [MinGW] C/C++: g++.exe build and debug active file workspace",
             "type": "cppdbg",
             "request": "launch",
-            // "program": "${workspaceFolder}\\.vscode\\${fileWorkspaceFolderBasename}.exe",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
@@ -107,11 +75,8 @@
             "environment": [
                 {
                     "name": "PATH",
-                    // However for mingw tools env, it won't create a new env based on this setting, so it is neccessary to use correct environment variable reference syntax to introduce all PATH variables.
-                    // <https://github.com/microsoft/vscode-docs/blob/main/docs/cpp/launch-json-reference.md>
-                    // <https://github.com/microsoft/vscode-docs/pull/2934>
                     "value": "${env:PATH};D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/bin"
-                },
+                }
             ],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -127,10 +92,8 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ],
-            // "preLaunchTask": "[OpenCV] [Debug] C/C++: g++.exe build active file workspace",
+            ]
         },
-        //! [OpenCV] [Release] [MinGW] g++ launch.
         {
             "name": "[OpenCV] [Release] [MinGW] C/C++: g++.exe build and release active file workspace",
             "type": "cppdbg",
@@ -142,11 +105,8 @@
             "environment": [
                 {
                     "name": "PATH",
-                    // However for mingw tools env, it won't create a new env based on this setting, so it is neccessary to use correct environment variable reference syntax to introduce all PATH variables.
-                    // <https://github.com/microsoft/vscode-docs/blob/main/docs/cpp/launch-json-reference.md>
-                    // <https://github.com/microsoft/vscode-docs/pull/2934>
                     "value": "${env:PATH};D:/Build_Tool_Lib/opencv/opencvMinGW/install/opencv/x64/mingw/bin"
-                },
+                }
             ],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -166,33 +126,27 @@
             "preLaunchTask": "[OpenCV] [Release] C/C++: g++.exe build active file workspace",
             "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
-        //! [C/C++] [Assembly] g++ assembly.
         {
             "name": "[C/C++] [Assembly] g++ assemble active file",
             "type": "PowerShell",
             "preLaunchTask": "C/C++: g++ assemble active file",
             "request": "launch",
             "cwd": "${fileDirname}",
-            // "script": "batch.bat",
-            // "script": "code ${workspaceFolder}/AssemblyTest/${fileBasenameNoExtension}.txt",
-            //  Ctrl + C to end assembly view and perform interminate files cleaning.
             "script": "nop",
             "postDebugTask": "[Clean] No Confirm"
         },
-        //! [C/C++] [Debug] gdb Launch and Debug current file.
         {
             "name": "[C/C++] [Debug] dbg current file",
             "type": "cppdbg",
-            // "preLaunchTask": "C/C++: g++ assemble active file",
             "request": "launch",
             "cwd": "${fileDirname}",
-            "program": "${file}", // 可执行文件的路径
-            "args": [], // 如果有命令行参数，可以在这里添加
+            "program": "${file}",
+            "args": [],
             "stopAtEntry": false,
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "D:/Qt/Tools/mingw1310_64/bin/gdb.exe", // GDB 的路径
+            "miDebuggerPath": "D:/Qt/Tools/mingw1310_64/bin/gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -200,7 +154,6 @@
                     "ignoreFailures": true
                 }
             ],
-            // "preLaunchTask": "build", // 可选：在调试前自动构建项目
             "internalConsoleOptions": "openOnSessionStart"
         }
     ],
