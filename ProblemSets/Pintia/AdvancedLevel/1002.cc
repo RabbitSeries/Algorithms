@@ -28,9 +28,7 @@ int main() {
             outputList.push_back( v );
     }
     cout << outputList.size();
-    sort( outputList.begin(), outputList.end(), []( pair<int, double>& p1, pair<int, double>& p2 ) {
-        return p1.first > p2.first;
-    } );
+    sort( outputList.begin(), outputList.end(), greater<>{} );
 
     for_each( outputList.begin(), outputList.end(), []( pair<int, double>& p1 ) {
         cout << " " << p1.first << " " << fixed << setprecision( 1 ) << p1.second;

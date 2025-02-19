@@ -5,7 +5,6 @@ void printTime( int minutes ) {
     int minute = minutes % 60;
     cout << setw( 2 ) << setfill( '0' ) << right << hour << ":" << setw( 2 ) << setfill( '0' ) << right << minute << endl;
 }
-
 inline bool beforeLimit( int serveTime ) {
     if( ( serveTime / 60 + 8 ) < 17 ) {
         return true;
@@ -13,7 +12,6 @@ inline bool beforeLimit( int serveTime ) {
         return false;
     }
 }
-
 int inqueue( vector<queue<int>>& queueList, int& capacity, int& curTime, int processTime, int index ) {
     int minLength = capacity + 1, minLenId = -1;
     if( index < queueList.size() * capacity ) {
@@ -21,7 +19,6 @@ int inqueue( vector<queue<int>>& queueList, int& capacity, int& curTime, int pro
         queueList[index % queueList.size()].push( finishTime );
         return finishTime;
     }
-
     // All queues are full, find the nearest finish time
     int minFinishTime = INT_MAX, minFinishQueueId = -1;
     for( int i = 0; i < queueList.size(); i++ ) {
@@ -31,7 +28,6 @@ int inqueue( vector<queue<int>>& queueList, int& capacity, int& curTime, int pro
             minFinishQueueId = i;
         }
     }
-
     int finishTime = 0;
     // Serve time is queue back finishTime
     if( beforeLimit( queueList[minFinishQueueId].back() ) ) {
@@ -47,9 +43,6 @@ int inqueue( vector<queue<int>>& queueList, int& capacity, int& curTime, int pro
         return -1;
     }
 }
-
-
-
 int main() {
     int queueCnt, capacity, customerCnt, queryCnt;
     cin >> queueCnt >> capacity >> customerCnt >> queryCnt;

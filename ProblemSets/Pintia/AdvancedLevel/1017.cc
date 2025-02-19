@@ -1,65 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-struct hms {
-    int arriveTime, needed;
-    hms( int as = 0, int ns = 0 ) : arriveTime( as ), needed( ns ) {};
-    bool operator>( hms const& c ) const {
-        return arriveTime > c.arriveTime;
-    }
-};
-
-hms parseClock( string c, int needM ) {
-    int res = 0;
-    res += stoi( c.substr( 0, 2 ) ) * 60 * 60;
-    res += stoi( c.substr( 3, 2 ) ) * 60;
-    res += stoi( c.substr( 6, 2 ) );
-    return hms( res, needM * 60 );
-}
-
 int main() {
-    int openTime = 8 * 60 * 60, closeTime = 17 * 60 * 60;
-    int customerCnt, windowCnt;
+    size_t customerCnt, windowCnt, filteredCnt = 0, totalWaitedSeconds = 0;
     cin >> customerCnt >> windowCnt;
-    vector<int> windowFinishTime( windowCnt, openTime );
-    priority_queue<hms, vector<hms>, greater<>> pq;
-    for( int i = 0; i < customerCnt; i++ ) {
-        string curTime;
-        int needM;
-        cin >> curTime >> needM;
-        // assert(needM > 60) fails 
-        // This is an ~~assumption~~ or an **objective detection**?
-        if( needM > 60 ) {
-            needM = 60;
-        }
-        hms curClock = parseClock( curTime, needM );
-        if( curClock.arriveTime < closeTime ) {
-            pq.push( curClock );
-        }
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
+    for( size_t i = 0; i < customerCnt; i++ ) {
+        int hh, mm, ss, needM;
+        scanf( "%d:%d:%d %d", &hh, &mm, &ss, &needM );
+        if( hh * 3600 + mm * 60 + ss > 17 * 60 * 60 ) continue;
+        pq.emplace( hh * 3600 + mm * 60 + ss, needM * 60 );// once arrived must be served
+        filteredCnt++;
     }
-    int filteredCnt = pq.size();
-    int totalWaitedSeconds = 0;
+    priority_queue<int, vector<int>, greater<>> q;// Since the casher always choose the nearest last finish time and windowid choice is not relevant to the res calculation, this window queue can be maintained by priorityQueue;
     while( !pq.empty() ) {
-        hms arriveCustomer = pq.top();
+        auto [arriveTime, neededTime] = pq.top();
         pq.pop();
-        int minFinishTime = INT_MAX;
-        int windowId = -1;
-        for( int i = 0; i < windowCnt; i++ ) {
-            if( windowFinishTime[i] < minFinishTime ) {
-                minFinishTime = windowFinishTime[i];
-                windowId = i;
-            }
-        }
-        // You gotta be crazy ? 
-        // Why should this case be "served"?
-        // if( minFinishTime <= closeTime ) 
-        // assert(minFinishTime <= closeTime) fails 
-        if( minFinishTime < arriveCustomer.arriveTime ) {
-            windowFinishTime[windowId] = arriveCustomer.arriveTime + arriveCustomer.needed;
-        } else {
-            totalWaitedSeconds += minFinishTime - arriveCustomer.arriveTime;
-            windowFinishTime[windowId] = minFinishTime + arriveCustomer.needed;
-
-        }
+        int minFinishTime = q.size() < windowCnt ? 8 * 60 * 60 : q.top();   //if the window queue is not full, it's last finishtime is the opentime of the bank
+        if( q.size() == windowCnt ) q.pop();                                //if the queue is full, the nearest last last finish time's service is finished and will be poped from the queue.
+        q.push( max( minFinishTime, arriveTime ) + neededTime );            // The service time is the maximun of last finishtime and the arrival time of the customer.
+        totalWaitedSeconds += max( minFinishTime, arriveTime ) - arriveTime;// Service time - arrvice time = waited time
     }
     cout << fixed << setprecision( 1 ) << totalWaitedSeconds / 60.0 / filteredCnt << endl;
     return 0;
