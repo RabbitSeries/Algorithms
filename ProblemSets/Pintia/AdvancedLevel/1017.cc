@@ -15,8 +15,8 @@ int main() {
     while( !pq.empty() ) {
         auto [arriveTime, neededTime] = pq.top();
         pq.pop();
-        int minFinishTime = q.size() < windowCnt ? 8 * 60 * 60 : q.top();   //if the window queue is not full, it's last finishtime is the opentime of the bank
-        if( q.size() == windowCnt ) q.pop();                                //if the queue is full, the nearest last last finish time's service is finished and will be poped from the queue.
+        int minFinishTime = q.size() < windowCnt ? 8 * 60 * 60 : q.top();   // If the window queue is not full, it's last finishtime is the opentime of the bank
+        if( q.size() == windowCnt ) q.pop();                                // If the queue is full, the nearest last last finish time's service is finished and will be poped from the queue.
         q.push( max( minFinishTime, arriveTime ) + neededTime );            // The service time is the maximun of last finishtime and the arrival time of the customer.
         totalWaitedSeconds += max( minFinishTime, arriveTime ) - arriveTime;// Service time - arrvice time = waited time
     }
