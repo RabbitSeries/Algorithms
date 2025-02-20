@@ -27,7 +27,6 @@ struct gradeInfo {
     }
 };
 
-
 vector<int> getGradeCmpList( unordered_map<int, vector<int>>const& allGrades, int lessonId ) {
     static unordered_map<int, vector<int>> gradesCache;
     if( gradesCache.count( lessonId ) != 0 ) {
