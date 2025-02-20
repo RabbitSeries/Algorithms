@@ -17,7 +17,7 @@ Both ways ensure optimal relaxed state to be processed only once, thus `assert( 
 ### Statistic technique
 
 - **DP** (**Safe** even without **Filter Techinque**): Process **cost array**, **weight array**, **pathCnt array**, **second shortest path** and all other statistics in search extending process. Reduced redundant counting with DP method.
-- **Record perpath** (**Must** equipped with **Filter Techinque**) (Slower in dense graph with multiple same cost path): Process statistics when visiting a valid node. Eh, I think this is the universal way to count all path info without DFS after dijkstra or other process, everything is clear in the logical process of dijkstra searching. This method will also have simplest queue push principle.
+- **Record perpath** (**Must** equipped with **Filter Techinque**) (Slower in dense graph with multiple same cost path): Process statistics when visiting a valid node. Eh, I think this is the universal way to count all path info without DFS after dijkstra or other process, everything is clear in the logical process of dijkstra searching. This method will also have the simplest queue push principle.
 
 ### Pruning technique
 

@@ -1,8 +1,7 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
-void DFS( map<int, vector<int>>const& childList ) {
+void BFS( map<int, vector<int>>const& childList ) {
     queue<int> q;
     bool first = true;
     q.push( 1 );
@@ -29,32 +28,21 @@ void DFS( map<int, vector<int>>const& childList ) {
         first = false;
     }
 }
-
 int main() {
     int member, parent;
-    cin >> member;
-    if( member == 0 ) {
-        return 0;
-    }
-    cin >> parent;
-    getchar();
+    cin >> member >> parent;
     map<int, vector<int>> childList;
     int i = 0;
     while( i++ < parent ) {
         string id;
         int childCnt;
         cin >> id >> childCnt;
-        childList[stoi( id )];
-        int j = 0;
-        while( j++ < childCnt ) {
+        for( int j = 0; j < childCnt; j++ ) {
             string childId;
             cin >> childId;
             childList[stoi( id )].push_back( stoi( childId ) );
         }
-        if( i != parent ) {
-            getchar();
-        }
     }
-    DFS( childList );
+    BFS( childList );
     return 0;
 }
