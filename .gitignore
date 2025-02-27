@@ -27,6 +27,7 @@ JavaCompileOutput
 *.lib
 
 # Executables
+exe_*
 *.exe
 *.out
 *.app
