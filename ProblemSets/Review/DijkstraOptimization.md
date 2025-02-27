@@ -10,8 +10,8 @@ Problem template: [Leetcode - 1976. Number of Ways to Arrive at Destination](htt
 
 Both ways ensure optimal relaxed state to be processed only once, thus `assert( distances[u] == distance );` will always succeed.
 
-- **Visited Array**: Visited array to keep track of relaxed nodes. This make sure the Dijkstra min distance node is only process once.
-- **Distance Filter**: Some nodes is pushed in queue before they are completely relaxed, this fake relaxed state must be excluded as the above **Visited Array** mechanism. Under circumstances producing a fake relaxed state, this fake state is processed after its real relaxed state due to priority queue heap sorting. See this diagram:
+- **Visited Array**: Visited array to keep track of relaxed nodes. This makes sure the Dijkstra min distance node to be processed only once.
+- **Distance Filter**: Some nodes are pushed in queue before they are completely relaxed, this fake relaxed state must be excluded as the above **Visited Array** mechanism. Under circumstances producing a fake relaxed state, thoes fake states are processed after their real relaxed state due to priority queue heap sorting. See this diagram:
 ![Fake Relax State](https://i-blog.csdnimg.cn/direct/036ea4154710426c90695af5695b488d.png)
 
 ### Statistic technique
@@ -392,4 +392,81 @@ int main() {
     DFSPath( pre, t );
     cout << dist[t] << " " << fee[t];
 }
+```
+
+## Yet a strange one (In fact: Dijkstra is Greedy algorithm)
+
+[PintiA A1033](https://pintia.cn/problem-sets/994805342720868352/exam/problems/type/7?problemSetProblemId=994805458722734080&page=0)
+
+### DP + Distance(Cost/Fee) Filter + Id prune
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    double capacity, distance, disPerGasUnit, stationCnt;
+    cin >> capacity >> distance >> disPerGasUnit >> stationCnt;
+    vector<pair<double, double>> stationInfo( stationCnt );
+    for ( int i = 0; i < stationCnt; i++ )
+        cin >> stationInfo[i].first >> stationInfo[i].second;
+    sort( stationInfo.begin(), stationInfo.end(), []( pair<double, double> const &p1, pair<double, double> const &p2 ) {
+        return p1.second < p2.second;
+    } );
+    if ( stationInfo[0].second != 0 ) {
+        cout << "The maximum travel distance = 0.00" << endl;
+        return 0;
+    }
+    stationInfo.emplace_back( 0, distance );
+    priority_queue<tuple<double, int, double>, vector<tuple<double, int, double>>, greater<>> pq;
+    vector<unordered_map<double, double>> fee( stationCnt + 1 );  // remainGas( stationCnt, 0 )
+    double maxDist = 0;
+    fee[0][0] = 0;
+    pq.emplace( 0, 0, 0 );
+    while ( !pq.empty() ) {
+        auto [curFee, curPos, curGasRemain] = pq.top();
+        pq.pop();
+        if ( curFee > fee[curPos][curGasRemain] ) continue;
+        if ( curPos == stationCnt ) {
+            cout << fixed << setprecision( 2 ) << curFee << endl;
+            return 0;
+        }
+        for ( int nextPos = curPos + 1; nextPos < stationCnt + 1; nextPos++ ) {
+            double deltaDis = stationInfo[nextPos].second - stationInfo[curPos].second;
+            double gasRequired = deltaDis / disPerGasUnit;
+            if ( gasRequired > capacity ) {
+                maxDist = max( capacity * disPerGasUnit + stationInfo[curPos].second, maxDist );
+                break;
+            }
+            double maxFee = curFee + ( capacity - curGasRemain ) * stationInfo[curPos].first;
+            if ( !fee[nextPos].count( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
+                fee[nextPos][capacity - gasRequired] = maxFee;
+                pq.emplace( maxFee, nextPos, capacity - gasRequired );
+            }
+            double nextFee = ( max( gasRequired, curGasRemain ) - curGasRemain ) * stationInfo[curPos].first + curFee;
+            double nextGas = max( curGasRemain - gasRequired, (double)0 );
+            if ( !fee[nextPos].count( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
+                fee[nextPos][nextGas] = nextFee;
+                pq.emplace( nextFee, nextPos, nextGas );
+            }
+        }
+    }
+    cout << "The maximum travel distance = " << fixed << setprecision( 2 ) << maxDist;
+    return 0;
+}
+
+// TODO prove this logic
+// if ( stationInfo[curPos].first < stationInfo[nextPos].first ) {
+//     double maxFee = curFee + ( capacity - curGasRemain ) * stationInfo[curPos].first;
+//     if ( !fee[nextPos].count( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
+//         fee[nextPos][capacity - gasRequired] = maxFee;
+//         pq.emplace( maxFee, nextPos, capacity - gasRequired );
+//     }
+// } else {
+//     double nextFee = ( max( gasRequired, curGasRemain ) - curGasRemain ) * stationInfo[curPos].first + curFee;
+//     double nextGas = max( curGasRemain - gasRequired, (double)0 );
+//     if ( !fee[nextPos].count( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
+//         fee[nextPos][nextGas] = nextFee;
+//         pq.emplace( nextFee, nextPos, nextGas );
+//     }
+// }
 ```

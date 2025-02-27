@@ -15,9 +15,9 @@ int main() {
         nextVList[from].emplace_back( to, dist, fee );
         nextVList[to].emplace_back( from, dist, fee );
     }
-    vector<int> pre( cityCnt, -1 );
-    vector<int> dist( cityCnt, INT_MAX ), fee( cityCnt, 0 );
-    dist[s] = 0;
+    vector<int> dist( cityCnt, INT_MAX ), pre( cityCnt, -1 ), fee( cityCnt, 0 );
+    dist[s] = 0;  // Dijkstra will only work if processed dist correctly.
+    // Other data should init as DP state equation.
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
     pq.emplace( 0, s );
     bool found = false;
