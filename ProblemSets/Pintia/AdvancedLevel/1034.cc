@@ -2,7 +2,7 @@
 using namespace std;
 int main() {
     unordered_map<string, unordered_map<string, int>> relation;
-    unordered_map<string, int> nameWeight;
+    unordered_map<string, int> nameWeight;  // nameWeight == 0 as visited
     set<string> nameList;
     int phoneCallCnt, threshold;
     cin >> phoneCallCnt >> threshold;
@@ -14,7 +14,8 @@ int main() {
         nameWeight[name2] += duration;
         nameList.insert( name1 );
         nameList.insert( name2 );
-        relation[name2][name1] = relation[name1][name2] = relation[name1][name2] + duration;
+        relation[name1][name2] += duration;
+        relation[name2][name1] += duration;
     }
     map<string, int> headList;
     for ( auto const &curName : nameList ) {
