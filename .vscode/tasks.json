@@ -226,6 +226,9 @@
             "type": "shell",
             "label": "[Clean] Confirm",
             "command": "${workspaceFolder}/.vscode/clean_confirm.bat",
+            "presentation": {
+                "reveal": "silent",
+            },
             "args": [
                 "${workspaceFolder}"
             ],
@@ -236,6 +239,9 @@
             "type": "shell",
             "label": "[Clean] No Confirm",
             "command": "${workspaceFolder}/.vscode/clean_noConfirm.bat",
+            "presentation": {
+                "reveal": "silent",
+            },
             "args": [
                 "${workspaceFolder}"
             ],
@@ -246,6 +252,9 @@
             "type": "shell",
             "label": "[Linux] [Clean] No Confirm",
             "command": "${workspaceFolder}/.vscode/clean_noConfirm.sh",
+            "presentation": {
+                "reveal": "silent",
+            },
             "args": [
                 "${workspaceFolder}"
             ],

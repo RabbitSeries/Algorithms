@@ -32,14 +32,14 @@
         },
         {
             "name": "CMakeLinux",
-            "displayName": "CMakeLinux MinGW compiler, ninja as make program",
+            "displayName": "CMakeLinux GCC compiler, ninja as make program",
             "description": "Sets Ninja generator, build and install directory",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_C_COMPILER": "usr/bin/gcc",
-                "CMAKE_CXX_COMPILER": "usr/bin/g++",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
             }
         }
