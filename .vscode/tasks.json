@@ -30,10 +30,10 @@
             },
             "detail": "g++, c++17, defalut."
         },
-        //! [Linux] C/C++: g++.exe build active file
+        //! [Linux] C/C++: g++ build active file
         {
             "type": "shell",
-            "label": "[Linux] C/C++: g++.exe build active file",
+            "label": "[Linux] C/C++: g++ build active file",
             // "linux": "bash", // DEFAULT
             "command": "g++",
             "args": [

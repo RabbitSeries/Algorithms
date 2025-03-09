@@ -42,7 +42,6 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}",
-            "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -61,7 +60,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "[Linux] C/C++: g++.exe build active file",
+            "preLaunchTask": "[Linux] C/C++: g++ build active file",
             "postDebugTask": "[Linux] [Clean] No Confirm"
         },
         {
