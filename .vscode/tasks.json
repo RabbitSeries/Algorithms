@@ -1,39 +1,10 @@
 {
     "version": "2.0.0",
     "tasks": [
-        //! [Windows] C/C++: g++.exe build active file
+        //! [Linux/Windows] [Debug]
         {
-            "type": "shell",
-            "label": "[Windows] C/C++: g++.exe build active file",
-            "windows": "cmd.exe",
-            "command": "g++.exe",
-            "args": [
-                "-std=c++17",
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-o",
-                "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe"
-            ],
-            "presentation": {
-                "reveal": "silent",
-            },
-            "options": {
-                "cwd": "${fileDirname}",
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "g++, c++17, defalut."
-        },
-        //! [Linux] C/C++: g++ build active file
-        {
-            "type": "shell",
-            "label": "[Linux] C/C++: g++ build active file",
+            "type": "cppbuild",
+            "label": "[Linux/Windows] [Debug]",
             // "linux": "bash", // DEFAULT
             "command": "g++",
             "args": [
@@ -57,6 +28,37 @@
                 "kind": "build"
             },
             "detail": "g++, c++17"
+        },
+        //! [Linux/Windows] [Release]
+        {
+            "type": "cppbuild",
+            "label": "[Linux/Windows] [Release]",
+            // "linux": "bash", // DEFAULT
+            "command": "g++",
+            "args": [
+                "-fno-tree-ch",
+                "-O2",
+                "-Wall",
+                "-std=c++20",
+                "-pipe",
+                "${file}",
+                "-lm",
+                "-o",
+                "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}"
+            ],
+            "presentation": {
+                "reveal": "silent",
+            },
+            "options": {
+                "cwd": "${fileDirname}",
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "g++, c++17, release"
         },
         //! cl.exe build active file
         {
@@ -260,45 +262,45 @@
             ],
             "problemMatcher": []
         },
-        // ![Cmake] Configure
-        {
-            "type": "shell",
-            "label": "[Cmake] Configure",
-            "command": "D:/Program Files/CMake/bin/cmake.exe",
-            "args": [
-                "-DCMAKE_BUILD_TYPE:STRING=Debug",
-                "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
-                "-DCMAKE_C_COMPILER:FILEPATH=D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\gcc.exe",
-                "-DCMAKE_CXX_COMPILER:FILEPATH=D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\g++.exe",
-                "--no-warn-unused-cli",
-                "-S",
-                "D:/back_up/Algorithms",
-                "-B",
-                "D:/back_up/Algorithms/build",
-                "-G",
-                "MinGW Makefiles"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
-        //![Cmake] Check source files syntax
-        {
-            "type": "shell",
-            "label": "[Cmake] Check source files syntax",
-            "command": "cmake",
-            "args": [
-                "--build",
-                "${workspaceFolder}/build",
-                "--target",
-                "check_syntax"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
-        },
+        // // ![Cmake] Configure
+        // {
+        //     "type": "shell",
+        //     "label": "[Cmake] Configure",
+        //     "command": "D:/Program Files/CMake/bin/cmake.exe",
+        //     "args": [
+        //         "-DCMAKE_BUILD_TYPE:STRING=Debug",
+        //         "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
+        //         "-DCMAKE_C_COMPILER:FILEPATH=D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\gcc.exe",
+        //         "-DCMAKE_CXX_COMPILER:FILEPATH=D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\g++.exe",
+        //         "--no-warn-unused-cli",
+        //         "-S",
+        //         "D:/back_up/Algorithms",
+        //         "-B",
+        //         "D:/back_up/Algorithms/build",
+        //         "-G",
+        //         "MinGW Makefiles"
+        //     ],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}"
+        //     },
+        //     "problemMatcher": []
+        // },
+        // // ![Cmake] Check source files syntax
+        // {
+        //     "type": "shell",
+        //     "label": "[Cmake] Check source files syntax",
+        //     "command": "cmake",
+        //     "args": [
+        //         "--build",
+        //         "${workspaceFolder}/build",
+        //         "--target",
+        //         "check_syntax"
+        //     ],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}"
+        //     },
+        //     "problemMatcher": []
+        // },
         //![G++ assembly] G++ -O1 -S code.cpp
         {
             "type": "shell",

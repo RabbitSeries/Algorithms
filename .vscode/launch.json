@@ -12,33 +12,7 @@
             "projectName": "Algorithm"
         },
         {
-            "name": "[Windows] C/C++: g++.exe build and debug active file",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}\\.vscode\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "[Windows] C/C++: g++.exe build active file"
-        },
-        {
-            "name": "[Linux] C/C++: g++.exe build and debug active file",
+            "name": "[Linux/Windows] [Debug] [GDB]",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}",
@@ -60,7 +34,18 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "[Linux] C/C++: g++ build active file",
+            "preLaunchTask": "[Linux/Windows] [Debug]",
+            "postDebugTask": "[Linux] [Clean] No Confirm"
+        },
+        {
+            "name": "[Linux/Windows] [Release]",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}",
+            "cwd": "${fileDirname}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "preLaunchTask": "[Linux/Windows] [Release]",
             "postDebugTask": "[Linux] [Clean] No Confirm"
         },
         {
