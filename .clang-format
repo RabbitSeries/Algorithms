@@ -1,0 +1,19 @@
+# Language: Cpp
+# BasedOnStyle: Google
+# IndentWidth: 4
+# TabWidth: 4
+# SpacesInAngles: false
+# SpacesInParentheses: true
+# AlignConsecutiveAssignments: true
+# AlignConsecutiveDeclarations: true
+# AlignOperands: true
+# ColumnLimit: 0
+# {
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 4
+TabWidth: 4
+SpacesInAngles: false
+SpacesInParentheses: true
+ColumnLimit: 0
+# }
