@@ -1,47 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-struct value {
-    bool isNagative = false;
-    long long val = 0;
-};
-
-void readValue( int len, deque<value> &list ) {
-    for ( int i = 0; i < len; i++ ) {
-        long long val;
-        cin >> val;
-        list[i].val = abs( val );
-        list[i].isNagative = val < 0;
-    }
-}
-
 int main() {
-    int couponCnt{ 0 }, productCnt{ 0 };
+    long long couponCnt{ 0 }, productCnt{ 0 }, res{ 0 };
     cin >> couponCnt;
-    deque<value> coupon( couponCnt ), product;
-    readValue( couponCnt, coupon );
+    deque<long long> coupon( couponCnt ), product;
+    for ( int i = 0; i < couponCnt; i++ )
+        cin >> coupon[i];
     cin >> productCnt;
     product.resize( productCnt );
-    readValue( productCnt, product );
-    auto comparator = []( const value &v1, const value &v2 ) -> bool {
-        return !v1.isNagative ? ( v2.isNagative ? true : v1.val > v2.val ) : ( !v2.isNagative ? false : ( v1.val > v2.val ) );
-    };
-    sort( coupon.begin(), coupon.end(), comparator );
-    sort( product.begin(), product.end(), comparator );
-    long long res = 0;
-    while ( !coupon.empty() && !product.empty() ) {
-        if ( product.front().isNagative ) {
-            while ( !coupon.empty() && !coupon.front().isNagative ) coupon.pop_front();
-            if ( coupon.empty() ) break;
-        } else {
-            if ( coupon.front().isNagative ) {
-                while ( !product.empty() && !product.front().isNagative ) product.pop_front();
-                if ( product.empty() ) break;
-            }
-        }
-        res += product.front().val * coupon.front().val;
-        product.pop_front();
-        coupon.pop_front();
+    for ( int i = 0; i < productCnt; i++ )
+        cin >> product[i];
+    sort( coupon.begin(), coupon.end() );
+    sort( product.begin(), product.end() );
+    while ( !coupon.empty() && !product.empty() && coupon.front() < 0 && product.front() < 0 ) {
+        res += product.front() * coupon.front();
+        product.pop_front(), coupon.pop_front();
+    }
+    while ( !coupon.empty() && !product.empty() && coupon.back() > 0 && product.back() > 0 ) {
+        res += product.back() * coupon.back();
+        product.pop_back(), coupon.pop_back();
     }
     cout << res;
 }
