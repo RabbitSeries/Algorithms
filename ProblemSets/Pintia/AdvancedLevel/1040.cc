@@ -3,7 +3,7 @@ using namespace std;
 int main() {
     string input;
     getline( cin, input );
-    string res = "";
+    string res = "";  // int res = 0;
     for ( size_t i = 0; i < input.size(); i++ ) {
         for ( size_t halfLen = 0; ( i - halfLen ) >= 0 && ( i + halfLen ) < input.length(); halfLen++ ) {
             if ( input[i - halfLen] != input[i + halfLen] ) break;
