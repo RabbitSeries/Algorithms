@@ -15,6 +15,6 @@ int main() {
             cards[order[j] - 1] = tmp[j];
     }
     cout << accumulate( cards.begin(), cards.end(), string( "" ), []( string const& init, int const& c ) {
-                return init + " " + string( 1, ( c / 13 )["SHCDJ"] ) + ( stringstream() << ( c % 13 + 1 ) ).str();
+                return ( stringstream() << init << " " << ( c / 13 )["SHCDJ"] << ( c % 13 + 1 ) ).str();
             } ).substr( 1 );
 }
