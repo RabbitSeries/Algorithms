@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 inline bool notSingle( unordered_map<int, int> const& pairInfo, const unordered_map<int, bool>& attended, int id ) {
-    return pairInfo.count( id ) && attended.at( id ) && attended.count( pairInfo.at( id ) );
+    return pairInfo.contains( id ) && attended.at( id ) && attended.contains( pairInfo.at( id ) );
 }
 int main() {
     int pairCnt, mbCnt;
@@ -31,7 +31,7 @@ int main() {
     }
     for ( int i = 0; i < mbCnt; i++ ) {
         int curId = seatList[i];
-        if ( notSingle( pairInfo, attended, curId ) && !processed.count( curId ) ) {
+        if ( notSingle( pairInfo, attended, curId ) && !processed.contains( curId ) ) {
             int nextId = pairInfo.at( curId );
             int pairSeatId = pairSeat.at( curId );
             processed[curId] = processed[nextId] = true;

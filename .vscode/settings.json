@@ -6,7 +6,9 @@
     "makefile.configureOnOpen": false,
     "makefile.makefilePath": "",
     "java.project.sourcePaths": [
-        "ProblemSets"
+        "ProblemSets",
+        "ProblemSets\\Pintia\\AdvancedLevel"
     ],
     "java.project.outputPath": "JavaCompileOutput",
+    "java.project.referencedLibraries": [],
 }

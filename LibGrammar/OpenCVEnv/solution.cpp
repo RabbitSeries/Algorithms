@@ -1,5 +1,5 @@
 #include "solution.h"
-AntiAliasing::CBMPMakerSingle::CBMPMakerSingle( std::string _image_path ) :image_path( _image_path ) {}
+AntiAliasing::CBMPMakerSingle::CBMPMakerSingle( std::string _image_path ) : image_path( _image_path ) {}
 
 /**
  * Perform the solve task.
@@ -9,8 +9,8 @@ AntiAliasing::CBMPMakerSingle::CBMPMakerSingle( std::string _image_path ) :image
 void AntiAliasing::CBMPMakerSingle::solve( std::string dest_path ) {
     // cv::Mat originalImage = cv::imread(cv::samples::findFile(image_path), 0);
     cv::Mat originalImage = cv::imread( image_path, cv::IMREAD_GRAYSCALE );
-    
-    if( originalImage.empty() ) {
+
+    if ( originalImage.empty() ) {
         std::cerr << "Could not read the image: " << image_path << std::endl;
         exit( -1 );
     }
@@ -23,12 +23,12 @@ void AntiAliasing::CBMPMakerSingle::solve( std::string dest_path ) {
     // TODO qDebug()
     std::cout << "Found " << contours.size() << " contours" << std::endl;
     std::for_each( hierarchy.begin(), hierarchy.end(),
-        []( cv::Vec4i elem ) -> void {
-        static int index = 0;
-        std::cout << "contour " << index++ << " :" << std::endl;
-        std::cout << elem[0] << "," << elem[1] << "," << elem[2] << "," << elem[3];
-        std::cout << std::endl;
-    } );
+                   []( cv::Vec4i elem ) -> void {
+                       static int index = 0;
+                       std::cout << "contour " << index++ << " :" << std::endl;
+                       std::cout << elem[0] << "," << elem[1] << "," << elem[2] << "," << elem[3];
+                       std::cout << std::endl;
+                   } );
 
     // Create a blank canvas
     cv::Mat smooth_image = cv::Mat::zeros( imageReverse.size(), imageReverse.type() );
@@ -58,11 +58,10 @@ void AntiAliasing::CBMPMakerSingle::solve( std::string dest_path ) {
 void AntiAliasing::CBMPMakerSingle::_bfs_traverse( std::vector<std::vector<cv::Point>> contours, std::vector<cv::Vec4i> hierarchy, cv::Mat smooth_image ) {
     std::deque<int> queue{};
     std::set<int> visited;
-    for( int forestIterator = 0; forestIterator < hierarchy.size(); forestIterator++ ) {
-        if( visited.count( forestIterator ) > 0 ) {
+    for ( int forestIterator = 0; forestIterator < hierarchy.size(); forestIterator++ ) {
+        if ( visited.contains( forestIterator ) ) {
             continue;
-        }
-        else {
+        } else {
             // Append contour tree root index to the queue
             queue.push_back( forestIterator );
         }
@@ -70,14 +69,14 @@ void AntiAliasing::CBMPMakerSingle::_bfs_traverse( std::vector<std::vector<cv::P
         int current_level = 0;
         int fillColor = 255;  // White
         int current_fill = -1;
-        while( !queue.empty() ) {
+        while ( !queue.empty() ) {
             int queue_size = queue.size();
 
-            for( int i = 0; i < queue_size; ++i ) {
+            for ( int i = 0; i < queue_size; ++i ) {
                 int node = queue.front();
                 queue.pop_front();
 
-                if( visited.count( node ) > 0 ) {
+                if ( visited.contains( node ) ) {
                     continue;
                 }
                 visited.insert( node );
@@ -88,17 +87,16 @@ void AntiAliasing::CBMPMakerSingle::_bfs_traverse( std::vector<std::vector<cv::P
                 std::vector<cv::Point> approx;
                 cv::approxPolyDP( contour, approx, epsilon, true );
 
-                if( level != current_level ) {
+                if ( level != current_level ) {
                     current_fill = ( fillColor == 0 ) ? 255 : 0;  // Swap fill color in each level
-                    cv::drawContours( smooth_image, std::vector<std::vector<cv::Point>>{approx}, -1, cv::Scalar( current_fill ), cv::FILLED );
-                    drawContours( smooth_image, std::vector<std::vector<cv::Point>>{approx}, -1, cv::Scalar( 255 ), 1 );
-                }
-                else {
-                    cv::drawContours( smooth_image, std::vector<std::vector<cv::Point>>{approx}, -1, cv::Scalar( fillColor ), cv::FILLED );
+                    cv::drawContours( smooth_image, std::vector<std::vector<cv::Point>>{ approx }, -1, cv::Scalar( current_fill ), cv::FILLED );
+                    drawContours( smooth_image, std::vector<std::vector<cv::Point>>{ approx }, -1, cv::Scalar( 255 ), 1 );
+                } else {
+                    cv::drawContours( smooth_image, std::vector<std::vector<cv::Point>>{ approx }, -1, cv::Scalar( fillColor ), cv::FILLED );
                 }
                 // Enqueue child contours
                 int next_child = hierarchy[node][2];
-                while( next_child != -1 ) {
+                while ( next_child != -1 ) {
                     queue.push_back( next_child );
                     next_child = hierarchy[next_child][0];
                 }

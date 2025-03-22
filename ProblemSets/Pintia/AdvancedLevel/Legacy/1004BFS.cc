@@ -1,26 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void BFS( map<int, vector<int>>const& childList ) {
+void BFS( map<int, vector<int>> const& childList ) {
     queue<int> q;
     bool first = true;
     q.push( 1 );
-    while( !q.empty() ) {
+    while ( !q.empty() ) {
         vector<int> curLevelList;
-        while( !q.empty() ) {
+        while ( !q.empty() ) {
             curLevelList.push_back( q.front() );
             q.pop();
         }
         int levelCnt = 0;
-        for( int pid : curLevelList ) {
+        for ( int pid : curLevelList ) {
             bool hasNoChild = true;
-            if( childList.count( pid ) != 0 ) {
-                for( int child : childList.at( pid ) ) {
+            if ( childList.contains( pid ) ) {
+                for ( int child : childList.at( pid ) ) {
                     hasNoChild = false;
                     q.push( child );
                 }
             }
-            if( hasNoChild ) {
+            if ( hasNoChild ) {
                 levelCnt++;
             }
         }
@@ -33,11 +33,11 @@ int main() {
     cin >> member >> parent;
     map<int, vector<int>> childList;
     int i = 0;
-    while( i++ < parent ) {
+    while ( i++ < parent ) {
         string id;
         int childCnt;
         cin >> id >> childCnt;
-        for( int j = 0; j < childCnt; j++ ) {
+        for ( int j = 0; j < childCnt; j++ ) {
             string childId;
             cin >> childId;
             childList[stoi( id )].push_back( stoi( childId ) );

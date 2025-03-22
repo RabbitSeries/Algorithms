@@ -7,7 +7,7 @@ int main() {
     cin >> betCnt;
     for ( int i = 0; i < betCnt; i++ ) {
         cin >> curBet;
-        if ( bet.count( curBet ) ) {
+        if ( bet.contains( curBet ) ) {
             auto pos = find_if( notDulp.begin(), notDulp.end(), [=]( int cur ) { return cur == curBet; } );
             if ( pos != notDulp.end() )
                 notDulp.erase( pos );

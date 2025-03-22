@@ -3,15 +3,16 @@
         {
             "name": "mingw64",
             "includePath": [
-                "${default}"
+                "${default}",
+                "D:\\Build_Tool_Lib\\opencv\\opencvMinGW\\install\\opencv\\include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cStandard": "c23",
+            "cppStandard": "c++20",
             "intelliSenseMode": "windows-gcc-x64",
             "compilerPath": "D:\\Build_Tool_Lib\\x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0\\mingw64\\bin\\g++.exe",
             "mergeConfigurations": false,
@@ -30,8 +31,8 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cStandard": "c23",
+            "cppStandard": "c++20",
             "intelliSenseMode": "windows-msvc-x64",
             "compilerArgs": [],
             "windowsSdkVersion": "10.0.22621.0",
@@ -43,32 +44,14 @@
             }
         },
         {
-            "name": "ubuntu",
-            "includePath": [
-                "${default}"
-            ],
-            "defines": [],
-            "cStandard": "c17",
-            "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/g++",
-            "mergeConfigurations": false,
-            "browse": {
-                "path": [
-                    "${workspaceFolder}/*"
-                ],
-                "limitSymbolsToIncludedHeaders": true
-            }
-        },
-        {
             "name": "ArchLinux",
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/local/include/**"
             ],
             "defines": [],
-            "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cStandard": "c23",
+            "cppStandard": "c++20",
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/g++"
         }

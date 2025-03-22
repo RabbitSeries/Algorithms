@@ -3,7 +3,7 @@ using namespace std;
 
 int getUnvisited( unordered_set<int>& visited, const int& cityCnt ) {
     for( int i = 0; i < cityCnt; i++ ) {
-        if( visited.count( i ) == 0 ) {
+        if( visited.contains( i ) == 0 ) {
             visited.insert( i );
             return i;
         }
@@ -24,7 +24,7 @@ int MSTCnt( int cutCity, vector<vector<int>>const& roadMap, const int& cityCnt )
             int curVisit = q.front();
             q.pop();
             for( int nextV : roadMap[curVisit] ) {
-                if( visited.count( nextV ) == 0 ) {
+                if( visited.contains( nextV ) == 0 ) {
                     visited.insert( nextV );
                     q.push( nextV );
                 }

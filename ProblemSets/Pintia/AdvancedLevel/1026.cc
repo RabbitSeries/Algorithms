@@ -56,7 +56,7 @@ int main() {
         int distributeId = curId, srvT = tableTime[nextIdList.front()], nextTableId = nextIdList.front();
         if ( srvT >= 21 * 60 * 60 ) break;
         for ( int tId : nextIdList ) {
-            if ( vipTableList.count( tId ) ) {
+            if ( vipTableList.contains( tId ) ) {
                 for ( size_t cstId = curId; cstId < cstList.size() && srvT >= cstList[cstId].arrT; cstId++ ) {
                     if ( cstList[cstId].isVip && !distributed[cstId] ) {  // When a vip table is open, have vip in queue
                         distributeId = cstId;

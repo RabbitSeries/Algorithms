@@ -1,7 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
+template <class T = string>
+struct myHash {
+    myHash() {};
+    int operator()( string const &name ) const {
+        return accumulate( name.begin(), name.end() - 1, 0, []( int init, char c ) { return init * 26 + c - 'A'; } ) * 10 + name.back() - '0';  // 268 ms
+        // return accumulate( name.begin(), name.end() - 1, 0, []( int init, char c ) { return init << 5 + c - 'A'; } ) << 3 + name.back() - '0';  // Time exceeded
+    };
+};
+unordered_map<string, set<int>, myHash<>> courseList;
 int main() {
-    map<string, set<int>> courseList;  // map is quicker than unordered_map?
+    ios::sync_with_stdio( false );
+    cin.tie( nullptr );
+    courseList.reserve( 1 << 15 );
     int queryCnt, courseCnt, curCourse, curStuCnt;
     string curStu;
     cin >> queryCnt >> courseCnt;
@@ -14,14 +25,9 @@ int main() {
     }
     for ( int i = 0; i < queryCnt; i++ ) {
         cin >> curStu;
-        if ( courseList.count( curStu ) ) {
-            cout << curStu << " "
-                 << courseList.at( curStu ).size()
-                 << accumulate( courseList.at( curStu ).begin(), courseList.at( curStu ).end(), string( "" ),
-                                []( string curRes, int courseId ) -> string { return ( stringstream() << curRes << " " << courseId ).str(); } )
-                 << endl;
-        } else {
-            cout << curStu << " 0" << endl;
-        }
+        cout << curStu << " " << courseList[curStu].size();
+        for ( auto const &courseId : courseList[curStu] )
+            cout << " " << courseId;
+        cout << endl;
     }
 }

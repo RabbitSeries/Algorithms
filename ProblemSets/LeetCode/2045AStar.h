@@ -77,7 +77,7 @@ public:
     }
 
     int  dijkstra( int s, int n, map<int, map<int, bool>> const& adjMap, int time, int change, map<int, int>& distanceTo ) {
-        if( distanceTo.count( s ) ) {
+        if( distanceTo.contains( s ) ) {
             return distanceTo[s];
         }
         vector<int> cost( adjMap.size() + 1, INT_MAX );

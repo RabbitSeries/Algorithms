@@ -36,14 +36,14 @@ int main() {
             }
             if ( stationInfo[curPos].first < stationInfo[nextPos].first ) {  // TODO prove this logic
                 double maxFee = curFee + ( capacity - curGasRemain ) * stationInfo[curPos].first;
-                if ( !fee[nextPos].count( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
+                if ( !fee[nextPos].contains( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
                     fee[nextPos][capacity - gasRequired] = maxFee;
                     pq.emplace( maxFee, nextPos, capacity - gasRequired );
                 }
             } else {
                 double nextFee = ( max( gasRequired, curGasRemain ) - curGasRemain ) * stationInfo[curPos].first + curFee;
                 double nextGas = max( curGasRemain - gasRequired, (double)0 );
-                if ( !fee[nextPos].count( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
+                if ( !fee[nextPos].contains( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
                     fee[nextPos][nextGas] = nextFee;
                     pq.emplace( nextFee, nextPos, nextGas );
                 }
@@ -54,13 +54,13 @@ int main() {
     return 0;
 }
 // double maxFee = curFee + ( capacity - curGasRemain ) * stationInfo[curPos].first;
-// if ( !fee[nextPos].count( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
+// if ( !fee[nextPos].contains( capacity - gasRequired ) || maxFee < fee[nextPos][capacity - gasRequired] ) {
 //     fee[nextPos][capacity - gasRequired] = maxFee;
 //     pq.emplace( maxFee, nextPos, capacity - gasRequired );
 // }
 // double nextFee = ( max( gasRequired, curGasRemain ) - curGasRemain ) * stationInfo[curPos].first + curFee;
 // double nextGas = max( curGasRemain - gasRequired, (double)0 );
-// if ( !fee[nextPos].count( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
+// if ( !fee[nextPos].contains( nextGas ) || nextFee < fee[nextPos][nextGas] ) {
 //     fee[nextPos][nextGas] = nextFee;
 //     pq.emplace( nextFee, nextPos, nextGas );
 // }

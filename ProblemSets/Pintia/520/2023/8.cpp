@@ -17,7 +17,7 @@ int main() {
         queryList.push_back( curId );
     }
     for ( string curId : queryList ) {
-        if ( id2Pos.count( curId ) ) {
+        if ( id2Pos.contains( curId ) ) {
             cout << id2Pos.at( curId ) + 1 << endl;
         } else {
             cout << "Sorry" << endl;

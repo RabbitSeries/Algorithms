@@ -17,7 +17,7 @@ void luckySubstring() {
         unordered_set<char> distinctLetters;
         for ( int j = i; j < input.size(); j++ ) {
             distinctLetters.insert( input[j] );
-            if ( fibo.count( distinctLetters.size() ) )
+            if ( fibo.contains( distinctLetters.size() ) )
                 res.insert( input.substr( i, j - i + 1 ) );
         }
     }
@@ -44,7 +44,7 @@ void reinforceVersion() {
         for ( int j = i; j < input.size(); j++ ) {
             distinctLetters[input[j]]++;
 
-            if ( all_of( distinctLetters.begin(), distinctLetters.end(), [&]( pair<const char, int> const& e ) -> bool { return fibo.count( e.second ); } ) )
+            if ( all_of( distinctLetters.begin(), distinctLetters.end(), [&]( pair<const char, int> const& e ) -> bool { return fibo.contains( e.second ); } ) )
                 // if ( all_of( distinctLetters.begin(), distinctLetters.end(), [&]( pair<char, int> const& e ) -> bool { return fibo.count( e.second ); } ) )
                 res.insert( input.substr( i, j - i + 1 ) );
         }

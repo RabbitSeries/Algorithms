@@ -35,7 +35,7 @@
                 }
             ],
             "preLaunchTask": "[Linux/Windows] [Debug]",
-            "postDebugTask": "[Linux] [Clean] No Confirm"
+            // "postDebugTask": "[Linux] [Clean] No Confirm"
         },
         {
             "name": "[Linux/Windows] [Release]",

@@ -5,7 +5,7 @@ typedef unsigned long long ll;
 
 ll powLL( ll radix, ll times ) {
     static map<ll, map<ll, ll>> cache;
-    if( cache.count( radix ) != 0 && cache.at( radix ).count( times ) != 0 ) {
+    if( cache.contains( radix ) != 0 && cache.at( radix ).contains( times ) != 0 ) {
         return cache.at( radix ).at( times );
     }
     if( times == 0 ) {
