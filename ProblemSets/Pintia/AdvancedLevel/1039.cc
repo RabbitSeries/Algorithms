@@ -1,21 +1,19 @@
 #include <bits/stdc++.h>
+
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
-template <class T = string>
-struct myHash {
-    myHash() {};
+struct strHash {
     int operator()( string const &name ) const {
-        return accumulate( name.begin(), name.end() - 1, 0, []( int init, char c ) { return init * 26 + c - 'A'; } ) * 10 + name.back() - '0';  // 268 ms
-        // return accumulate( name.begin(), name.end() - 1, 0, []( int init, char c ) { return init << 5 + c - 'A'; } ) << 3 + name.back() - '0';  // Time exceeded
-    };
+        return accumulate( name.rbegin() + 1, name.rend(), name.back() - '0', []( int init, char c ) { return ( init * 26 ) + ( c - 'A' ); } );
+    }
 };
-unordered_map<string, set<int>, myHash<>> courseList;
 int main() {
-    ios::sync_with_stdio( false );
-    cin.tie( nullptr );
-    courseList.reserve( 1 << 15 );
+    // gp_hash_table<string, set<int>, strHash> courseList; // underlying impl is plain hash table, cost more space so that exceeeds space limit.
+    unordered_map<string, set<int>, strHash> courseList;
     int queryCnt, courseCnt, curCourse, curStuCnt;
-    string curStu;
     cin >> queryCnt >> courseCnt;
+    string curStu;
     for ( int i = 0; i < courseCnt; i++ ) {
         cin >> curCourse >> curStuCnt;
         for ( int j = 0; j < curStuCnt; j++ ) {

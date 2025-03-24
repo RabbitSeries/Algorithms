@@ -8,7 +8,7 @@
             // "linux": "bash", // DEFAULT
             "command": "g++",
             "args": [
-                "-std=c++17",
+                "-std=gnu++20",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
@@ -27,7 +27,7 @@
             "group": {
                 "kind": "build"
             },
-            "detail": "g++, c++17"
+            "detail": "gnu++20"
         },
         //! [Linux/Windows] [Release]
         {
@@ -39,7 +39,7 @@
                 "-fno-tree-ch",
                 "-O2",
                 "-Wall",
-                "-std=c++20",
+                "-std=gnu++20",
                 "-pipe",
                 "${file}",
                 "-lm",
@@ -58,7 +58,7 @@
             "group": {
                 "kind": "build"
             },
-            "detail": "g++, c++17, release"
+            "detail": "gnu++20, release"
         },
         //! cl.exe build active file
         {
@@ -83,7 +83,7 @@
             "args": [
                 "/Zi",
                 "/EHsc",
-                "/std:c++17",
+                "/std:gnu++20",
                 "${file}",
                 // Specify the directory. No empty characters after /Fo. Use ":" to add sperators.
                 // "/Fo${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}",
@@ -129,12 +129,12 @@
             // <https://github.com/microsoft/vscode/blob/b15d1a9542d26d06d12bb7807b85cef738a00a28/src/vs/workbench/contrib/tasks/common/taskSystem.ts#L96>
             "command": "cl.exe",
             "args": [
-                // cl.exe /O2 /DNDEBUG /MD /std:c++17 source.cpp /Fo"Release\\" /Fe"Release\\program.exe" [release].
+                // cl.exe /O2 /DNDEBUG /MD /std:gnu++20 source.cpp /Fo"Release\\" /Fe"Release\\program.exe" [release].
                 "/Zi",
                 "/EHsc",
                 "/Od",
                 "/MDd",
-                "/std:c++17",
+                "/std:gnu++20",
                 // "${file}",
                 // "${fileDirname}/*.cpp",
                 "${fileDirname}/*.cpp",
@@ -172,7 +172,7 @@
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
-                "-std=c++17",
+                "-std=gnu++20",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${fileDirname}/*.cpp",
@@ -192,7 +192,7 @@
             "group": {
                 "kind": "build",
             },
-            "detail": "g++, c++17, opencv, debug."
+            "detail": "gnu++20, opencv, debug."
         },
         //! [OpenCV] [Release] C/C++: g++.exe build active file workspace
         {
@@ -201,7 +201,7 @@
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
-                "-std=c++17",
+                "-std=gnu++20",
                 "-fdiagnostics-color=always",
                 // "-g",
                 "${fileDirname}/*.cpp",
@@ -221,7 +221,7 @@
             "group": {
                 "kind": "build",
             },
-            "detail": "g++, c++17, opencv, release."
+            "detail": "gnu++20, opencv, release."
         },
         // ![Clean] Confirm
         {
