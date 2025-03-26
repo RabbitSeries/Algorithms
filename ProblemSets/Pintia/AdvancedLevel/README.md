@@ -2,8 +2,8 @@
 
 ## More Simplified Code
 
-- 1010,1012 is too complex
-- 1039,1045 ~~why bit operator << is slower than multuply *~~(bitwise op is lower than plus), why ~~unordered_map is slower than vector and map~~(hash cost and confilct cost)?
+- 1010, 1012, 1018 is too complex
+- 1039, 1045 ~~why bit operator << is slower than multuply *~~(bitwise op is lower than plus), why ~~unordered_map is slower than vector and map~~(hash cost and confilct cost)?
 - 1040 Change to DP.
 
 ## Long-term optimization

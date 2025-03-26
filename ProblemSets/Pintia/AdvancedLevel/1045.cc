@@ -5,11 +5,10 @@ using namespace std;
 int main() {
     int totalFav, curStripe;
     cin >> totalFav;
-    // vector<int> hashMap( totalFav + 1, -1 );  // Array: 60 ms
-    gp_hash_table<int, int> hashMap;  // Array: 60 ms
-    hashMap.insert( make_pair( 1, 2 ) );
-    cin >>
-        totalFav;
+    // vector<int> hashMap( totalFav + 1 );  // Array: 60 ms、
+    array<int, 201> hashMap{ 0 };  // Array will not init it self, but vector will
+    // gp_hash_table<int, int> hashMap;
+    cin >> totalFav;
     for ( int i = 1; i <= totalFav; i++ ) {
         cin >> curStripe;
         hashMap[curStripe] = i;
