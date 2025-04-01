@@ -1,49 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct person {
-    person( int s, int r, int i, int o ) {
-        speed = s;
-        rank = r;
-        id = i;
-        order = o;
-    }
-    int speed, rank, id, order;
+    int speed, id, round;
 };
 int main() {
-    int pCnt, gCnt;
+    int pCnt, gCnt, order, roundCnt = 1;
     cin >> pCnt >> gCnt;
-    vector<person> pList( pCnt ), resList, nextMatch;
+    vector<person> pList( pCnt );
+    queue<int> gameQ;
     for ( int i = 0; i < pCnt; i++ ) {
         cin >> pList[i].speed;
         pList[i].id = i;
     }
-    for ( int i = 0; i < pCnt; i++ ) cin >> pList[i].order;
-    sort( pList.begin(), pList.end(), []( person const& p1, person const& p2 ) { return p1.order < p2.order; } );
-    int curRank = pCnt / gCnt + 1;
-    while ( pList.size() > 1 ) {
-        for ( int i = 0; i < pList.size(); i += gCnt ) {
-            int maxId = -1, maxW = -1;
-            nextMatch.emplace_back( maxW, 0, maxId, 0 );
-            for ( int j = 0; j < gCnt && ( i + j ) < pList.size(); j++ ) {
-                if ( pList[i + j].speed > maxW ) {
-                    maxW = pList[i + j].speed;
-                    maxId = pList[i + j].id;
-                    nextMatch.back() = pList[i + j];
-                }
-            }
-            for ( int j = 0; j < gCnt && ( i + j ) < pList.size(); j++ ) {
-                if ( pList[i + j].id != maxId ) {
-                    pList[i + j].rank = curRank;
-                    resList.emplace_back( pList[i + j] );
-                }
-            }
-        }
-        pList = nextMatch;
-        curRank--;
+    for ( int i = 0; i < pCnt; i++ ) {
+        cin >> order;
+        gameQ.emplace( order );
     }
-    resList.emplace_back( 0, 1, pList[0].id, 0 );
-    sort( resList.begin(), resList.end(), []( person const& p1, person const& p2 ) { return p1.id < p2.id; } );
+    while ( gameQ.size() > 1 ) {
+        queue<int> nextMatch;
+        while ( !gameQ.empty() ) {
+            int promotion = -1, maxSpeed = -1;
+            for ( int i = 0; i < gCnt && !gameQ.empty(); i++ ) {
+                person const& curP = pList[gameQ.front()];
+                gameQ.pop();
+                pList[curP.id].round = roundCnt;  // record player's match round
+                if ( curP.speed > maxSpeed ) {
+                    maxSpeed = curP.speed;
+                    promotion = curP.id;
+                }
+            }
+            nextMatch.emplace( promotion );
+        }
+        gameQ = move( nextMatch );
+        roundCnt++;
+    }
+    pList[gameQ.front()].round = roundCnt;
     stringstream buf;
-    for ( auto& p : resList ) buf << " " << p.rank;
+    sort( pList.begin(), pList.end(), []( person const& p1, person const& p2 ) { return p1.round > p2.round; } );
+    vector<int> finalRank( pCnt );
+    finalRank[pList[0].id] = 1;
+    for ( int i = 1; i < pCnt; i++ ) {
+        finalRank[pList[i].id] = ( pList[i].round == pList[i - 1].round ? finalRank[pList[i - 1].id] : ( i + 1 ) );
+    }
+    for ( int p : finalRank ) {
+        buf << " " << p;
+    }
     cout << buf.str().substr( 1 );
 }
