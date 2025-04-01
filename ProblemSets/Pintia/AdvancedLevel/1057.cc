@@ -26,14 +26,11 @@ int main() {
                 buf << rb_tree.find_by_order( ( simStack.size() % 2 == 0 ? ( simStack.size() / 2 - 1 ) : ( simStack.size() + 1 ) / 2 - 1 ) )->first;
             }
             buf << endl;
-        } else if ( type == "Push" ) {
+        } else {  //( type == "Push" )
             int val;
             cin >> val;
             rb_tree.insert( make_pair( val, i ) );
             simStack.emplace( val, i );
-        } else {
-            buf << "Invalid";
-            buf << endl;
         }
     }
     cout << buf.str();
