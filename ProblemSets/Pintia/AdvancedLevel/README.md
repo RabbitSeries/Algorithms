@@ -9,7 +9,7 @@
 ## Long-term optimization
 
 - Move to gnuc++20
-
+- Change all tree datastructure into __gnu_pd_bs::tree.
 [Ref](https://www.bilibili.com/video/BV1xWKpe7E65/?vd_source=17ae3da38f146f52a5262d73f91d0fb3) :
 
 ## 这些 STL 的手写都会远快于 STL
