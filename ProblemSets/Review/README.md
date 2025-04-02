@@ -18,6 +18,10 @@
     totalWaitedSeconds += max( minFinishTime, arriveTime ) - arriveTime;// Service time - arrvice time = waited time
 ```
 
+### Num digits problem
+
+- A1060 How to trim string number's zero-prefix and some dogshit boundary condition.
+
 ### Date Calculation
 
 ```cpp

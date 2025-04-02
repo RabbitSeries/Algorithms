@@ -46,7 +46,7 @@
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
             "preLaunchTask": "[Linux/Windows] [Release]",
-            "postDebugTask": "[Linux] [Clean] No Confirm"
+            // "postDebugTask": "[Linux] [Clean] No Confirm"
         },
         {
             "name": "[OpenCV] [Debug] [MinGW] C/C++: g++.exe build and debug active file workspace",
