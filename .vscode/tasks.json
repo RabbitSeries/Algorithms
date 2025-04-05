@@ -8,6 +8,7 @@
             // "linux": "bash", // DEFAULT
             "command": "g++",
             "args": [
+                "-Wall",
                 "-std=gnu++20",
                 "-fdiagnostics-color=always",
                 "-g",
@@ -307,7 +308,7 @@
             "label": "C/C++: g++ assemble active file",
             "command": "${workspaceFolder}\\.vscode\\assembleView.bat",
             "args": [
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${file}",
                 "${workspaceFolder}/AssemblyOutput/${fileBasenameNoExtension}"
             ],
             "options": {

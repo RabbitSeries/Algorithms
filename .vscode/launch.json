@@ -116,7 +116,7 @@
             "preLaunchTask": "C/C++: g++ assemble active file",
             "request": "launch",
             "cwd": "${fileDirname}",
-            "script": "nop",
+            "script": "",
             "postDebugTask": "[Clean] No Confirm"
         },
         {
