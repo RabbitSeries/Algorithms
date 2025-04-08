@@ -35,7 +35,12 @@
                 }
             ],
             "preLaunchTask": "[Linux/Windows] [Debug]",
-            // "postDebugTask": "[Linux] [Clean] No Confirm"
+            "windows": {
+                "postDebugTask": "[Clean] No Confirm"
+            },
+            "linux": {
+                "postDebugTask": "[Linux] [Clean] No Confirm"
+            },
         },
         {
             "name": "[Linux/Windows] [Release]",
@@ -46,7 +51,12 @@
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
             "preLaunchTask": "[Linux/Windows] [Release]",
-            // "postDebugTask": "[Linux] [Clean] No Confirm"
+            "windows": {
+                "postDebugTask": "[Clean] No Confirm"
+            },
+            "linux": {
+                "postDebugTask": "[Linux] [Clean] No Confirm"
+            }
         },
         {
             "name": "[OpenCV] [Debug] [MinGW] C/C++: g++.exe build and debug active file workspace",

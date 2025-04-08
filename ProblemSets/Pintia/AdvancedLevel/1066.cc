@@ -76,40 +76,12 @@ struct node {
         BalanceTree( root );
     }
 };
-void logger( node *root );
 int main() {
     node *root{ nullptr };
     int elemCnt = 0;
     cin >> elemCnt;
     for ( int val, i = 0; i < elemCnt && cin >> val; i++ ) {
         insert( root, val, less<>{} );
-        logger( root );
     }
     cout << ( root ? to_string( root->elem ) : "" );
-}
-void BFS( node *root ) {
-    queue<node *> q( { root } );
-    ostringstream os;
-    while ( !q.empty() ) {
-        queue<node *> nextLevel;
-        while ( !q.empty() ) {
-            node *curNode = q.front();
-            q.pop();
-            if ( !curNode )
-                os << " ";
-            else {
-                os << " " << curNode->elem;
-                nextLevel.push( curNode->l );
-                nextLevel.push( curNode->r );
-            }
-        }
-        os << endl;
-        q = nextLevel;
-    }
-    cout << os.str();
-}
-void logger( node *root ) {
-    cout << "Tree: " << endl;
-    BFS( root );
-    cout << "Input:";
 }

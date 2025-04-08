@@ -16,4 +16,8 @@ TabWidth: 4
 SpacesInAngles: false
 SpacesInParentheses: true
 ColumnLimit: 0
+MaxEmptyLinesToKeep: 0
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 5
 # }
