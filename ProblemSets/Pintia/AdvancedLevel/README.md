@@ -1,5 +1,11 @@
 # TODO List
 
+## Thery Prof
+
+- 1033 Prove the pesudo-dijkstra algorithm
+- 1067 Prove the reveres algorithm
+- 
+
 ## More Simplified Code
 
 - 1010, 1012, 1018 is too complex
