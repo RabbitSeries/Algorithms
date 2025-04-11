@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+namespace AVL_Ietrative {
 template <typename _ElemType, typename _Cmp = std::less<>>
     requires std::default_initializable<_Cmp> && requires( const _Cmp& cmp, const _ElemType& a, const _ElemType& b ) {
         { cmp( a, b ) } -> std::convertible_to<bool>;
@@ -69,20 +70,18 @@ struct node {
         while ( !NodeStk.empty() ) {
             auto [curNode, ParentInfo] = NodeStk.top();
             if ( !Added ) {
-                if ( !curNode ) {
-                    curNode = new NodeType{ elem };
-                    resolveInfo( NodeStk, curNode, ParentInfo );
-                    Added = true;
-                } else {
+                if ( curNode ) {
                     if ( cmp( elem, curNode->elem ) ) {
                         NodeStk.emplace( curNode->l, -1 );
                     } else if ( cmp( curNode->elem, elem ) ) {
                         NodeStk.emplace( curNode->r, 1 );
                     } else {
                         return initRoot;  // Dulplicated elem.
-                        // NodeStk.pop();
-                        // Added = true;
                     }
+                } else {
+                    curNode = new NodeType{ elem };
+                    resolveInfo( NodeStk, curNode, ParentInfo );
+                    Added = true;
                 }
             } else {
                 blanceRoot( NodeStk, curNode, ParentInfo );
@@ -92,14 +91,6 @@ struct node {
         updateHeight( root );
         return root;
     }
-    struct reverseCmp {
-        _Cmp originalCmp;
-        reverseCmp( _Cmp cmp ) : originalCmp( cmp ) {}
-        template <typename _T1, typename _T2>
-        bool operator()( _T1 e1, _T2 e2 ) const {
-            return !cmp( e1, e2 );
-        }
-    };
     friend NodeType* delNode( NodeType* root, ElemType elem, _Cmp&& cmp = _Cmp{} ) {
         if ( !root ) return nullptr;
         std::stack NodeStk{ std::deque{ std::pair<NodeType*, int>{ root, 0 } } };
@@ -108,9 +99,7 @@ struct node {
         while ( !NodeStk.empty() ) {
             auto [curNode, ParentInfo] = NodeStk.top();
             if ( !deleted ) {
-                if ( !curNode ) {
-                    return initRoot;  // Not found
-                } else {
+                if ( curNode ) {
                     if ( cmp( elem, curNode->elem ) ) {
                         NodeStk.emplace( curNode->l, -1 );
                     } else if ( cmp( curNode->elem, elem ) ) {
@@ -139,6 +128,8 @@ struct node {
                             deleted = true;
                         }
                     }
+                } else {
+                    return initRoot;  // Not found
                 }
             } else {
                 blanceRoot( NodeStk, curNode, ParentInfo );
@@ -171,32 +162,4 @@ struct node {
         cout << os.str();
     }
 };
-using namespace std;
-int main() {
-    node<int, less<>>* root{ nullptr };
-    string helpMessage(
-        "Command format: \n\
-        <I D E> num\n\
-        where I for insert, D for deletion, E for exit\n" );
-    cout << helpMessage;
-    string cmd{};
-    while ( cin >> cmd ) {
-        if ( cmd == "I" ) {
-            int val;
-            cin >> val;
-            root = insert( root, val );
-            cout << "Tree:\n";
-            BFS( root );
-        } else if ( cmd == "D" ) {
-            int val;
-            cin >> val;
-            root = delNode( root, val );
-            cout << "Tree:\n";
-            BFS( root );
-        } else {
-            break;
-        }
-    }
-    cout << "Root: " << ( root ? to_string( root->elem ) : "EMPTY" ) << endl;
-    cout << "Height: " << ( root ? root->height : 0 ) << endl;
-}
+}  // namespace AVL_Ietrative

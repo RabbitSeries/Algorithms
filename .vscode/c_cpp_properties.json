@@ -15,7 +15,7 @@
             "cStandard": "c23",
             "cppStandard": "gnu++20",
             "intelliSenseMode": "windows-gcc-x64",
-            "compilerPath": "g++.exe",
+            "compilerPath": "D:/Build_Tool_Lib/x86_64-14.2.0-release-win32-seh-msvcrt-rt_v12-rev2/bin/g++.exe",
             "mergeConfigurations": false,
             "browse": {
                 "path": [],
