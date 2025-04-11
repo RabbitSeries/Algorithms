@@ -18,10 +18,12 @@ class Solution {
     }
     void Flood( vector<vector<int>>& floodMap, vector<vector<bool>>& visited, pair<int, int> const& pos ) {
         priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<>> pq{ greater<>{}, { { pos.first, pos.second, floodMap[pos.first][pos.second] } } };
-        while(!pq.empty()){
-            auto [x,y,Height] = pq.top();
+        while ( !pq.empty() ) {
+            auto [x, y, Height] = pq.top();
             pq.pop();
-            if(visited[x][y])
+            if ( visited[x][y] ) {
+                // TODO  DO DFS , Updating height and Enque logic.
+            }
         }
     }
 };

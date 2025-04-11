@@ -7,6 +7,7 @@ int main() {
     cin >> totalFav;
     // vector<int> hashMap( totalFav + 1 );  // Array: 60 ms、
     array<int, 201> hashMap{ 0 };  // Array will not init it self, but vector will
+    // vector<int> hashMap( 201, 0 ); // Vector is only slightly slower if pre-allocated using size initialization/reserve.
     // gp_hash_table<int, int> hashMap;
     cin >> totalFav;
     for ( int i = 1; i <= totalFav; i++ ) {
