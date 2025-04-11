@@ -131,8 +131,6 @@ struct node {
 using namespace std;
 int main() {
     node<int, less<>>* root{ nullptr };
-    // int elemCnt = 0;
-    // cin >> elemCnt;
     string helpMessage(
         "Command format: \n\
         <I D E> num\n\
@@ -156,5 +154,6 @@ int main() {
             break;
         }
     }
-    cout << "Root: " << ( root ? to_string( root->elem ) : "" );
+    cout << "Root: " << ( root ? to_string( root->elem ) : "EMPTY" ) << endl;
+    cout << "Height: " << ( root ? root->height : 0 ) << endl;
 }
