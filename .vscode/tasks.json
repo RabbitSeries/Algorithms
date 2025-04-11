@@ -18,6 +18,7 @@
             ],
             "presentation": {
                 "reveal": "silent",
+                "clear": true
             },
             "options": {
                 "cwd": "${fileDirname}",
@@ -49,6 +50,7 @@
             ],
             "presentation": {
                 "reveal": "silent",
+                "clear": true
             },
             "options": {
                 "cwd": "${fileDirname}",
@@ -95,6 +97,10 @@
             ],
             "options": {
                 "cwd": "${fileDirname}"
+            },
+            "presentation": {
+                "reveal": "silent",
+                "clear": true
             },
             "problemMatcher": [
                 "$msCompile"
