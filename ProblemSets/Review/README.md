@@ -3,7 +3,7 @@
 - Simulation: `Queue Problem`, `Geometry`, `Date Calculation`, `String number add/multiply`, `Rank calculation`
 - Datastructure: `Tree Traversal Order Transform`
 - Graph: `Deepest nodes`
-- DP: `Maximun SubSequence Sum`
+- DP: `Maximun SubSequence Sum`, `0/1 Package`, `Tree Dependency DP`
 
 ## Simulation
 
@@ -21,6 +21,7 @@
 ### Num digits problem
 
 - A1060 How to trim string number's zero-prefix and some dogshit boundary condition.
+- A1065 climits
 
 ### Date Calculation
 
@@ -32,4 +33,8 @@
 
 ## Graph
 
-- 1021 : Deepest node problem
+- A1021 : Deepest node problem
+
+## DP
+
+- A1068: 0/1 DP + Greedy print package
