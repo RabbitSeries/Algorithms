@@ -21,5 +21,5 @@ int main() {
         market -= take;
         revenue += take * ( mooncakes[i].second / mooncakes[i].first );
     }
-    cout << fixed << setprecision( 2 ) << revenue;
+    cout << fixed << setprecision( 2 ) << round( revenue * 100 ) / 100.0;
 }

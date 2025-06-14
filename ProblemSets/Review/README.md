@@ -5,6 +5,7 @@
 - Graph: `Deepest nodes`
 - DP: `Maximun SubSequence Sum`, `0/1 Package`, `Tree Dependency DP`
 
+Some miscellanies: accurate up means round 
 ## Simulation
 
 ### Queue Problem
@@ -38,3 +39,39 @@
 ## DP
 
 - A1068: 0/1 DP + Greedy print package
+
+
+# TODO List
+
+## Thery Prof
+
+- [ ] 1033 Prove the pesudo-dijkstra algorithm
+- [x] 1067 Prove the reverse algorithm
+
+## More Simplified Code
+
+- [ ] 1012, 1018 is too complex
+- [ ] 1039, 1045 ~~why bit operator << is slower than multuply *~~(bitwise op is lower than plus), why ~~unordered_map is slower than vector and map~~(hash cost and confilct cost)?
+- [ ] 1040 Change to DP.
+- [x] 1010 Maybe some shitty overflow controll can be simplified.
+
+## Long-term optimization
+
+- [ ] Change all tree datastructure into __gnu_pd_bs::tree.
+
+## Learn __gnu_pbds
+
+bitset::count() count 1 is O(n/w)
+pbds AVL tag：
+    rb_tree_tag
+    splay_tree_tag
+    ov_tree_tag
+pbds heap tag：
+    pairing_heap_tag
+    binary_heap_tag
+        priority_queue
+    binomial_heap_tag:
+        merge
+    rc_binomial_heap_tag
+    thin_heap_tag
+        dijkstra

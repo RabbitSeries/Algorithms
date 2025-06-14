@@ -4,12 +4,9 @@ using ull = unsigned long long;
 string itos( ull num ) {
     return ( ostringstream() << right << setw( 4 ) << setfill( '0' ) << num ).str();
 }
-string reverse( string s ) {
-    string res = s;
-    for ( auto [itr, i] = pair( s.rbegin(), 0 ); itr != s.rend(); itr++, i++ ) {
-        res[i] = *itr;
-    }
-    return res;
+string reversed( string s ) {
+    reverse( s.begin(), s.end() );
+    return s;
 }
 string sorted( string s ) {
     sort( s.begin(), s.end() );
@@ -31,7 +28,7 @@ int main() {
     } else {
         do {
             string sortDigits = sorted( itos( N ) );
-            int lN = stoi( sortDigits ), rN = stoi( reverse( sortDigits ) );
+            int lN = stoi( sortDigits ), rN = stoi( reversed( sortDigits ) );
             N = abs( lN - rN );
             resList.emplace_back( itos( max( lN, rN ) ), itos( min( lN, rN ) ), itos( N ) );
         } while ( N != 6174 );

@@ -30,5 +30,17 @@ if exist "%workingPath%\obj" rd /s /q "%workingPath%\obj" && echo Removed direct
 if exist "%workingPath%\bin" rd /s /q "%workingPath%\bin" && echo Removed directory %workingPath%\.bin.
 @REM 
 for /r "%workingPath%\AssemblyOutput" %%p in (*.*) do del /q "%%p"
+
+
+@REM set sum=0
+@REM set count=1
+@REM :loop
+@REM if %count% gtr 10000000000 goto end
+@REM set /a sum+=count
+@REM set /a count+=1
+@REM goto loop
+
 :end
+
+
 endlocal

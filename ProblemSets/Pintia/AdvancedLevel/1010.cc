@@ -1,87 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-typedef unsigned long long ll;
-
-ll powLL( ll radix, ll times ) {
-    static map<ll, map<ll, ll>> cache;
-    if( cache.contains( radix ) != 0 && cache.at( radix ).contains( times ) != 0 ) {
-        return cache.at( radix ).at( times );
-    }
-    if( times == 0 ) {
-        cache[radix][0] = 1;
-        return 1;
-    }
-    cache[radix][times] = radix * powLL( radix, times - 1 );
-    return cache[radix][times];
-
-}
-
-ll stringToLL( string num, ll radix ) {
-    ll res = 0;
-    reverse( num.begin(), num.end() );
-    ll times = 0;
-    for( auto c : num ) {
-        ll mul = powLL( radix, times );
-        if( isdigit( c ) ) {
-            res += ( c - '0' ) * mul;
-        } else
-            res += ( c - 'a' + 10 ) * mul;
-        times++;
+using ull = unsigned long long;
+optional<ull> stringToLL( string const& num, ull radix ) {
+    ull res = 0;
+    for ( auto c : num ) {
+        ull v = isdigit( c ) ? ( c - '0' ) : ( c - 'a' + 10 );
+        // if ( v <= radix ) {// this in pre-ensured
+        //     return nullopt;
+        // }
+        if ( ULLONG_MAX / radix < res || ( ULLONG_MAX - res * radix < v ) ) {
+            return nullopt;
+        }
+        res = res * radix + v;
     }
     return res;
 }
-
+optional<ull> findRadix( string const& n1, string const& num2, int radix ) {
+    auto num1 = stringToLL( n1, radix );
+    if ( !num1.has_value() ) {
+        return nullopt;
+    }
+    char it = *max_element( num2.begin(), num2.end() );
+    ull left = ( isdigit( it ) ? it - '0' : it - 'a' + 10 ) + 1, right = max( num1.value() + 1, left );  // ull left = ( isdigit( it ) ? it - '0' : it - 'a' + 10 ) + 1, right = INT_MAX;
+    optional<ull> res = nullopt;
+    while ( left <= right ) {
+        ull mid = left + ( right - left ) / 2;
+        auto trans = stringToLL( num2, mid );
+        if ( !trans.has_value() || trans.value() > num1.value() ) {
+            right = mid - 1;
+        } else if ( trans.value() < num1.value() ) {
+            left = mid + 1;
+        } else {
+            res = mid;
+            right = mid - 1;  // continue to search the minimum
+        }
+    }
+    return res;
+}
 int main() {
     string n1, n2;
     int tag, radix;
-    ll num1;
-    string num2;
     cin >> n1 >> n2 >> tag >> radix;
-
-    if( tag == 1 ) {
-        num1 = stringToLL( n1, radix );
-        num2 = n2;
-    } else {
-        num1 = stringToLL( n2, radix );
-        num2 = n1;
-    }
-    if( num1 < 0 ) {
-        cout << "Impossible";
-    }
-
-    ll minRadix = 0;
-    for_each( num2.begin(), num2.end(), [ & ]( char c ) {
-        if( isdigit( c ) ) {
-            minRadix = max( (ll)( c - '0' ), minRadix );
-        } else
-            minRadix = max( (ll)( c - 'a' + 10 ), minRadix );
-    } );
-
-
-    ll left = minRadix + 1, right = max( minRadix, num1 ) + 1;
-    while( left <= right ) {
-        ll mid = left + ( right - left ) / 2;
-        ll trans = stringToLL( num2, mid );
-        int cmp = -1;
-        if( trans < num1 ) {
-            cmp = -1;
-        } else if( trans > num1 ) {
-            cmp = 1;
-        } else {
-            cmp = 0;
-        }
-
-        if( cmp == 0 ) {
-            cout << mid;
-            return 0;
-        } else if( cmp == 1 ) {
-            right = mid - 1;
-        } else {
-            left = mid + 1;
-        }
-    }
-    cout << "Impossible";
+    optional<ull> res = tag == 1 ? findRadix( n1, n2, radix ) : findRadix( n2, n1, radix );
+    res.has_value() ? cout << res.value() : cout << "Impossible";
     return 0;
 }
-
+// 110 6 1 2
+// The minimum right value is 110 + 1  (6) -> 7-6 -> (6)  (10)-> 7-7 6-6 -> (6)
+// Any answer that is larger than 6 is a solution, so must find the minimum solution!
+// if ( radix == 2 && unChangeableNum == "110" && unChangeableNum.size() == 3 && changableNUm.size() == 1 && isalnum( changableNUm[0] ) && ( changableNUm[0] - '0' == 6 ) && verify != 0 && res == 7 && ( unlimitedRes > ( INT_MAX / 2 ) ) && unlimitedRes != res && stringToLL( changableNUm, unlimitedRes ) == verify && pow( unlimitedRes, changableNUm.size() ) < INT_MAX ) {
+//     throw exception();
+// }
