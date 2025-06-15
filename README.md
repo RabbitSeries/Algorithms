@@ -6,13 +6,9 @@ Learning `Datastruct`s and `Algorithm`s.
 
 Common `Datastruct`s and related maintainance `Algorithm`s used in puzzles/software development.
 
-## DesignPatterns
-
-Implementations for `Effective C++` and `C++ 20 Design Patterns`.
-
 ## DP
 
-Some important `DP` problems can lowewr exponential time complexity to n square.
+Some important `DP` problems can lower exponential time complexity to n square.
 
 ## Math
 
