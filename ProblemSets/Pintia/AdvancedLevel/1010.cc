@@ -15,13 +15,14 @@ optional<ull> stringToLL( string const& num, ull radix ) {
     }
     return res;
 }
-optional<ull> findRadix( string const& n1, string const& num2, int radix ) {
+optional<ull> findRadix( string const& n1, string const& num2, ull radix ) {
     auto num1 = stringToLL( n1, radix );
     if ( !num1.has_value() ) {
         return nullopt;
     }
-    char it = *max_element( num2.begin(), num2.end() );
-    ull left = ( isdigit( it ) ? it - '0' : it - 'a' + 10 ) + 1, right = max( num1.value() + 1, left );  // ull left = ( isdigit( it ) ? it - '0' : it - 'a' + 10 ) + 1, right = INT_MAX;
+    vector<int> mapToInt;
+    transform( num2.begin(), num2.end(), back_inserter( mapToInt ), []( char c ) { return isdigit( c ) ? c - '0' : c - 'a' + 10; } );
+    ull left = *max_element( mapToInt.begin(), mapToInt.end() ) + 1, right = max( num1.value() + 1, left );  // ull left = ( isdigit( it ) ? it - '0' : it - 'a' + 10 ) + 1, right = INT_MAX;
     optional<ull> res = nullopt;
     while ( left <= right ) {
         ull mid = left + ( right - left ) / 2;
@@ -39,7 +40,7 @@ optional<ull> findRadix( string const& n1, string const& num2, int radix ) {
 }
 int main() {
     string n1, n2;
-    int tag, radix;
+    ull tag, radix;
     cin >> n1 >> n2 >> tag >> radix;
     optional<ull> res = tag == 1 ? findRadix( n1, n2, radix ) : findRadix( n2, n1, radix );
     res.has_value() ? cout << res.value() : cout << "Impossible";

@@ -1,95 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-unordered_map<int, char> lesson{
-    { 0, 'C' },
-    { 1, 'M' },
-    { 2, 'E' },
-    { 3, 'A' } };
-unordered_map<char, int> priority{
-    { 'A', 0 },
-    { 'C', 1 },
-    { 'M', 2 },
-    { 'E', 3 } };
-struct gradeInfo {
-    gradeInfo( size_t r, char lName ) : rank( r ), lessonName( lName ) {};
-    size_t rank = 0;
-    char lessonName = '0';
-    bool operator>=( const gradeInfo& another ) const {
-        if ( rank != another.rank ) {
-            return rank > another.rank;
-        } else {
-            return priority[lessonName] >= priority[another.lessonName];
-        }
-    }
-};
-vector<int> getGradeCmpList( unordered_map<int, vector<int>> const& allGrades, int lessonId ) {
-    static unordered_map<int, vector<int>> gradesCache;
-    if ( gradesCache.contains( lessonId ) != 0 ) {
-        return gradesCache[lessonId];
-    }
-    vector<int> res;
-    for ( auto const& stuInfo : allGrades ) {
-        res.push_back( stuInfo.second[lessonId] );
-    }
-    gradesCache[lessonId] = res;
-    return res;
-}
-gradeInfo findBest( int StuId, unordered_map<int, vector<int>> const& allGrades, unordered_map<int, int> const& avgGrade, vector<int> const& avgGradeList ) {
-    priority_queue<gradeInfo, vector<gradeInfo>, greater_equal<>> pq;
+vector<char> lesson{ 'A', 'C', 'M', 'E' };
+using gradeInfo = pair<int, char>;
+unordered_map<int, vector<int>> allGrades;
+int stuCnt, queryCnt;
+gradeInfo findBest( int StuId ) {
     vector<gradeInfo> rankList;
     for ( int i = 0; i < 4; i++ ) {
-        vector<int> gradeCmpList;
-        int cmpGrade;
-        if ( i != 3 ) {
-            cmpGrade = allGrades.at( StuId ).at( i );
-            gradeCmpList = move( getGradeCmpList( allGrades, i ) );
-        } else {
-            cmpGrade = avgGrade.at( StuId );
-            gradeCmpList = move( avgGradeList );
+        vector<int> grades;
+        for ( auto const& [_, stuInfo] : allGrades ) {
+            grades.emplace_back( stuInfo[i] );
         }
-        size_t curRank = 0;
-        for_each( gradeCmpList.begin(), gradeCmpList.end(), [&]( int grade ) {
-            if ( cmpGrade >= grade ) {
-                // Rank calculation
-                curRank++;
-            }
-        } );
-        // rankList.push_back( { allGrades.size() - curRank + 1,lesson.at( i ) } );
-        pq.push( { allGrades.size() - curRank + 1, lesson.at( i ) } );
+        int cmpGrade = allGrades.at( StuId )[i];
+        int curRank = count_if( grades.begin(), grades.end(), bind( greater_equal<>{}, cmpGrade, placeholders::_1 ) );
+        rankList.emplace_back( stuCnt - curRank + 1, lesson[i] );
     }
-    // sort( rankList.begin(), rankList.end(), less<>{} );
-    return pq.top();
-    // return rankList[0];
+    stable_sort( rankList.begin(), rankList.end(), []( const gradeInfo& lhs, gradeInfo const& rhs ) {  // preserve relative positions for equivalent gradeInfo
+        return lhs.first < rhs.first;
+    } );
+    return move( rankList.front() );
 }
 int main() {
-    unordered_map<int, vector<int>> allGrades;
-    unordered_map<int, int> avgGrade;
-    vector<int> avgGradeList;
-    int stuCnt, queryCnt;
     cin >> stuCnt >> queryCnt;
-    for ( int i = 0; i < stuCnt; i++ ) {
-        vector<int> gradeList( 3, 0 );
-        int stuID;
+    for ( int i = 0, stuID; i < stuCnt; i++ ) {
+        vector<int> gradeList( 4 );
         cin >> stuID;
-        int avg = 0;
-        for ( int i = 0; i < 3; i++ ) {
+        for ( int i = 1; i <= 3; i++ ) {
             cin >> gradeList[i];
-            avg += gradeList[i];
         }
-        // avg /= 3;
-        allGrades[stuID] = move( gradeList );
-        avgGrade[stuID] = avg;
-        avgGradeList.push_back( avg );
+        gradeList[0] = accumulate( gradeList.begin() + 1, gradeList.end(), 0, plus<>{} );
+        allGrades[stuID] = move( gradeList );  // A, C, M, E
     }
-    for ( int i = 0; i < queryCnt; i++ ) {
-        int stuID;
+    for ( int i = 0, stuID; i < queryCnt; i++ ) {
         cin >> stuID;
-        if ( allGrades.contains( stuID ) == 0 ) {
-            cout << "N/A" << ( i != queryCnt ? "\n" : "" );
+        if ( !allGrades.contains( stuID ) ) {
+            cout << "N/A" << endl;
             continue;
         }
-        gradeInfo topGrade = move( findBest( stuID, allGrades, avgGrade, avgGradeList ) );
-        cout << topGrade.rank << " " << topGrade.lessonName << ( i != queryCnt ? "\n" : "" );
+        gradeInfo topGrade = findBest( stuID );
+        cout << topGrade.first << " " << topGrade.second << endl;
     }
     return 0;
 }
