@@ -5,20 +5,17 @@ using gradeInfo = pair<int, char>;
 unordered_map<int, vector<int>> allGrades;
 int stuCnt, queryCnt;
 gradeInfo findBest( int StuId ) {
-    vector<gradeInfo> rankList;
+    gradeInfo minRank{ INT_MAX, 0 };
     for ( int i = 0; i < 4; i++ ) {
-        vector<int> grades;
-        for ( auto const& [_, stuInfo] : allGrades ) {
-            grades.emplace_back( stuInfo[i] );
-        }
         int cmpGrade = allGrades.at( StuId )[i];
-        int curRank = count_if( grades.begin(), grades.end(), bind( greater_equal<>{}, cmpGrade, placeholders::_1 ) );
-        rankList.emplace_back( stuCnt - curRank + 1, lesson[i] );
+        int curRank = count_if( allGrades.begin(), allGrades.end(), [&]( decltype( allGrades )::value_type const& stuInfo ) {
+            return cmpGrade < stuInfo.second[i];  // _____(higher)->|->(greaterequal)______
+        } );
+        if ( curRank + 1 < minRank.first ) {      // leave equivalent grades which have lower priority
+            minRank = { curRank + 1, lesson[i] };
+        }
     }
-    stable_sort( rankList.begin(), rankList.end(), []( const gradeInfo& lhs, gradeInfo const& rhs ) {  // preserve relative positions for equivalent gradeInfo
-        return lhs.first < rhs.first;
-    } );
-    return move( rankList.front() );
+    return minRank;
 }
 int main() {
     cin >> stuCnt >> queryCnt;
