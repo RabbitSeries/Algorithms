@@ -1,12 +1,8 @@
-
-
-
 @[TOC](海明码原理)
 ## Why海明码？
 今天写了异或运算的一些性质，在文章中完成了海明码的编码和纠码实现:
 [HammingCode C++ partial functionality implementation.（海明码C++部分实现，C++，海明码，Hamming code，纠错编码）](https://blog.csdn.net/A2365974701/article/details/140912199 "Hamming Code C++ implementation")
 
-说了这么多直观的,如果是研究一门语言,大部分人可能只需要知道怎么说就行了,这个时候语言学家就要站出来头疼了,所以来想想Hamming Code的原理是什么,就不写英文了.
 ## 问题提出
 我们先来看看一个制药问题/做核酸问题,现在有一批疫苗$n$类（一个班级的学生$n$个,不考虑传染）和一批不限量小鼠（核酸试剂管）,为了统一描述,后文中的疫苗=同学,小鼠=核酸试剂管。
 
