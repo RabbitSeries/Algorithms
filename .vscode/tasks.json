@@ -9,7 +9,7 @@
             "command": "g++",
             "args": [
                 "-Wall",
-                "-std=gnu++20",
+                "-std=gnu++23",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
@@ -29,7 +29,7 @@
             "group": {
                 "kind": "build"
             },
-            "detail": "gnu++20"
+            "detail": "gnu++23"
         },
         //! [Linux/Windows] [Release]
         {
@@ -41,7 +41,7 @@
                 "-fno-tree-ch",
                 "-O2",
                 "-Wall",
-                "-std=gnu++20",
+                "-std=gnu++23",
                 "-pipe",
                 "${file}",
                 "-lm",
@@ -61,7 +61,7 @@
             "group": {
                 "kind": "build"
             },
-            "detail": "gnu++20, release"
+            "detail": "gnu++23, release"
         },
         //! cl.exe build active file
         {
@@ -86,7 +86,7 @@
             "args": [
                 "/Zi",
                 "/EHsc",
-                "/std:gnu++20",
+                "/std:latest",
                 "${file}",
                 // Specify the directory. No empty characters after /Fo. Use ":" to add sperators.
                 // "/Fo${workspaceFolder}\\.vscode\\debug\\${relativeFileDirname}\\${fileBasenameNoExtension}",
@@ -179,7 +179,7 @@
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
-                "-std=gnu++20",
+                "-std=gnu++23",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${fileDirname}/*.cpp",
@@ -199,7 +199,7 @@
             "group": {
                 "kind": "build",
             },
-            "detail": "gnu++20, opencv, debug."
+            "detail": "gnu++23, opencv, debug."
         },
         //! [OpenCV] [Release] C/C++: g++.exe build active file workspace
         {
@@ -208,7 +208,7 @@
             "windows": "cmd.exe",
             "command": "g++.exe",
             "args": [
-                "-std=gnu++20",
+                "-std=gnu++23",
                 "-fdiagnostics-color=always",
                 // "-g",
                 "${fileDirname}/*.cpp",
@@ -228,7 +228,7 @@
             "group": {
                 "kind": "build",
             },
-            "detail": "gnu++20, opencv, release."
+            "detail": "gnu++23, opencv, release."
         },
         // ![Clean] Confirm
         {

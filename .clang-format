@@ -17,6 +17,8 @@ SpacesInAngles: false
 SpacesInParentheses: true
 ColumnLimit: 0
 MaxEmptyLinesToKeep: 0
+PPIndentWidth: -1
+IndentPPDirectives: BeforeHash
 AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 5
