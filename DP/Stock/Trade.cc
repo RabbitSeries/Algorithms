@@ -21,15 +21,16 @@ int StateMachineSolution( int TransN, deque<int> Prices ) {
         if ( Profits[s.key()] > s.profit ) {
             continue;
         }
+        // Profits[s.key()] == s.profit from here
         maxProfit = max( maxProfit, Profits[s.key()] );
-        state noAction = { s.day + 1, s.trans, Profits[s.key()], s.isHolding };
+        state noAction = { s.day + 1, s.trans, s.profit, s.isHolding };
         if ( noAction.day <= DayN && ( !Profits.contains( noAction.key() ) || Profits[noAction.key()] < noAction.profit ) ) {
             Profits[noAction.key()] = noAction.profit;
             q.push( noAction );
         }
         if ( s.day < DayN ) {
             state Action = { s.day + 1, s.isHolding ? s.trans + 1 : s.trans,
-                             Profits[s.key()] + Prices[s.day + 1] * ( s.isHolding ? 1 : -1 ),
+                             s.profit + Prices[s.day + 1] * ( s.isHolding ? 1 : -1 ),
                              !s.isHolding };
             if ( Action.trans <= TransN && ( !Profits.contains( Action.key() ) || Profits[Action.key()] < Action.profit ) ) {
                 Profits[Action.key()] = Action.profit;

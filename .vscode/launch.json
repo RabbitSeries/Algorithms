@@ -34,15 +34,15 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "[Linux/Windows] [Debug]",
-            "windows": {
-                "postDebugTask": "[Clean] No Confirm" // Waiting for postDebugTask is displayed as preLaunchTask anyway, 
-                // https://github.com/microsoft/vscode/blob/d4cda5fa411f4d119b7ec6f60c99c37f7563ce96/src/vs/workbench/contrib/debug/browser/debugService.ts#L728-L735
-                // https://github.com/microsoft/vscode/blob/d4cda5fa411f4d119b7ec6f60c99c37f7563ce96/src/vs/workbench/contrib/debug/browser/debugTaskRunner.ts#L293C2-L293C7
-            },
-            "linux": {
-                "postDebugTask": "[Linux] [Clean] No Confirm"
-            },
+            // "preLaunchTask": "[Linux/Windows] [Debug]",
+            // "windows": {
+            //     "postDebugTask": "[Clean] No Confirm" // Waiting for postDebugTask is displayed as preLaunchTask anyway, 
+            //     // https://github.com/microsoft/vscode/blob/d4cda5fa411f4d119b7ec6f60c99c37f7563ce96/src/vs/workbench/contrib/debug/browser/debugService.ts#L728-L735
+            //     // https://github.com/microsoft/vscode/blob/d4cda5fa411f4d119b7ec6f60c99c37f7563ce96/src/vs/workbench/contrib/debug/browser/debugTaskRunner.ts#L293C2-L293C7
+            // },
+            // "linux": {
+            //     "postDebugTask": "[Linux] [Clean] No Confirm"
+            // },
         },
         {
             "name": "[Linux/Windows] [Release]",

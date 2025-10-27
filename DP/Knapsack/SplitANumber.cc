@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
+#include <queue>
 #include <ranges>
 #include <vector>
 int DP() {
@@ -39,7 +40,21 @@ int Heuristics() {
                                        std::views::values,
                                    0, std::plus<>{} );
 }
+int DP_Limited( const int num, std::deque<int> numbers ) {
+    int numN = (int)numbers.size();
+    numbers.emplace_front( 0 );
+    std::vector count( num + 1, 0 );
+    count[0] = 1;
+    for ( int i = 1; i <= numN; i++ ) {
+#define FULL_PACK
+        for ( int j : std::views::iota( numbers[i], num + 1 ) ) {
+            count[j] += count[j - numbers[i]];
+        }
+    }
+    return count[num];
+}
 int main() {
     std::cout << "Result (DP approach): " << DP() << std::endl;
     std::cout << "Result (Heuristics approach): " << Heuristics() << std::endl;
+    std::cout << "Limited sum Result (Heuristics approach): " << DP_Limited( 53, { 1, 2, 3 } ) << std::endl;
 }
