@@ -16,6 +16,7 @@ TabWidth: 4
 SpacesInAngles: false
 SpacesInParentheses: true
 ColumnLimit: 0
+NamespaceIndentation: All
 MaxEmptyLinesToKeep: 0
 PPIndentWidth: -1
 IndentPPDirectives: BeforeHash
