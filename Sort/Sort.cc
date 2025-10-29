@@ -176,7 +176,7 @@ namespace Select {
         }
     }
     // * ===============================================
-    /**
+    /** Heap sort
      * @best    O(nlogn)
      * @worst   O(nlogn)
      * @average O(nlogn)
@@ -184,30 +184,8 @@ namespace Select {
      * @unstable
      * @apply   Sequence table
      */
-    void heapify( std::vector<int>& data ) {
-        // Maintain data[0] is root;
-        int len = int( data.size() );
-        for ( int i = 1; i < len; i++ ) {                   // insert data[i] to root
-            int j = i;
-            while ( j && data[j] < data[( j - 1 ) / 2] ) {  // Stop if already in order
-                std::swap( data[j], data[( j - 1 ) / 2] );  // Indexed from 0, l = 2*i+1, r = 2*i+2, p = (i-1)/2
-                j = ( j - 1 ) / 2;
-            }
-        }
-    }
-    void heappush( std::vector<int>& data, int elem ) {
-        data.push_back( elem );
-        size_t j = data.size() - 1;
-        while ( j && data[j] < data[( j - 1 ) / 2] ) {  // Stop if already in order
-            std::swap( data[j], data[( j - 1 ) / 2] );
-            j = ( j - 1 ) / 2;
-        }
-    }
-    int heappop( std::vector<int>& data ) {
-        int val = data[0];
-        data[0] = data.back();
-        data.pop_back();
-        size_t i = 0;
+    /* Pop helper, init helper */
+    void sift_down( std::vector<int>& data, size_t i ) {
         while ( i < data.size() ) {
             size_t l = i * 2 + 1, r = i * 2 + 2;
             size_t smallest = i;
@@ -220,10 +198,73 @@ namespace Select {
             if ( smallest != i ) {
                 std::swap( data[i], data[smallest] );
                 i = smallest;
-            } else {
-                break;  // In order, break sift down
+            } else {  // In order, break sift down
+                break;
             }
         }
+    }
+    /* Push helper */
+    void sift_up( std::vector<int>& data, size_t i ) {
+        while ( i && data[i] < data[( i - 1 ) / 2] ) {  // Stop if already in order
+            std::swap( data[i], data[( i - 1 ) / 2] );  // Indexed from 0, l = 2*i+1, r = 2*i+2, p = (i-1)/2
+            i = ( i - 1 ) / 2;
+        }
+    }
+    /**
+     * @best    O(n)
+     * @worst   O(n)
+     * @average O(n)
+     * @space   O(1)
+     * @unstable
+     * @apply   Sequence table
+     */
+    void heapify( std::vector<int>& data ) {  // From n/2 sift down can hepify in (Σ 1 2^h, ... , h*1 / n/2) , where h=log2(n)~1, so it is just ~ O(n)
+        // Maintain data[0] is root;
+        int len = int( data.size() );
+        for ( int i = ( len - 1 ) / 2; i >= 0; i-- ) {  // ajust each non-leave to leave in path
+            sift_down( data, i );
+        }
+    }
+    /**
+     * @best    O(n)
+     * @worst   O(nlogn)
+     * @average O(nlogn)
+     * @space   O(1)
+     * @unstable
+     * @apply   Sequence table
+     */
+    void heapify_nlogn( std::vector<int>& data ) {
+        // Maintain data[0] is root;
+        int len = int( data.size() );
+        for ( int i = 1; i < len; i++ ) {  // insert data[i] to root
+            sift_up( data, i );
+        }
+    }
+    /**
+     * @best    O(1)
+     * @worst   O(logn)
+     * @average O(logn)
+     * @space   O(1)
+     * @unstable
+     * @apply   Sequence table
+     */
+    void heappush( std::vector<int>& data, int elem ) {
+        data.push_back( elem );
+        sift_up( data, data.size() - 1 );
+    }
+    /**
+     * @best    O(logn)
+     * @worst   O(logn)
+     * @average O(logn)
+     * @space   O(1)
+     * @unstable
+     * @apply   Sequence table
+     */
+    int heappop( std::vector<int>& data ) {
+        int val = data[0];
+        data[0] = data.back();
+        data.pop_back();
+        sift_down( data, 0 );
         return val;
     }
     void heap_sort_test( std::vector<int> data ) {
@@ -323,7 +364,6 @@ void test( std::function<void( std::vector<int>& )> f, std::vector<int> data ) {
     std::cout << "\n";
 }
 // * ===============================================
-// TODO External Sort
 int main() {
     std::random_device rd;
     std::mt19937 gen( rd() );

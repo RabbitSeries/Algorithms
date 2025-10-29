@@ -39,6 +39,7 @@
  *                    O
  * ================================================
  */
+#include <map>
 struct RBT : public AbstractBST<RBT> {
     RBT( int elem ) : AbstractBST( elem ) {}
     enum RBT_Color {
@@ -46,11 +47,10 @@ struct RBT : public AbstractBST<RBT> {
         black = true
     };
     RBT_Color color = red;
-    Node parent = nullptr;
+    std::weak_ptr<RBT> parent;  // Parent should use weak_ptr to avoid memory leak
     // int bHeight = 0; // Doesn't need this to maintain the property of RBT
     static void rRotate( Node root, Tree& tree );
     static void lRotate( Node root, Tree& tree );
-    static Tree balance( Tree root );
     static Tree insert( Tree tree, int elem );
     static void insert_rebalance( Node elem, Tree& tree );
 };
@@ -63,10 +63,10 @@ inline void RBT::rRotate( Node root, Tree& tree ) {
     lRoot->parent = root->parent;
     if ( root == tree ) {
         tree = lRoot;
-    } else if ( root == root->parent->l ) {
-        root->parent->l = lRoot;
+    } else if ( root == root->parent.lock()->l ) {
+        root->parent.lock()->l = lRoot;
     } else {
-        root->parent->r = lRoot;
+        root->parent.lock()->r = lRoot;
     }
     lRoot->r = root;
     root->parent = lRoot;
@@ -80,10 +80,10 @@ inline void RBT::lRotate( Node root, Tree& tree ) {
     rRoot->parent = root->parent;
     if ( root == tree ) {
         tree = rRoot;
-    } else if ( root == root->parent->l ) {
-        root->parent->l = rRoot;
+    } else if ( root == root->parent.lock()->l ) {
+        root->parent.lock()->l = rRoot;
     } else {
-        root->parent->r = rRoot;
+        root->parent.lock()->r = rRoot;
     }
     rRoot->l = root;
     root->parent = rRoot;
@@ -95,7 +95,7 @@ inline RBT::Tree RBT::insert( Tree tree, int elem ) {
     }
     bool left = false;
     // Parent is nullptr actually if root is really a root.
-    Node parent = tree->parent, p = tree;
+    Node parent = tree->parent.lock(), p = tree;
     while ( p ) {
         if ( elem == p->data ) {
             return tree;
@@ -120,9 +120,9 @@ inline RBT::Tree RBT::insert( Tree tree, int elem ) {
     return tree;
 }
 inline void RBT::insert_rebalance( Node elem, Tree& tree ) {
-    while ( elem != tree && elem->parent->color == red ) {
-        Node xpp = elem->parent->parent;
-        if ( elem->parent == xpp->l ) {
+    while ( elem != tree && elem->parent.lock()->color == red ) {
+        Node xpp = elem->parent.lock()->parent.lock();
+        if ( elem->parent.lock() == xpp->l ) {
             Node y = xpp->r;
             if ( y && y->color == red ) {
                 xpp->color = red;
@@ -130,11 +130,11 @@ inline void RBT::insert_rebalance( Node elem, Tree& tree ) {
                 xpp->r->color = black;
                 elem = xpp;
             } else {
-                if ( elem == elem->parent->r ) {
-                    elem = elem->parent;
+                if ( elem == elem->parent.lock()->r ) {
+                    elem = elem->parent.lock();
                     lRotate( elem, tree );
                 }
-                elem->parent->color = black;
+                elem->parent.lock()->color = black;
                 xpp->color = red;
                 rRotate( xpp, tree );
             }
@@ -146,11 +146,11 @@ inline void RBT::insert_rebalance( Node elem, Tree& tree ) {
                 xpp->r->color = black;
                 elem = xpp;
             } else {
-                if ( elem == elem->parent->l ) {
-                    elem = elem->parent;
+                if ( elem == elem->parent.lock()->l ) {
+                    elem = elem->parent.lock();
                     rRotate( elem, tree );
                 }
-                elem->parent->color = black;
+                elem->parent.lock()->color = black;
                 xpp->color = red;
                 lRotate( xpp, tree );
             }

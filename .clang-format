@@ -22,5 +22,5 @@ PPIndentWidth: -1
 IndentPPDirectives: BeforeHash
 AlignTrailingComments:
   Kind: Always
-  OverEmptyLines: 5
+  OverEmptyLines: 4
 # }

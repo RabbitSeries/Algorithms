@@ -120,7 +120,6 @@
                 }
             ],
             "preLaunchTask": "[OpenCV] [Release] C/C++: g++.exe build active file workspace",
-            "visualizerFile": "c:\\Users\\23659\\AppData\\Roaming\\Code\\User\\workspaceStorage\\528e422beb78aa2a2dec825f2d029597\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
         {
             "name": "[C/C++] [Assembly] g++ assemble active file",
