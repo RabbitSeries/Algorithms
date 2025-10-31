@@ -24,3 +24,4 @@ shift
 code  "%output_filename%.s" && code "%output_filename%_AT&T.txt" && code "%output_filename%_intel.txt"
 :end
 endlocal
+@REM wsl -- "g++ ./Sort/Sort.cc -std=c++23 && readelf ./a.out -a >log && xxd ./a.out > log2" && code log && code log2
