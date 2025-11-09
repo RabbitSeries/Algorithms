@@ -67,38 +67,25 @@
 struct AVL : public AbstractBST<AVL> {
     using Tree = std::shared_ptr<AVL>;
     using Node = std::shared_ptr<AVL>;
-    // overwrite this namespace, but still able to access this->BST::l/r though they are not the same
     AVL( int elem ) : AbstractBST( elem ) {}
     int height = 1;
     int bIndex();
     void updateHeight();
     static Tree balance( Tree root );
-    // Rotate clock wise
-    static Tree rRotate( Tree root );
-    // Rotate counter-clock wise
-    static Tree lRotate( Tree root );
+    static Tree rRotate( Tree root );  // Rotate clock wise
+    static Tree lRotate( Tree root );  // Rotate counter-clock wise
     static Tree insert( Tree root, int elem );
     static Tree del( Tree root, int elem );
 };
 inline int AVL::bIndex() {
-    if ( l && r ) {
-        return l->height - r->height;
-    } else if ( l ) {
-        return l->height;
-    } else if ( r ) {
-        return -r->height;
-    } else {
-        return 0;
-    }
+    int lHeight = l ? l->height : 0;
+    int rHeight = r ? r->height : 0;
+    return lHeight - rHeight;
 }
 inline void AVL::updateHeight() {
-    if ( l && r ) {
-        height = std::max( l->height, r->height ) + 1;
-    } else if ( l ) {
-        height = l->height + 1;
-    } else if ( r ) {
-        height = r->height + 1;
-    }
+    int lHeight = l ? l->height : 0;
+    int rHeight = r ? r->height : 0;
+    height = std::max( lHeight, rHeight ) + 1;
 }
 inline AVL::Tree AVL::rRotate( Tree root ) {
     Tree lRoot = root->l;
@@ -123,8 +110,7 @@ inline AVL::Tree AVL::balance( Tree root ) {
             root->r = AVL::rRotate( root->r );
         }
         root = AVL::lRotate( root );
-    }
-    if ( root->bIndex() == 2 ) {
+    } else if ( root->bIndex() == 2 ) {
         if ( root->l->bIndex() == -1 ) {
             root->l = AVL::lRotate( root->l );
         }

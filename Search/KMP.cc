@@ -168,7 +168,7 @@ int main() {
     std::mt19937 gen( rdv() );
     random_test( gen, 50, 100, 1, 13, "Compact pattern, loose match" );
     random_test( gen, 50, 100, 1, 3, "Compact pattern, compact match" );
-    random_test( gen, 50, 100, 13, 13, "Lose pattern, loose match" );
+    random_test( gen, 50, 100, 13, 13, "Loose pattern, loose match" );
     repetitive_test( gen, false, 60, 100, 13, "Repetive pattern" );
     repetitive_test( gen, true, 60, 100, 13, "Strong repetive pattern" );
     test( "asdasdasdaaaaaaaaaaaaaaaaaab", "aaaaaaaaaaaab" );

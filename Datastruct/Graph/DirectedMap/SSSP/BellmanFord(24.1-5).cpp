@@ -45,7 +45,7 @@ int  bellman_ford_minEdge(int v) {// O(VE), O(V + (V-1)E + VE + E) = O(V(1+2E))
     }
 
     int minEdge = _UNREACHEABLE;
-    for(int i = 0; i < graph.size(); i++) { // Continue to perform edge relaxation traversal to find all post-negative-cycle vertexes.
+    for(int i = 0; i < graph.size(); i++) { // Continue to perform edge relaxation traversal to find all post-negative-cycle vertices.
         // Suppose a shortest path from s to v, : <s to v> <v to others>
         // To obtain min{u to v for u in V}, just calculate min{u to v for u as start point of an edge}
         auto nextVList = graph[i];

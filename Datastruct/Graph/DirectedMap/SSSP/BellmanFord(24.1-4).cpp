@@ -45,7 +45,7 @@ bool  bellman_ford_setUnreachableNode() {// O(VE), O(V + (V-1)E + VE + E) = O(V(
         if(!relaexed) return false;                             // If there is a negative cycle in the graph, relaxed should always be true. So there won't be a negative cycle if relaxed is false.
     }
 
-    for(int traversal = 0; traversal < vcnt; traversal++) { // Continue to perform edge relaxation traversal to find all post-negative-cycle vertexes.
+    for(int traversal = 0; traversal < vcnt; traversal++) { // Continue to perform edge relaxation traversal to find all post-negative-cycle vertices.
         // Suppose a path among those start from source and have a negative cycle in it: <s,v_1> <v_1, v2> ... <v_k, ng_1> <ng_1 ... ng_1> <ng_1 v_m> <v_m ... v_n>
         // If take the nagetive cycle <ng_1 ... ng_1> as a zoro weight edge" <s,v_1> <v_1, v2> ... <v_k, ng_1> <ng_1 ng_1> <ng_1 v_m> v_m ... v_n>
         // Then there is no negative cycle in the path from source s to v_n.
@@ -54,7 +54,7 @@ bool  bellman_ford_setUnreachableNode() {// O(VE), O(V + (V-1)E + VE + E) = O(V(
         // Note that s can be ng_1, {NGV} can be empty, so <ng_1 ... ng_1> can have |V| edges.
         // So i-th traversal will skip those edges in the shortest path befre ng_1, and visit each i-th edge in both negative cycle <ng_1 ... ng_1> and <shortest path from ng_1 to {NGV}>.
         // Then mark those edges and perform relaxation so that {i+1}-th edge will at least be relaxed in the next traversal.
-        // At the end of each traversal, mark the start vertexes of those edges as UNREACHABLE.
+        // At the end of each traversal, mark the start vertices of those edges as UNREACHABLE.
         std::vector<int> setList;
         for(int i = 0; i < graph.size(); i++) {
             auto nextVList = graph[i];
@@ -71,7 +71,7 @@ bool  bellman_ford_setUnreachableNode() {// O(VE), O(V + (V-1)E + VE + E) = O(V(
             dis[i] = _UNREACHEABLE;
         });
     }
-    // At last set those end vertexes of edges with UNREACHABLE start vertex to UNREACHABLE.
+    // At last set those end vertices of edges with UNREACHABLE start vertex to UNREACHABLE.
     for(int i = 0; i < graph.size(); i++) {
         auto nextVList = graph[i];
         for(auto [nextV, edgeW] : nextVList) {

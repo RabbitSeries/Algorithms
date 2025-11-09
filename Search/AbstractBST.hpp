@@ -11,6 +11,7 @@ struct AbstractBST {
     int data = -1;
     // l->data < this->data < r.data
     AbstractBST( int elem ) : data{ elem } {}
+    virtual ~AbstractBST() {}
     Node l = nullptr, r = nullptr;
     static const Node find( const Tree root, int elem );
     static void pre( Tree root );
