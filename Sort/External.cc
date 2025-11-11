@@ -24,14 +24,14 @@ struct Stream {
         }
     }
 };
-auto random_segments() {
+auto random_segments( int segment_len ) {
     std::random_device rdv;
     std::mt19937 gen( rdv() );
     std::uniform_int_distribution u_dis( 0, 50 );
     // std::vector<int> test{ 27, 23, 46, 13};
     // std::vector<int> test{ 0, 0, 0, 0 };
     std::vector<Stream::Node> segments;
-    for ( int i = 0; i < 76; i++ ) {
+    for ( int i = 0; i < segment_len; i++ ) {
         if ( i % 17 == 0 ) {  // Empty segments test
             segments.push_back( std::make_shared<Stream>() );
         } else {
@@ -40,6 +40,29 @@ auto random_segments() {
     }
     return segments;
 }
+auto random_data( int data_len ) {
+    std::random_device rdv;
+    std::mt19937 gen( rdv() );
+    std::uniform_int_distribution u_dis( 0, 50 );
+    std::vector<int> segments;
+    for ( int i = 0; i < data_len; i++ ) {
+        segments.push_back( u_dis( gen ) );
+    }
+    return segments;
+}
+void print_raw_data( std::vector<int> const& result, const char* msg, bool judgeSorted = true ) {
+    std::cout << msg << "\n";
+    if ( judgeSorted ) {
+        std::cout << "Result sorted: " << ( std::is_sorted( result.begin(), result.end() ) ? "√" : "X" ) << "\n";
+    }
+    for ( int i = 0; int num : result ) {
+        std::cout << std::format( "{:02d} ", num );
+        if ( ( ++i ) % 50 == 0 ) {
+            std::cout << "\n";
+        }
+    }
+    std::cout << "\n";
+}
 void print_segments( std::vector<Stream::Node>& segments, const char* msg ) {
     auto original = segments |
                     std::views::filter( []( Stream::Node s ) {
@@ -47,23 +70,10 @@ void print_segments( std::vector<Stream::Node>& segments, const char* msg ) {
                     } ) |
                     std::views::transform( []( Stream::Node s ) { return s->value(); } ) |
                     std::ranges::to<std::vector<int>>();
-    std::cout << msg << "\nOriginal " << original.size() << " items:\n";
-    for ( int n : original ) {
-        std::cout << n << " ";
-    }
-    std::cout << "\n";
+    std::cout << std::format( "{:s}\nOriginal {:d} items:\n", msg, segments.size() );
+    print_raw_data( original, "", false );
     std::sort( original.begin(), original.end() );
-    for ( int n : original ) {
-        std::cout << n << " ";
-    }
-    std::cout << "\n";
-}
-void print_result( std::vector<int> const& result, const char* msg ) {
-    std::cout << msg << "\nResult sorted: " << ( std::is_sorted( result.begin(), result.end() ) ? "√" : "X" ) << "\n";
-    for ( int num : result ) {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    print_raw_data( original, "", false );
 }
 std::vector<int> loser_tree_sort( std::vector<Stream::Node>& segments ) {
     int k = segments.size();
@@ -104,19 +114,92 @@ std::vector<int> best_merge_tree( std::vector<Stream::Node>& segments, int roads
         std::vector to_merge( merge_tree.begin() + i - roads, merge_tree.begin() + i );
         int parent = ( i - 2 ) / roads;                     // i's parent is i-1/k (index from 0), then it's i-2/k
         merge_tree[parent] = std::make_shared<Stream>( loser_tree_sort( to_merge ) );
-        print_result( merge_tree[parent]->values, ( std::format( "Merged: [{0:d},{1:d}) to {2:d}", i - roads, i, parent ) ).c_str() );
+        print_raw_data( merge_tree[parent]->values, ( std::format( "Merged: [{0:d},{1:d}) to {2:d}", i - roads, i, parent ) ).c_str() );
     }
     return std::move( merge_tree[0]->values );
 }
+std::vector<Stream::Node> swap_select_sort( Stream::Node data_stream, size_t cache_size = 32 ) {
+    auto sift_up = []( std::vector<int>& heap, int i ) {
+        while ( i ) {
+            int p = ( i - 1 ) / 2;
+            if ( heap[i] < heap[p] ) {
+                std::swap( heap[p], heap[i] );
+                i = p;
+            } else {
+                break;
+            }
+        }
+    };
+    auto sift_down = []( std::vector<int>& heap, int i ) {
+        int len = heap.size();
+        while ( i < len ) {
+            int l = 2 * i + 1, r = 2 * i + 2, minimal = i;
+            if ( l < len && heap[l] < heap[minimal] ) {
+                minimal = l;
+            }
+            if ( r < len && heap[r] < heap[minimal] ) {
+                minimal = r;
+            }
+            if ( minimal != i ) {
+                std::swap( heap[i], heap[minimal] );
+                i = minimal;
+            } else {
+                break;
+            }
+        }
+    };
+    auto heap_push = [&]( std::vector<int>& heap, int elem ) {
+        heap.push_back( elem );
+        sift_up( heap, heap.size() - 1 );
+    };
+    auto heap_pop = [&]( std::vector<int>& heap ) -> int {
+        int val = heap[0];
+        heap[0] = heap.back();
+        heap.pop_back();
+        sift_down( heap, 0 );
+        return val;
+    };
+    std::vector<Stream::Node> init_segments;
+    std::vector<int> buffer_heap;
+    while ( buffer_heap.size() < cache_size && !data_stream->empty() ) {
+        heap_push( buffer_heap, data_stream->value() );
+        data_stream->next();
+    }
+    while ( !buffer_heap.empty() ) {
+        std::vector<int> segment, next_buffer;
+        int lastPop = -1;
+        while ( !buffer_heap.empty() ) {
+            lastPop = heap_pop( buffer_heap );
+            segment.push_back( lastPop );
+            if ( !data_stream->empty() ) {
+                int nextRead = data_stream->value();
+                data_stream->next();
+                if ( nextRead >= lastPop ) {
+                    heap_push( buffer_heap, nextRead );
+                } else {
+                    heap_push( next_buffer, nextRead );
+                }
+            }
+        }
+        buffer_heap = std::move( next_buffer );
+        init_segments.push_back( std::make_shared<Stream>( std::move( segment ) ) );
+    }
+    return init_segments;
+}
 int main() {
-    auto loser_sort_test = random_segments();
+    auto loser_sort_test = random_segments( 77 );
     print_segments( loser_sort_test, "====================================TEST LOSER_TREE_SORT====================================" );
     auto result = loser_tree_sort( loser_sort_test );
-    print_result( result, "====================================TEST LOSER_TREE_SORT RESULT=============================" );
-    auto best_merge_test = random_segments();
+    print_raw_data( result, "====================================TEST LOSER_TREE_SORT RESULT=============================" );
+    auto best_merge_test = random_segments( 77 );
     print_segments( best_merge_test, "====================================TEST BEST_MERGE_TREE=============================" );
     result = best_merge_tree( best_merge_test );
-    print_result( result, "====================================TEST BEST_MERGE_TREE RESULT======================" );
-    // TODO swap select sorting
+    print_raw_data( result, "====================================TEST BEST_MERGE_TREE RESULT======================" );
+    auto swap_select_sort_test_data = random_data( 1024 );
+    print_raw_data( swap_select_sort_test_data, "====================================TEST SWAP_SELECT_SORT======================", false );
+    auto swap_select_sort_test = std::make_shared<Stream>( std::move( swap_select_sort_test_data ) );
+    auto init_segments = swap_select_sort( swap_select_sort_test, 8 );
+    result = best_merge_tree( init_segments, 5 );
+    print_raw_data( result, "====================================TEST SWAP_SELECT_SORT RESULT======================" );
     return 0;
 }
