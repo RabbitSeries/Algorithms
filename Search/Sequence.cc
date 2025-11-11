@@ -50,6 +50,10 @@ int Binary( obj const& target, std::vector<obj> const& table ) {
     }
     return -1;
 }
+int Binary_LowerBound( obj const& target, std::vector<obj> const& table ) {
+    auto itr = std::ranges::lower_bound( table, target );
+    return itr == table.end() ? -1 : ( *itr == target ? std::distance( table.begin(), itr ) : -1 );
+}
 /**
  * @brief
  * n = table.size()
