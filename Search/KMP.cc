@@ -56,7 +56,7 @@ std::vector<int> cache_next_0_optimize( const std::string& pattern ) {
 /* Indexed from 0 */
 std::vector<int> cache_next_0_optimize_from_next_0( const std::string& pattern, const std::vector<int>& next ) {
     std::vector<int> nextval( pattern.size(), -1 );
-    int len = (int)pattern.size();
+    int len = pattern.size();
     for ( int i : std::views::iota( 0, len ) ) {
         nextval[i] = next[i];                                          // Inherit from next
         if ( nextval[i] >= 0 && pattern[i] == pattern[nextval[i]] ) {  // Apply additonal check, this is hard to prove, but possible to prove certain condition
@@ -66,7 +66,7 @@ std::vector<int> cache_next_0_optimize_from_next_0( const std::string& pattern, 
     return nextval;
 }
 int match( const std::string& str_raw, const std::string& pattern_raw, std::vector<int> const& next_raw ) {
-    int s_len = (int)str_raw.size(), p_len = (int)pattern_raw.size();
+    int s_len = str_raw.size(), p_len = pattern_raw.size();
     std::string str;
     std::string pattern;
     str = " " + str_raw;

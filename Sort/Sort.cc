@@ -293,7 +293,7 @@ namespace Select {
  * @worst   O(nlogn)
  * @average O(nlogn)
  * @space   O(n)
- * @unstable
+ * @stable
  * @apply   Sequence table
  */
 void merge_sort( std::vector<int>& data ) {
