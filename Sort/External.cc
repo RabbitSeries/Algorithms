@@ -118,70 +118,30 @@ std::vector<int> best_merge_tree( std::vector<Stream::Node>& segments, int roads
     }
     return std::move( merge_tree[0]->values );
 }
-std::vector<Stream::Node> swap_select_sort( Stream::Node data_stream, size_t cache_size = 32 ) {
-    auto sift_up = []( std::vector<int>& heap, int i ) {
-        while ( i ) {
-            int p = ( i - 1 ) / 2;
-            if ( heap[i] < heap[p] ) {
-                std::swap( heap[p], heap[i] );
-                i = p;
-            } else {
-                break;
-            }
-        }
-    };
-    auto sift_down = []( std::vector<int>& heap, int i ) {
-        int len = heap.size();
-        while ( i < len ) {
-            int l = 2 * i + 1, r = 2 * i + 2, minimal = i;
-            if ( l < len && heap[l] < heap[minimal] ) {
-                minimal = l;
-            }
-            if ( r < len && heap[r] < heap[minimal] ) {
-                minimal = r;
-            }
-            if ( minimal != i ) {
-                std::swap( heap[i], heap[minimal] );
-                i = minimal;
-            } else {
-                break;
-            }
-        }
-    };
-    auto heap_push = [&]( std::vector<int>& heap, int elem ) {
-        heap.push_back( elem );
-        sift_up( heap, heap.size() - 1 );
-    };
-    auto heap_pop = [&]( std::vector<int>& heap ) -> int {
-        int val = heap[0];
-        heap[0] = heap.back();
-        heap.pop_back();
-        sift_down( heap, 0 );
-        return val;
-    };
+std::vector<Stream::Node> swap_select_sort( Stream::Node data_stream, size_t buffer_size = 32 ) {
     std::vector<Stream::Node> init_segments;
-    std::vector<int> buffer_heap;
-    while ( buffer_heap.size() < cache_size && !data_stream->empty() ) {
-        heap_push( buffer_heap, data_stream->value() );
+    std::priority_queue<int, std::vector<int>, std::greater<>> buffer_heap, next_buffer;
+    while ( buffer_heap.size() < buffer_size && !data_stream->empty() ) {
+        buffer_heap.push( data_stream->value() );
         data_stream->next();
     }
     while ( !buffer_heap.empty() ) {
-        std::vector<int> segment, next_buffer;
-        int lastPop = -1;
+        std::vector<int> segment;
         while ( !buffer_heap.empty() ) {
-            lastPop = heap_pop( buffer_heap );
+            int lastPop = buffer_heap.top();
+            buffer_heap.pop();
             segment.push_back( lastPop );
             if ( !data_stream->empty() ) {
                 int nextRead = data_stream->value();
                 data_stream->next();
                 if ( nextRead >= lastPop ) {
-                    heap_push( buffer_heap, nextRead );
+                    buffer_heap.push( nextRead );
                 } else {
-                    heap_push( next_buffer, nextRead );
+                    next_buffer.push( nextRead );
                 }
             }
         }
-        buffer_heap = std::move( next_buffer );
+        buffer_heap.swap( next_buffer );
         init_segments.push_back( std::make_shared<Stream>( std::move( segment ) ) );
     }
     return init_segments;
