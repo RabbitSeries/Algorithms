@@ -35,11 +35,8 @@ bool operator<( const Stream::Node& parent, const Stream::Node& current ) {
     return current->empty() || ( !parent->empty() && parent->value() <= current->value() );
 };
 auto random_segments( int segment_len ) {
-    std::random_device rdv;
-    std::mt19937 gen( rdv() );
+    std::mt19937 gen( std::random_device{}() );
     std::uniform_int_distribution u_dis( 0, 50 );
-    // std::vector<int> test{ 27, 23, 46, 13};
-    // std::vector<int> test{ 0, 0, 0, 0 };
     std::vector<Stream::Node> segments;
     for ( int i = 0; i < segment_len; i++ ) {
         if ( i % 17 == 0 ) {  // Empty segments test
@@ -51,8 +48,7 @@ auto random_segments( int segment_len ) {
     return segments;
 }
 auto random_data( int data_len ) {
-    std::random_device rdv;
-    std::mt19937 gen( rdv() );
+    std::mt19937 gen( std::random_device{}() );
     std::uniform_int_distribution u_dis( 0, 50 );
     std::vector<int> segments;
     for ( int i = 0; i < data_len; i++ ) {
@@ -63,7 +59,7 @@ auto random_data( int data_len ) {
 void print_raw_data( std::vector<int> const& result, const char* msg, bool judgeSorted = true ) {
     std::cout << msg << "\n";
     if ( judgeSorted ) {
-        std::cout << "Result sorted: " << ( std::is_sorted( result.begin(), result.end() ) ? "√" : "X" ) << "\n";
+        std::cout << std::format( "Result sorted: {:s}\n", std::is_sorted( result.begin(), result.end() ) ? "√" : "X" );
     }
     for ( int i = 0; int num : result ) {
         std::cout << std::format( "{:02d} ", num );
@@ -115,7 +111,7 @@ std::vector<int> loser_tree_sort( std::vector<Stream::Node>& segments, std::func
     return merged;
 }
 /* This can never be stable, unless the elements in Stream::Node have an time stamp or strict order */
-std::vector<int> best_merge_tree( std::vector<Stream::Node>& segments, size_t roads = 16 ) {
+std::vector<int> huffman_merge_tree( std::vector<Stream::Node>& segments, size_t roads = 16 ) {
     int len = segments.size();
     // len + N = S = roads*N + 1 =>  N = len-1 / (roads-1)
     int v_seg_len = ( ( len - 1 ) % ( roads - 1 ) ) ? roads - ( len - 1 ) % ( roads - 1 ) - 1 : 0;  // Don't add virtual segments if it's already strict k-branch-tree
@@ -224,21 +220,21 @@ int main() {
     // TEST BEST_MERGE_TREE
     auto best_merge_test = random_segments( 77 );
     print_segments( best_merge_test, "====================================TEST BEST_MERGE_TREE=============================" );
-    result = best_merge_tree( best_merge_test );
+    result = huffman_merge_tree( best_merge_test );
     print_raw_data( result, "====================================TEST BEST_MERGE_TREE RESULT======================" );
     // TEST SWAP_SELECT_SORT
     auto swap_select_sort_test_data = random_data( 1024 );
     print_raw_data( swap_select_sort_test_data, "====================================TEST SWAP_SELECT_SORT======================", false );
     auto swap_select_sort_test = std::make_shared<Stream>( std::move( swap_select_sort_test_data ) );
     auto init_segments = swap_select_sort( swap_select_sort_test, 8 );
-    result = best_merge_tree( init_segments, 5 );
+    result = huffman_merge_tree( init_segments, 5 );
     print_raw_data( result, "====================================TEST SWAP_SELECT_SORT RESULT======================" );
     // TEST SWAP_SELECT_SORT VIA LOSERTREE
     swap_select_sort_test_data = random_data( 1024 );
     print_raw_data( swap_select_sort_test_data, "====================================TEST SWAP_SELECT_SORT VIA LOSERTREE======================", false );
     swap_select_sort_test = std::make_shared<Stream>( std::move( swap_select_sort_test_data ) );
     init_segments = swap_select_sort( use_loser_tree{}, swap_select_sort_test, 8 );
-    result = best_merge_tree( init_segments, 5 );
+    result = huffman_merge_tree( init_segments, 5 );
     print_raw_data( result, "====================================TEST SWAP_SELECT_SORT VIA LOSERTREE RESULT======================" );
     return 0;
 }

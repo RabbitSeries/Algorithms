@@ -298,36 +298,47 @@ namespace Select {
  */
 void merge_sort( std::vector<int>& data ) {
     if ( data.size() <= 1 ) return;
-    std::vector<std::vector<int>> segments;
-    for ( int num : data ) {
-        segments.push_back( { num } );
-    }
-    while ( segments.size() > 1 ) {
-        std::vector<std::vector<int>> merged_segments;
-        for ( size_t i = 0; i < segments.size(); i += 2 ) {
-            std::vector<int>& A = segments[i];
-            if ( i + 1 < segments.size() ) {
-                std::vector<int>& B = segments[i + 1];
-                merged_segments.push_back( {} );
-                auto& merged = merged_segments.back();
-                merged.reserve( A.size() + B.size() );
-                auto a = A.begin(), b = B.begin();
-                while ( a != A.end() && b != B.end() ) {
-                    if ( *a <= *b ) {  // stable
-                        merged_segments.rbegin()->push_back( *( a++ ) );
-                    } else {
-                        merged_segments.rbegin()->push_back( *( b++ ) );
-                    }
+    std::vector<int> aux( data.size() );
+    for ( size_t width = 1; width <= data.size(); width *= 2 ) {
+        for ( size_t i = 0; i + width < data.size(); i += width * 2 ) {
+            size_t mid = std::min( i + width, data.size() ), right = std::min( i + 2 * width, data.size() );
+            std::copy( data.begin() + i, data.begin() + right, aux.begin() + i );
+            size_t l = i, r = mid;
+            for ( size_t k = i; k < right; k++ ) {
+                if ( r == right || ( l != mid && aux[l] <= aux[r] ) ) {
+                    data[k] = aux[l++];
+                } else {
+                    data[k] = aux[r++];
                 }
-                merged.insert( merged.end(), a, A.end() );
-                merged.insert( merged.end(), b, B.end() );
-            } else {
-                merged_segments.push_back( std::move( A ) );
             }
         }
-        segments = std::move( merged_segments );
     }
-    data = std::move( segments[0] );
+}
+/**
+ * @best    O(nlogn)
+ * @worst   O(nlogn)
+ * @average O(nlogn)
+ * @space   O(n + log n)
+ * @stable
+ * @apply   Sequence table
+ */
+void merge_sort_recursive( std::vector<int>& data, std::vector<int>& aux, size_t left, size_t right ) {
+    // Copy [left, right) to aux, then merge [i,mid) and [mid, right) from aux to data
+    size_t mid = ( left + right ) >> 1;
+    if ( left == mid || mid == right ) {
+        return;
+    }
+    merge_sort_recursive( data, aux, left, mid );
+    merge_sort_recursive( data, aux, mid, right );
+    std::copy( data.begin() + left, data.begin() + right, aux.begin() + left );
+    size_t l = left, r = mid;
+    for ( size_t k = left; k < right; k++ ) {
+        if ( r == right || ( l != mid && aux[l] <= aux[r] ) ) {
+            data[k] = aux[l++];
+        } else {
+            data[k] = aux[r++];
+        }
+    }
 }
 // * ===============================================
 /**
@@ -384,6 +395,9 @@ int main() {
     heap_sort_test( data );
     // Merge Sort
     test( &merge_sort, data );
+    // Merge Sort Recursive
+    std::vector<int> aux( data.size() );
+    test( std::bind( &merge_sort_recursive, std::placeholders::_1, std::ref( aux ), 0, data.size() ), data );
     // Radix Sort
     test( std::bind( &radix_sort, std::placeholders::_1, 3 ), data );
 }
