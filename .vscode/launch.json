@@ -135,13 +135,13 @@
             "type": "cppdbg",
             "request": "launch",
             "cwd": "${fileDirname}",
-            "program": "${file}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "D:/Qt/Tools/mingw1310_64/bin/gdb.exe",
+            "miDebuggerPath": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

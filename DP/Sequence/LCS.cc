@@ -6,9 +6,9 @@ std::string LCS( std::string const& A, std::string const& B ) {
     for ( size_t i = 1; i <= A.size(); i++ ) {
         for ( size_t j = 1; j <= B.size(); j++ ) {
             if ( A[i - 1] == B[j - 1] ) {
-                dp[i][j] = dp[i - 1][j - 1] + 1;  // If use dp[i-1][j] then B[j-1] will be counted twice, samee for dp[i][j-1] where A[i-1] will be counted twice
+                dp[i][j] = dp[i - 1][j - 1] + 1;  // If use dp[i-1][j] then B[j-1] will be counted twice, same for dp[i][j-1] where A[i-1] will be counted twice
                 // State machine should be A==B then move i to i+1, j to j+1
-            } else if ( j ) {
+            } else {
                 dp[i][j] = std::max( dp[i - 1][j], dp[i][j - 1] );
             }
         }

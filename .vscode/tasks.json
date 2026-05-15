@@ -14,7 +14,7 @@
                 "-g",
                 "${fileDirname}/${fileBasenameNoExtension}.cc",
                 "-o",
-                "${workspaceFolder}/.vscode/exe_${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "presentation": {
                 "reveal": "silent",
